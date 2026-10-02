@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="only light">
 <title>Propuesta 6 · Horizonte — Colegio Bethlemitas Palmira</title>
 <meta name="description" content="Colegio Sagrado Corazón de Jesús Bethlemitas Palmira: comunidad educativa católica y mixta desde 1888. Preescolar, primaria y bachillerato con inglés y francés.">
 <meta property="og:title" content="Propuesta 6 · Horizonte — Bethlemitas Palmira (muestra)">
@@ -80,7 +81,7 @@ section { position: relative; padding: 110px 0; }
 @keyframes barrido { 0%, 62% { transform: skewX(-20deg) translateX(0); } 100% { transform: skewX(-20deg) translateX(600%); } }
 
 /* ---------- Portada a pantalla completa ---------- */
-.portada { height: 100svh; min-height: 640px; padding: 0; color: #fff; overflow: hidden; display: flex; align-items: flex-end; }
+.portada { height: auto; min-height: 640px; min-height: max(100svh, 640px); padding: 100px 0 0; color: #fff; overflow: hidden; display: flex; align-items: flex-end; }
 .portada .fondo { position: absolute; inset: 0; }
 .portada .fondo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; animation: acercar 22s ease-in-out infinite alternate; }
 .portada .fondo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(13,33,79,.55) 0%, rgba(13,33,79,.15) 35%, rgba(10,14,24,.88) 100%); }
@@ -249,7 +250,7 @@ section { position: relative; padding: 110px 0; }
   .cabecera .envoltura { height: 68px; }
   .menu { inset: 68px 0 auto 0; padding: 6px 20px 22px; }
   .marca img { width: 38px; height: 38px; } .marca b { font-size: 16.5px; } .marca small { font-size: 10.5px; }
-  .portada { min-height: 600px; }
+  .portada { min-height: 600px; min-height: max(100svh, 600px); padding-top: 84px; }
   .portada .envoltura { grid-template-columns: 1fr; padding-bottom: 46px; }
   .portada h1 { margin: 16px 0 18px; }
   .portada .bajada { font-size: 16.5px; }

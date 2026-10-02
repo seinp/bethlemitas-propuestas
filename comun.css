@@ -39,6 +39,9 @@ html.menu-bloqueo { overflow: hidden; }
 @keyframes e-gira    { from { opacity: 0; transform: perspective(900px) rotateY(-75deg); } }
 @keyframes e-desliza { from { opacity: 0; transform: translateX(-24px); } }
 
+/* Las entradas que llegan de costado no ensanchan la página mientras corren */
+main, footer { overflow-x: clip; }
+
 /* ---------- Recortes de foto ---------- */
 .foto { position: relative; overflow: hidden; }
 .foto > img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -63,7 +66,7 @@ html.menu-bloqueo { overflow: hidden; }
 .en-marco .cinta { display: none; }
 
 /* ---------- Aviso de enlace de muestra ---------- */
-.aviso-muestra { position: fixed; left: 50%; bottom: 66px; z-index: 950; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 14px;
+.aviso-muestra { position: fixed; left: 50%; bottom: 66px; z-index: 950; width: max-content; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 14px;
   background: rgba(17, 20, 28, .94); color: #fff; font: 500 14px/1.35 system-ui, "Segoe UI", sans-serif; text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .3); opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
   transition: opacity .25s ease, transform .35s cubic-bezier(.16, 1, .3, 1); }
