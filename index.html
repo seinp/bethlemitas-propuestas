@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuestas gráficas — Colegio Bethlemitas Palmira</title>
+<meta name="description" content="Seis propuestas de estilo visual para el nuevo sitio web del Colegio Sagrado Corazón de Jesús Bethlemitas Palmira.">
+<meta property="og:title" content="Propuestas gráficas · Nuevo sitio web Bethlemitas Palmira">
+<meta property="og:description" content="Seis estilos para elegir. Ábranlas, recórranlas y respondan con el número de la que más los represente.">
+<meta property="og:image" content="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1024x576.jpeg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="576">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="comun.css">
+<style>
+:root { --fondo: #f5f4f0; --tinta: #14171f; --suave: #5e6472; --linea: #e3e0d8; --azul: #1d3d8f; --rojo: #c8183c; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font: 400 16px/1.6 "Inter", system-ui, sans-serif; overflow-x: hidden; }
+a { color: inherit; }
+h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -.02em; }
+p { margin: 0; }
+.envoltura { width: min(1320px, 100% - 48px); margin-inline: auto; }
+
+.encabezado { padding: 56px 0 36px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; border-bottom: 1px solid var(--linea); }
+.colegio { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.colegio img { width: 56px; height: 56px; object-fit: contain; mix-blend-mode: multiply; }
+.colegio b { display: block; font-size: 15px; }
+.colegio span { font-size: 13px; color: var(--suave); }
+.etapa { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--linea); font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--rojo); margin-bottom: 14px; }
+.encabezado h1 { font-size: clamp(34px, 4.6vw, 60px); font-weight: 800; max-width: 14em; }
+.encabezado p.bajada { color: var(--suave); font-size: 18px; margin-top: 14px; max-width: 40em; }
+
+.como { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 30px 0 10px; }
+.como > div { display: grid; grid-template-columns: 38px 1fr; gap: 14px; padding: 20px; background: #fff; border: 1px solid var(--linea); border-radius: 16px; }
+.como b.n { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--tinta); color: #fff; font-weight: 800; }
+.como h3 { font-size: 16px; margin-bottom: 4px; }
+.como p { font-size: 14.5px; color: var(--suave); }
+
+.rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; padding: 30px 0 60px; }
+.tarjeta { background: #fff; border: 1px solid var(--linea); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column;
+  transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s; }
+.tarjeta:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(20,23,31,.10); }
+.vista { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #e9e7e1; border-bottom: 1px solid var(--linea); display: block; }
+.vista iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; transform: scale(var(--s, .4)); pointer-events: none; }
+.vista .abrir-grande { position: absolute; inset: 0; z-index: 2; }
+.info { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.fila-titulo { display: flex; align-items: center; gap: 14px; }
+.fila-titulo .num { font-size: 44px; font-weight: 800; line-height: 1; color: var(--c); letter-spacing: -.04em; }
+.fila-titulo h2 { font-size: 24px; font-weight: 800; }
+.fila-titulo .paleta { margin-left: auto; display: flex; }
+.paleta i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #fff; margin-left: -6px; box-shadow: 0 0 0 1px var(--linea); }
+.info p { color: var(--suave); }
+.info .ideal { font-size: 14px; color: var(--tinta); padding: 10px 14px; border-radius: 12px; background: var(--fondo); }
+.info .ideal b { color: var(--c); }
+.botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 6px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 999px; font: 700 14px/1 "Inter", sans-serif; text-decoration: none; cursor: pointer;
+  background: var(--tinta); color: #fff; border: 1px solid var(--tinta); transition: transform .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn .ico { font-size: 17px; }
+.btn.claro { background: #fff; color: var(--tinta); border-color: var(--linea); }
+
+.siguiente { margin: 0 0 60px; padding: 30px; border-radius: 22px; background: var(--tinta); color: #fff; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
+.siguiente .ico { font-size: 40px; color: #ff8fa2; }
+.siguiente h3 { font-size: 20px; margin-bottom: 6px; }
+.siguiente p { color: rgba(255,255,255,.75); }
+
+/* ---------- Vista de celular ---------- */
+dialog.celular { border: 0; padding: 0; background: transparent; overflow: visible; }
+dialog.celular::backdrop { background: rgba(10,12,18,.75); }
+.marco-cel { position: relative; width: 414px; height: 868px; border-radius: 48px; border: 12px solid #111; background: #111; box-shadow: 0 30px 80px rgba(0,0,0,.5);
+  transform: scale(var(--sc, 1)); transform-origin: 50% 50%; }
+.marco-cel::before { content: ""; position: absolute; top: 8px; left: 50%; width: 110px; height: 26px; margin-left: -55px; border-radius: 20px; background: #111; z-index: 2; }
+.marco-cel iframe { width: 100%; height: 100%; border: 0; border-radius: 36px; background: #fff; }
+.cerrar { position: absolute; top: -8px; right: -64px; width: 46px; height: 46px; border-radius: 50%; border: 0; background: #fff; color: #111; font-size: 22px; cursor: pointer; display: grid; place-items: center; }
+
+@media (max-width: 980px) {
+  .encabezado { grid-template-columns: 1fr; }
+  .como { grid-template-columns: 1fr; }
+  .rejilla { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .envoltura { width: calc(100% - 28px); }
+  .encabezado { padding: 34px 0 26px; }
+  .encabezado p.bajada { font-size: 16px; }
+  .info { padding: 18px; }
+  .fila-titulo .num { font-size: 38px; } .fila-titulo h2 { font-size: 21px; }
+  .btn { flex: 1 1 auto; justify-content: center; }
+  .btn.ver-cel { display: none; }
+  .siguiente { grid-template-columns: 1fr; padding: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="envoltura">
+  <header class="encabezado">
+    <div>
+      <div class="colegio"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt="Escudo del colegio"><div><b>Colegio Sagrado Corazón de Jesús</b><span>Bethlemitas Palmira</span></div></div>
+      <span class="etapa">ETAPA 1 · ESTILO VISUAL</span>
+      <h1>Seis propuestas para el nuevo sitio web</h1>
+      <p class="bajada">Cada una muestra la misma página de inicio con un estilo distinto. Recórranlas completas, también desde el celular, y elijan la que mejor represente al colegio.</p>
+    </div>
+  </header>
+
+  <section class="como" aria-label="Cómo elegir">
+    <div><b class="n">1</b><div><h3>Ábranlas y recórranlas</h3><p>Bajen hasta el final: cada una tiene su entrada animada y su forma de moverse.</p></div></div>
+    <div><b class="n">2</b><div><h3>Fíjense en el estilo</h3><p>Los textos y las fotos son de muestra. En esta etapa se eligen colores, letras, formas y movimiento.</p></div></div>
+    <div><b class="n">3</b><div><h3>Respondan con un número</h3><p>También se vale combinar: “los colores de la 2 con la estructura de la 4”.</p></div></div>
+  </section>
+
+  <main class="rejilla">
+    <article class="tarjeta" style="--c:#c8183c">
+      <a class="vista" href="1-vitral.html" target="_blank" aria-label="Abrir la propuesta 1"><iframe data-src="1-vitral.html" tabindex="-1" title="Vista previa de la propuesta 1"></iframe><span class="abrir-grande"></span></a>
+      <div class="info">
+        <div class="fila-titulo"><span class="num">1</span><h2>Vitral</h2><span class="paleta"><i style="background:#0b1230"></i><i style="background:#c8183c"></i><i style="background:#2659c9"></i><i style="background:#eaa91d"></i></span></div>
+        <p>La luz de la capilla. Vidrios de colores, arcos y un rosetón que se enciende al entrar. Solemne y con mucha identidad católica.</p>
+        <p class="ideal"><b>Ideal si</b> quieren transmitir tradición y espiritualidad.</p>
+        <div class="botones"><a class="btn" href="1-vitral.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="1-vitral.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
+      </div>
+    </article>
+
+    <article class="tarjeta" style="--c:#1d3c8f">
+      <a class="vista" href="2-cuaderno.html" target="_blank" aria-label="Abrir la propuesta 2"><iframe data-src="2-cuaderno.html" tabindex="-1" title="Vista previa de la propuesta 2"></iframe><span class="abrir-grande"></span></a>
+      <div class="info">
+        <div class="fila-titulo"><span class="num">2</span><h2>Cuaderno</h2><span class="paleta"><i style="background:#fcf9f1"></i><i style="background:#1d3c8f"></i><i style="background:#c8183c"></i><i style="background:#ffe45c"></i></span></div>
+        <p>El cuaderno del colegio. Hoja cuadriculada, cinta adhesiva, post-its y resaltador. Cercano y cálido.</p>
+        <p class="ideal"><b>Ideal si</b> el público principal son las familias de preescolar y primaria.</p>
+        <div class="botones"><a class="btn" href="2-cuaderno.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="2-cuaderno.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
+      </div>
+    </article>
+
+    <article class="tarjeta" style="--c:#2c6b4f">
+      <a class="vista" href="3-pizarra.html" target="_blank" aria-label="Abrir la propuesta 3"><iframe data-src="3-pizarra.html" tabindex="-1" title="Vista previa de la propuesta 3"></iframe><span class="abrir-grande"></span></a>
+      <div class="info">
+        <div class="fila-titulo"><span class="num">3</span><h2>Pizarra</h2><span class="paleta"><i style="background:#1e3a2e"></i><i style="background:#f3f1e7"></i><i style="background:#f7e27d"></i><i style="background:#a46a3b"></i></span></div>
+        <p>El salón de clase. Tablero verde, letra de tiza, marcos de madera y una cartelera de corcho para las circulares.</p>
+        <p class="ideal"><b>Ideal si</b> quieren algo nostálgico y muy reconocible.</p>
+        <div class="botones"><a class="btn" href="3-pizarra.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="3-pizarra.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
+      </div>
+    </article>
+
+    <article class="tarjeta" style="--c:#2b57c6">
+      <a class="vista" href="4-mosaico.html" target="_blank" aria-label="Abrir la propuesta 4"><iframe data-src="4-mosaico.html" tabindex="-1" title="Vista previa de la propuesta 4"></iframe><span class="abrir-grande"></span></a>
+      <div class="info">
+        <div class="fila-titulo"><span class="num">4</span><h2>Mosaico</h2><span class="paleta"><i style="background:#edf1f8"></i><i style="background:#2b57c6"></i><i style="background:#d0193f"></i><i style="background:#ffd166"></i></span></div>
+        <p>Bloques modernos, como una aplicación. Todo a la vista, ordenado y muy fácil de usar desde el celular.</p>
+        <p class="ideal"><b>Ideal si</b> priorizan la practicidad y una imagen actual.</p>
+        <div class="botones"><a class="btn" href="4-mosaico.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="4-mosaico.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
+      </div>
+    </article>
+
+    <article class="tarjeta" style="--c:#e8334f">
+      <a class="vista" href="5-recreo.html" target="_blank" aria-label="Abrir la propuesta 5"><iframe data-src="5-recreo.html" tabindex="-1" title="Vista previa de la propuesta 5"></iframe><span class="abrir-grande"></span></a>
+      <div class="info">
+        <div class="fila-titulo"><span class="num">5</span><h2>Recreo</h2><span class="paleta"><i style="background:#2448b8"></i><i style="background:#e8334f"></i><i style="background:#ffc531"></i><i style="background:#4fc1f0"></i></span></div>
+        <p>Colores vivos, formas que flotan y rebotan, bordes gruesos como de sticker. Alegre y con mucha energía.</p>
+        <p class="ideal"><b>Ideal si</b> quieren destacar la etapa infantil y la alegría del colegio.</p>
+        <div class="botones"><a class="btn" href="5-recreo.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="5-recreo.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
+      </div>
+    </article>
+
+    <article class="tarjeta" style="--c:#14306e">
+      <a class="vista" href="6-horizonte.html" target="_blank" aria-label="Abrir la propuesta 6"><iframe data-src="6-horizonte.html" tabindex="-1" title="Vista previa de la propuesta 6"></iframe><span class="abrir-grande"></span></a>
+      <div class="info">
+        <div class="fila-titulo"><span class="num">6</span><h2>Horizonte</h2><span class="paleta"><i style="background:#f5f2ec"></i><i style="background:#14306e"></i><i style="background:#b5162f"></i><i style="background:#12161f"></i></span></div>
+        <p>Editorial de prestigio. Foto a pantalla completa, letras grandes y líneas finas, como un colegio internacional.</p>
+        <p class="ideal"><b>Ideal si</b> quieren proyectar excelencia académica y seriedad.</p>
+        <div class="botones"><a class="btn" href="6-horizonte.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="6-horizonte.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
+      </div>
+    </article>
+  </main>
+
+  <aside class="siguiente">
+    <svg class="ico"><use href="iconos.svg#i-flecha"/></svg>
+    <div><h3>¿Qué sigue después de elegir?</h3><p>Con el estilo elegido se arman las páginas internas (niveles, circulares, admisiones y contacto). Después se reemplazan los textos y fotos de muestra por los del colegio.</p></div>
+  </aside>
+</div>
+
+<dialog class="celular" id="celular">
+  <div class="marco-cel"><iframe title="Vista en celular"></iframe><button class="cerrar" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+</dialog>
+
+<script>
+// Escala de las vistas previas (cada propuesta se muestra a 1440 px de ancho).
+const escalar = () => document.querySelectorAll(".vista").forEach(v => v.style.setProperty("--s", v.clientWidth / 1440));
+addEventListener("resize", escalar);
+escalar();
+// Cada vista previa carga recién al acercarse a la pantalla.
+const cargar = f => { if (!f.src || f.src === "about:blank") f.src = f.dataset.src; };
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(l => l.forEach(x => { if (x.isIntersecting) { cargar(x.target); io.unobserve(x.target); } }), { rootMargin: "300px 0px" });
+  document.querySelectorAll(".vista iframe").forEach(f => io.observe(f));
+} else document.querySelectorAll(".vista iframe").forEach(cargar);
+
+// Vista de celular en un marco de 390 × 844.
+const dlg = document.getElementById("celular");
+const marco = dlg.querySelector(".marco-cel");
+const ifr = dlg.querySelector("iframe");
+const ajustarCel = () => marco.style.setProperty("--sc", Math.min(1, (innerHeight - 40) / 892));
+document.querySelectorAll("[data-cel]").forEach(b => b.addEventListener("click", () => {
+  ifr.src = b.dataset.cel;
+  ajustarCel();
+  dlg.showModal();
+}));
+dlg.querySelector(".cerrar").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("close", () => { ifr.src = "about:blank"; });
+addEventListener("resize", ajustarCel);
+</script>
+</body>
+</html>

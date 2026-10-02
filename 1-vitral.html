@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta 1 · Vitral — Colegio Bethlemitas Palmira</title>
+<meta name="description" content="Colegio Sagrado Corazón de Jesús Bethlemitas Palmira: comunidad educativa católica y mixta desde 1888. Preescolar, primaria y bachillerato con inglés y francés.">
+<meta property="og:title" content="Propuesta 1 · Vitral — Bethlemitas Palmira (muestra)">
+<meta property="og:description" content="Propuesta de estilo para el nuevo sitio web del colegio. Textos y fotos de muestra.">
+<meta property="og:image" content="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1024x576.jpeg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="576">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500;600;700&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="comun.css">
+<style>
+:root {
+  --nave: #0b1230; --nave2: #121c47; --plomo: #060a19;
+  --rubi: #c8183c; --zafiro: #2659c9; --celeste: #6fb2ea; --esmeralda: #14876b; --ambar: #eaa91d;
+  --marfil: #f6f0e3; --tenue: #aeb6d2;
+  --titulo: "Josefin Sans", system-ui, sans-serif;
+  --cuerpo: "Nunito Sans", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--nave); color: var(--marfil); font: 400 17px/1.6 var(--cuerpo); overflow-x: hidden; }
+body.con-intro { overflow: hidden; }
+img { max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--titulo); line-height: 1.12; margin: 0; letter-spacing: .01em; }
+p { margin: 0; }
+.envoltura { width: min(1200px, 100% - 48px); margin-inline: auto; }
+section { position: relative; padding: 96px 0; }
+
+/* ---------- Rosetón de entrada ---------- */
+#intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #04060f; cursor: pointer;
+  transition: opacity .7s ease, transform .9s cubic-bezier(.7, 0, .3, 1); }
+#intro.fuera { opacity: 0; transform: scale(1.35); pointer-events: none; }
+#intro svg { width: min(78vmin, 520px); height: auto; overflow: visible; }
+#intro .vid { opacity: 0; animation: encender .5s ease forwards; animation-delay: calc(var(--k) * 55ms + 150ms); }
+#intro .destello { opacity: 0; animation: destello 1s ease forwards 1.15s; }
+#intro .escudo-intro { opacity: 0; transform-origin: 50% 50%; animation: aparece .7s cubic-bezier(.16,1,.3,1) forwards .9s; }
+#intro p { position: absolute; bottom: 9vh; left: 0; right: 0; text-align: center; font: 600 13px/1 var(--titulo);
+  letter-spacing: .32em; text-transform: uppercase; color: var(--tenue); opacity: 0; animation: aparece .8s ease forwards 1.2s; }
+@keyframes encender { to { opacity: 1; } }
+@keyframes destello { 40% { opacity: .55; } to { opacity: 0; } }
+@keyframes aparece { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+
+/* ---------- Cabecera ---------- */
+.cabecera { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: background .35s, box-shadow .35s; }
+.cabecera::after { content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 4px; opacity: 0; transition: opacity .35s;
+  background: linear-gradient(90deg, var(--rubi) 0 20%, var(--plomo) 20% 20.4%, var(--zafiro) 20.4% 40%, var(--plomo) 40% 40.4%,
+    var(--ambar) 40.4% 60%, var(--plomo) 60% 60.4%, var(--esmeralda) 60.4% 80%, var(--plomo) 80% 80.4%, var(--celeste) 80.4%); }
+.bajo .cabecera { background: rgba(8, 13, 36, .96); box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+.bajo .cabecera::after { opacity: 1; }
+.cabecera .envoltura { display: flex; align-items: center; gap: 24px; height: 76px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+.marca .placa { width: 46px; height: 46px; border-radius: 50%; background: #fff; display: grid; place-items: center; overflow: hidden;
+  box-shadow: 0 0 0 3px var(--plomo), 0 0 0 5px var(--ambar); flex: none; }
+.marca .placa img { width: 40px; height: 40px; object-fit: contain; }
+.marca b { display: block; font: 700 18px/1.1 var(--titulo); letter-spacing: .04em; text-transform: uppercase; }
+.marca small { display: block; font-size: 12px; color: var(--tenue); letter-spacing: .02em; }
+.menu { display: flex; gap: 26px; }
+.menu a { text-decoration: none; font: 600 15px/1 var(--titulo); letter-spacing: .06em; text-transform: uppercase; color: #dfe4f5;
+  padding: 8px 0; position: relative; }
+.menu a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--ambar);
+  transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+.menu a:hover::after { transform: scaleX(1); }
+.boton-menu { display: none; background: none; border: 0; color: var(--marfil); font-size: 30px; padding: 6px; cursor: pointer; }
+
+/* ---------- Botones de vidrio ---------- */
+.btn { position: relative; display: inline-flex; align-items: center; gap: 12px; padding: 15px 24px; border-radius: 4px;
+  font: 700 15px/1 var(--titulo); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; overflow: hidden;
+  border: 3px solid var(--plomo); box-shadow: 0 0 0 2px rgba(234,169,29,.45), 0 12px 30px rgba(200,24,60,.35);
+  background: linear-gradient(160deg, #e2325a, var(--rubi) 55%, #8e0f2a); color: #fff; transition: transform .25s ease; }
+.btn::before { content: ""; position: absolute; inset: -20% auto -20% -60%; width: 40%; transform: skewX(-20deg) translateX(0);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: barrido 4.6s ease-in-out infinite; }
+.btn:hover { transform: translateY(-3px); }
+.btn .ico { font-size: 20px; }
+.btn.claro { background: linear-gradient(160deg, #fff6df, #f1dfb8); color: var(--plomo); box-shadow: 0 0 0 2px rgba(111,178,234,.5); }
+.btn.claro::before { animation-delay: 2.3s; }
+.btn.chico { padding: 11px 16px; font-size: 13px; }
+@keyframes barrido { 0%, 62% { transform: skewX(-20deg) translateX(0); } 100% { transform: skewX(-20deg) translateX(480%); } }
+
+/* ---------- Portada ---------- */
+.portada { min-height: 100svh; padding: 130px 0 70px; display: flex; align-items: center; overflow: hidden;
+  background: radial-gradient(1200px 700px at 78% 35%, #1d2c6e 0%, transparent 60%), linear-gradient(180deg, #070c22, var(--nave)); }
+.rayos { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.rayos i { position: absolute; top: -20%; width: 120px; height: 160%; transform: rotate(24deg); opacity: .08;
+  background: linear-gradient(180deg, #fff, transparent 75%); animation: rayo 7s ease-in-out infinite; }
+.rayos i:nth-child(1) { left: 48%; } .rayos i:nth-child(2) { left: 60%; width: 60px; animation-delay: 2s; }
+.rayos i:nth-child(3) { left: 72%; width: 180px; animation-delay: 4s; } .rayos i:nth-child(4) { left: 86%; width: 80px; animation-delay: 1s; }
+@keyframes rayo { 50% { opacity: .17; } }
+.portada .envoltura { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; position: relative; }
+.antetitulo { display: inline-flex; align-items: center; gap: 10px; font: 600 14px/1 var(--titulo); letter-spacing: .26em;
+  text-transform: uppercase; color: var(--ambar); }
+.antetitulo .ico { font-size: 18px; }
+.portada h1 { font-size: clamp(42px, 5.6vw, 76px); font-weight: 700; margin: 22px 0 22px; }
+.portada h1 em { font-style: normal; color: transparent; background: linear-gradient(100deg, #ff6f8b, var(--rubi) 45%, var(--ambar));
+  -webkit-background-clip: text; background-clip: text; }
+.portada .bajada { font-size: 19px; color: #cfd5ea; max-width: 34em; }
+.acciones { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.cifras { display: flex; gap: 36px; margin-top: 44px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.12); }
+.cifras b { display: block; font: 700 40px/1 var(--titulo); color: var(--marfil); }
+.cifras span { font-size: 13px; color: var(--tenue); letter-spacing: .04em; }
+
+.ventana { position: relative; justify-self: center; width: min(460px, 100%); }
+.ventana .flota { animation: flotar 7s ease-in-out infinite; }
+.ventana .arco { position: relative; aspect-ratio: 4 / 5.2; border-radius: 999px 999px 6px 6px; padding: 14px;
+  background: conic-gradient(from 180deg at 50% 38%, var(--rubi) 0 12%, var(--plomo) 12% 12.6%, var(--ambar) 12.6% 25%, var(--plomo) 25% 25.6%,
+    var(--zafiro) 25.6% 37.5%, var(--plomo) 37.5% 38.1%, var(--esmeralda) 38.1% 50%, var(--plomo) 50% 50.6%, var(--celeste) 50.6% 62.5%,
+    var(--plomo) 62.5% 63.1%, var(--rubi) 63.1% 75%, var(--plomo) 75% 75.6%, var(--ambar) 75.6% 87.5%, var(--plomo) 87.5% 88.1%, var(--zafiro) 88.1%);
+  box-shadow: 0 0 0 5px var(--plomo), 0 30px 80px rgba(0,0,0,.55), 0 0 120px rgba(111,178,234,.18); }
+.ventana .arco .foto { height: 100%; border-radius: 999px 999px 2px 2px; border: 5px solid var(--plomo); }
+.ventana .arco .foto img { object-position: 50% 60%; }
+.ventana .arco .foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(111,178,234,.22), transparent 40%, rgba(11,18,48,.35)); }
+.ventana .sello { position: absolute; left: -26px; bottom: 54px; width: 116px; height: 116px; border-radius: 50%; display: grid; place-items: center;
+  text-align: center; background: var(--marfil); color: var(--plomo); box-shadow: 0 0 0 4px var(--plomo), 0 0 0 7px var(--ambar), 0 14px 30px rgba(0,0,0,.4); }
+.ventana .sello b { display: block; font: 700 30px/1 var(--titulo); }
+.ventana .sello span { font: 700 11px/1.2 var(--titulo); letter-spacing: .16em; text-transform: uppercase; }
+@keyframes flotar { 50% { transform: translateY(-12px); } }
+
+/* ---------- Encabezados de sección ---------- */
+.titular { text-align: center; max-width: 720px; margin: 0 auto 52px; }
+.titular .antetitulo { justify-content: center; }
+.titular h2 { font-size: clamp(32px, 3.8vw, 50px); margin-top: 14px; }
+.titular p { color: var(--tenue); margin-top: 14px; font-size: 18px; }
+
+/* ---------- Paneles de vidrio ---------- */
+.vidrio { position: relative; border: 4px solid var(--plomo); border-radius: 6px; overflow: hidden; isolation: isolate;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--c) 78%, #fff 22%), var(--c) 45%, color-mix(in srgb, var(--c) 70%, #000 30%));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.18), inset 0 -30px 60px rgba(0,0,0,.25); }
+.vidrio::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .35;
+  background: linear-gradient(115deg, transparent 0 30%, rgba(255,255,255,.35) 31%, transparent 32% 58%, rgba(255,255,255,.22) 59%, transparent 60%); }
+.vidrio::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0; transition: opacity .35s;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,.55), transparent 65%); }
+.vidrio:hover::after { opacity: 1; }
+
+.accesos { background: linear-gradient(180deg, var(--nave), var(--nave2)); }
+.rejilla-accesos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border: 6px solid var(--plomo); border-radius: 10px;
+  background: var(--plomo); box-shadow: 0 30px 70px rgba(0,0,0,.4); }
+.acceso { --c: var(--zafiro); display: flex; gap: 16px; align-items: center; padding: 30px 26px; text-decoration: none; border-radius: 2px;
+  transition: transform .3s ease; }
+.acceso:nth-child(2) { --c: var(--rubi); } .acceso:nth-child(3) { --c: #0e6b55; } .acceso:nth-child(4) { --c: #8a5d0a; }
+.acceso:nth-child(5) { --c: #2a58a8; } .acceso:nth-child(6) { --c: #8d1c45; }
+.acceso:hover { transform: translateY(-4px); }
+.acceso .ico { font-size: 38px; color: #fff; stroke-width: 1.6; }
+.acceso b { display: block; font: 700 18px/1.2 var(--titulo); letter-spacing: .02em; color: #fff; }
+.acceso span { font-size: 14px; color: #fff; }
+
+/* ---------- Niveles ---------- */
+.niveles { background: var(--nave2); }
+.rejilla-niveles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px; }
+.nivel { text-align: center; }
+.nivel .arco-chico { aspect-ratio: 4 / 4.6; border-radius: 999px 999px 4px 4px; border: 5px solid var(--plomo); padding: 9px; margin-bottom: 24px;
+  background: linear-gradient(135deg, var(--c1), var(--c2)); box-shadow: 0 24px 50px rgba(0,0,0,.4); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+.nivel:hover .arco-chico { transform: translateY(-8px); }
+.nivel .arco-chico .foto { height: 100%; border-radius: 999px 999px 2px 2px; border: 4px solid var(--plomo); }
+.nivel h3 { font-size: 28px; }
+.nivel .edad { display: inline-block; margin: 10px 0 12px; padding: 5px 12px; border-radius: 999px; background: rgba(255,255,255,.08);
+  font: 700 12px/1 var(--titulo); letter-spacing: .14em; text-transform: uppercase; color: var(--ambar); }
+.nivel p { color: #c9cfe6; font-size: 16px; }
+.nivel a.mas { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font: 700 14px/1 var(--titulo); letter-spacing: .08em;
+  text-transform: uppercase; text-decoration: none; color: var(--celeste); }
+.nivel a.mas .ico { transition: transform .3s; } .nivel a.mas:hover .ico { transform: translateX(5px); }
+
+/* ---------- Por qué ---------- */
+.porque { background: radial-gradient(900px 500px at 15% 20%, rgba(38,89,201,.25), transparent 60%), var(--nave); }
+.medallones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 56px; }
+.medallon { text-align: center; }
+.medallon .anillo { width: 150px; height: 150px; margin: 0 auto 14px; border-radius: 50%; display: grid; place-items: center;
+  background: conic-gradient(var(--rubi) 0 25%, var(--plomo) 25% 26%, var(--ambar) 26% 50%, var(--plomo) 50% 51%, var(--zafiro) 51% 75%, var(--plomo) 75% 76%, var(--esmeralda) 76% 99%, var(--plomo) 99%);
+  box-shadow: 0 0 0 4px var(--plomo); animation: girar 40s linear infinite; }
+.medallon .anillo b { width: 118px; height: 118px; border-radius: 50%; display: grid; place-items: center; background: var(--nave);
+  border: 4px solid var(--plomo); font: 700 38px/1 var(--titulo); color: var(--marfil); animation: girar 40s linear infinite reverse; }
+.medallon span { color: var(--tenue); font-size: 15px; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.rejilla-porque { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.razon { --c: #1a2a66; padding: 30px 24px; }
+.razon:nth-child(2) { --c: #5a1430; } .razon:nth-child(3) { --c: #0f4a3d; } .razon:nth-child(4) { --c: #5d430c; }
+.razon .ico { font-size: 40px; color: var(--ambar); margin-bottom: 16px; }
+.razon h3 { font-size: 21px; margin-bottom: 10px; }
+.razon p { font-size: 15px; color: #dde1f0; }
+
+/* ---------- Circulares ---------- */
+.circulares { background: var(--nave2); }
+.lista-circulares { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.circular { display: grid; grid-template-columns: 82px 1fr auto; gap: 20px; align-items: center; padding: 18px; text-decoration: none;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 8px; transition: background .3s, transform .3s; }
+.circular:hover { background: rgba(255,255,255,.08); transform: translateX(6px); }
+.circular .fecha { --c: var(--rubi); text-align: center; padding: 10px 0; }
+.circular:nth-child(even) .fecha { --c: var(--zafiro); }
+.circular .fecha b { display: block; font: 700 30px/1 var(--titulo); color: #fff; }
+.circular .fecha span { font: 700 12px/1 var(--titulo); letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+.circular small { font: 700 12px/1 var(--titulo); letter-spacing: .14em; text-transform: uppercase; color: var(--ambar); }
+.circular h3 { font-size: 19px; margin-top: 6px; line-height: 1.3; }
+.circular .ico { font-size: 22px; color: var(--celeste); }
+.pie-seccion { text-align: center; margin-top: 40px; }
+
+/* ---------- Identidad ---------- */
+.identidad { padding: 0; }
+.cita { position: relative; padding: 120px 0; text-align: center; overflow: hidden; }
+.cita .fondo { position: absolute; inset: 0; }
+.cita .fondo img { width: 100%; height: 100%; object-fit: cover; }
+.cita .fondo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,18,48,.92), rgba(11,18,48,.78) 50%, rgba(11,18,48,.95)); }
+.cita .envoltura { position: relative; max-width: 900px; }
+.cita blockquote { margin: 26px 0 0; font: 600 clamp(24px, 2.8vw, 36px)/1.35 var(--titulo); }
+.cita cite { display: block; margin-top: 22px; font-style: normal; color: var(--ambar); letter-spacing: .2em; text-transform: uppercase; font: 700 13px/1 var(--titulo); }
+.fundadores { background: var(--nave); }
+.fundadores .envoltura { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 40px; align-items: center; }
+.retrato { text-align: center; }
+.retrato .arco-chico { aspect-ratio: 3 / 4; border-radius: 999px 999px 4px 4px; border: 5px solid var(--plomo); padding: 8px;
+  background: linear-gradient(135deg, var(--ambar), var(--rubi)); max-width: 260px; margin: 0 auto 18px; }
+.retrato .arco-chico .foto { height: 100%; border-radius: 999px 999px 2px 2px; border: 4px solid var(--plomo); }
+.retrato h3 { font-size: 19px; }
+.retrato span { color: var(--tenue); font-size: 14px; }
+.red h2 { font-size: clamp(28px, 3vw, 40px); margin: 14px 0 16px; }
+.red p { color: #cfd5ea; margin-bottom: 26px; }
+
+/* ---------- Admisiones ---------- */
+.admisiones { overflow: hidden; background: #070c22; }
+.admisiones .mosaico { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; padding: 4px; opacity: .2; }
+.admisiones .mosaico i { background: var(--c); border-radius: 2px; }
+.admisiones .envoltura { position: relative; }
+.pasos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 10px 0 44px; }
+.paso { --c: #182766; padding: 32px 26px; }
+.paso:nth-child(2) { --c: #5a1430; } .paso:nth-child(3) { --c: #0f4a3d; }
+.paso .num { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; margin-bottom: 18px;
+  background: var(--marfil); color: var(--plomo); font: 700 24px/1 var(--titulo); box-shadow: 0 0 0 3px var(--plomo), 0 0 0 5px var(--ambar); }
+.paso h3 { font-size: 22px; margin-bottom: 8px; }
+.paso p { color: #dde1f0; font-size: 16px; }
+.admisiones .acciones { justify-content: center; }
+
+/* ---------- Pie ---------- */
+.pie { background: #050817; padding: 70px 0 30px; position: relative; }
+.pie::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 10px;
+  background: repeating-linear-gradient(90deg, var(--rubi) 0 60px, var(--plomo) 60px 64px, var(--zafiro) 64px 124px, var(--plomo) 124px 128px,
+    var(--ambar) 128px 188px, var(--plomo) 188px 192px, var(--esmeralda) 192px 252px, var(--plomo) 252px 256px); }
+.pie .columnas { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+.pie h4 { font: 700 14px/1 var(--titulo); letter-spacing: .18em; text-transform: uppercase; color: var(--ambar); margin: 0 0 18px; }
+.pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.pie li, .pie li a { display: flex; gap: 10px; align-items: flex-start; color: #c4cbe3; text-decoration: none; font-size: 15px; }
+.pie li a:hover { color: #fff; }
+.pie li .ico { font-size: 18px; margin-top: 3px; color: var(--celeste); }
+.pie .lema { color: var(--tenue); margin: 16px 0 0; font-size: 15px; }
+.aliados { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 50px 0 30px; padding-top: 34px; border-top: 1px solid rgba(255,255,255,.08); }
+.aliados img { width: 64px; height: 64px; object-fit: contain; background: #fff; border-radius: 10px; padding: 6px; }
+.derechos { text-align: center; color: #7d86a6; font-size: 13px; }
+
+/* ---------- Teléfono y tableta ---------- */
+@media (max-width: 1100px) {
+  .menu { position: fixed; inset: 76px 0 auto 0; flex-direction: column; gap: 0; padding: 10px 24px 26px; background: rgba(8,13,36,.98);
+    transform: translateY(-120%); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+  .menu a { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 16px; }
+  .menu-abierto .menu { transform: none; }
+  .menu-abierto .cabecera { background: rgba(8,13,36,.98); }
+  .boton-menu { display: block; }
+  .cabecera .btn.chico { display: none; }
+  .portada .envoltura { grid-template-columns: 1fr; gap: 40px; }
+  .ventana { width: min(380px, 86%); }
+  .rejilla-porque, .medallones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fundadores .envoltura { grid-template-columns: 1fr 1fr; }
+  .red { grid-column: 1 / -1; text-align: center; }
+  .pie .columnas { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  body { font-size: 16px; }
+  section { padding: 64px 0; }
+  .envoltura { width: calc(100% - 40px); }
+  .cabecera .envoltura { height: 66px; }
+  .menu { inset: 66px 0 auto 0; }
+  .marca .placa { width: 40px; height: 40px; } .marca .placa img { width: 34px; height: 34px; }
+  .marca b { font-size: 15px; } .marca small { font-size: 11px; }
+  .portada { padding: 100px 0 56px; min-height: auto; }
+  .portada .bajada { font-size: 17px; }
+  .acciones .btn { flex: 1 1 100%; justify-content: center; }
+  .cifras { gap: 22px; }
+  .cifras b { font-size: 32px; }
+  .ventana .sello { width: 92px; height: 92px; left: -12px; } .ventana .sello b { font-size: 24px; }
+  .titular { margin-bottom: 34px; }
+  .rejilla-accesos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .acceso { flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 16px; }
+  .acceso .ico { font-size: 30px; }
+  .acceso b { font-size: 16px; } .acceso span { font-size: 13px; }
+  .rejilla-niveles { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-inline: -20px; padding: 0 20px 10px;
+    scrollbar-width: none; }
+  .rejilla-niveles::-webkit-scrollbar { display: none; }
+  .nivel { flex: 0 0 78%; scroll-snap-align: center; min-width: 0; }
+  .medallones { gap: 18px; margin-bottom: 36px; }
+  .medallon .anillo { width: 118px; height: 118px; } .medallon .anillo b { width: 92px; height: 92px; font-size: 28px; }
+  .medallon span { font-size: 13px; }
+  .rejilla-porque { gap: 12px; }
+  .razon { padding: 20px 16px; } .razon .ico { font-size: 30px; margin-bottom: 10px; } .razon h3 { font-size: 17px; } .razon p { font-size: 13.5px; }
+  .lista-circulares { grid-template-columns: 1fr; gap: 12px; }
+  .circular { grid-template-columns: 64px 1fr; gap: 14px; padding: 12px; }
+  .circular > .ico { display: none; }
+  .circular .fecha b { font-size: 24px; }
+  .circular h3 { font-size: 16px; }
+  .cita { padding: 80px 0; }
+  .fundadores .envoltura { gap: 18px; }
+  .retrato .arco-chico { padding: 6px; } .retrato h3 { font-size: 15px; } .retrato span { font-size: 12px; }
+  .pasos { grid-template-columns: 1fr; gap: 12px; }
+  .paso { display: grid; grid-template-columns: 52px 1fr; column-gap: 16px; padding: 20px; }
+  .paso .num { margin: 0; grid-row: span 2; }
+  .paso h3 { font-size: 18px; margin: 4px 0 4px; } .paso p { font-size: 14.5px; }
+  .pie .columnas { gap: 30px 20px; }
+  .pie .columnas > div:first-child { grid-column: 1 / -1; }
+  .aliados img { width: 54px; height: 54px; }
+}
+/* Pie en el teléfono: el correo largo no puede empujar la columna */
+@media (max-width: 760px) {
+  .pie .columnas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pie .columnas > div:nth-child(2) { grid-column: 1 / -1; }
+  .pie a[href^="mailto"] { overflow-wrap: anywhere; }
+  .pie .columnas > div:nth-child(3), .pie .columnas > div:nth-child(4) { grid-column: 1 / -1; }
+  .pie .columnas > div:nth-child(3) ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+</head>
+<body data-propuesta="1" data-nombre="Vitral">
+
+<div id="intro" data-ms="1900" aria-hidden="true">
+  <svg viewBox="-110 -110 220 220" id="roseton"></svg>
+  <p>Bethlemitas Palmira</p>
+</div>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="#inicio">
+      <span class="placa"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt="Escudo del colegio"></span>
+      <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#identidad">Institución</a>
+      <a href="#niveles">Niveles</a>
+      <a href="#admisiones">Admisiones</a>
+      <a href="#circulares">Circulares</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn chico" href="#admisiones">Preinscripción</a>
+    <button class="boton-menu" data-menu aria-expanded="false" aria-label="Abrir menú"><svg class="ico"><use href="iconos.svg#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <div class="rayos"><i></i><i></i><i></i><i></i></div>
+    <div class="envoltura">
+      <div>
+        <span class="antetitulo" data-entra="desliza"><svg class="ico"><use href="iconos.svg#i-cruz"/></svg>Palmira · Desde 1888</span>
+        <h1 data-entra="sube" style="--i:1">Educamos en el <em>amor</em> para el servicio</h1>
+        <p class="bajada" data-entra="sube" style="--i:2">Comunidad educativa católica y mixta en Palmira desde 1888. Acompañamos a cada estudiante desde los 2 años hasta el grado once, con inglés y francés, ciencia y valores.</p>
+        <div class="acciones" data-entra="sube" style="--i:3">
+          <a class="btn" href="#admisiones">Inscripciones 2027 – 2028 <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+          <a class="btn claro" href="#niveles">Conoce el colegio</a>
+        </div>
+        <div class="cifras" data-entra="sube" style="--i:4">
+          <div><b data-cuenta="anios">0</b><span>años de historia</span></div>
+          <div><b data-cuenta="15">0</b><span>grados, de párvulos a once</span></div>
+          <div><b data-cuenta="2">0</b><span>lenguas extranjeras</span></div>
+        </div>
+      </div>
+      <div class="ventana" data-entra="zoom" style="--d:250ms">
+        <div class="flota">
+          <div class="arco"><div class="foto"><img srcset="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-768x432.jpeg 768w, https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1024x576.jpeg 1024w, https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1536x864.jpeg 1536w, https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2.jpeg 1920w" sizes="(max-width: 760px) 86vw, 460px" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2.jpeg" alt="Fachada del colegio en Palmira"></div></div>
+          <div class="sello"><div><b>1888</b><span>Fundado</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="accesos" aria-labelledby="t-accesos">
+    <div class="envoltura">
+      <div class="titular">
+        <span class="antetitulo" data-entra="desliza">Para las familias</span>
+        <h2 id="t-accesos" data-entra="sube">Lo que más se consulta, a un clic</h2>
+      </div>
+      <div class="rejilla-accesos">
+        <a class="acceso vidrio" href="#circulares" data-entra="zoom" style="--i:0"><svg class="ico"><use href="iconos.svg#i-circular"/></svg><span><b>Circulares y comunicados</b><span>Lo último que envió el colegio</span></span></a>
+        <a class="acceso vidrio" href="#" data-entra="zoom" style="--i:1"><svg class="ico"><use href="iconos.svg#i-manual"/></svg><span><b>Manual de convivencia</b><span>Normas y acuerdos vigentes</span></span></a>
+        <a class="acceso vidrio" href="#admisiones" data-entra="zoom" style="--i:2"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg><span><b>Matrículas</b><span>Fechas, requisitos y documentos</span></span></a>
+        <a class="acceso vidrio" href="#" data-entra="zoom" style="--i:3"><svg class="ico"><use href="iconos.svg#i-pago"/></svg><span><b>Pagos en línea</b><span>Pensiones y costos por PSE</span></span></a>
+        <a class="acceso vidrio" href="#" data-entra="zoom" style="--i:4"><svg class="ico"><use href="iconos.svg#i-plataforma"/></svg><span><b>Plataforma académica</b><span>Notas, tareas y observaciones</span></span></a>
+        <a class="acceso vidrio" href="#" data-entra="zoom" style="--i:5"><svg class="ico"><use href="iconos.svg#i-uniforme"/></svg><span><b>Uniformes</b><span>Diario y educación física</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="niveles" id="niveles" aria-labelledby="t-niveles">
+    <div class="envoltura">
+      <div class="titular">
+        <span class="antetitulo" data-entra="desliza">Niveles</span>
+        <h2 id="t-niveles" data-entra="sube">Un camino completo, de los 2 años al grado once</h2>
+      </div>
+      <div class="rejilla-niveles">
+        <article class="nivel" data-entra="izq" style="--c1:var(--ambar);--c2:var(--rubi)">
+          <div class="arco-chico"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/pregarden-768x576.png" alt="Niños de preescolar trabajando en sus mesas" loading="lazy"></div></div>
+          <h3>Preescolar</h3>
+          <span class="edad">Desde los 2 años</span>
+          <p>Párvulos, prejardín, jardín y transición. Estimulación temprana y experiencias que preparan para aprender.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" data-entra="sube" style="--i:1;--c1:var(--celeste);--c2:var(--zafiro)">
+          <div class="arco-chico"><div class="foto"><img class="sin-banda-der" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Fraternidad-768x421.png" alt="Estudiantes de primaria en el parque del colegio" loading="lazy"></div></div>
+          <h3>Primaria</h3>
+          <span class="edad">Grados 1.º a 5.º</span>
+          <p>Lectura, pensamiento lógico e inglés diario, con arte, deporte y proyectos en equipo.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" data-entra="der" style="--i:2;--c1:var(--esmeralda);--c2:var(--zafiro)">
+          <div class="arco-chico"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Senior-768x421.png" alt="Estudiantes de bachillerato con su bandera de promoción" loading="lazy"></div></div>
+          <h3>Bachillerato</h3>
+          <span class="edad">Grados 6.º a 11.º</span>
+          <p>Alto desempeño académico, semillero de investigación y robótica, y preparación para las pruebas Saber 11.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="porque" aria-labelledby="t-porque">
+    <div class="envoltura">
+      <div class="titular">
+        <span class="antetitulo" data-entra="desliza">Por qué Bethlemitas</span>
+        <h2 id="t-porque" data-entra="sube">Ciencia, cultura y evangelio en la misma aula</h2>
+      </div>
+      <div class="medallones">
+        <div class="medallon" data-entra="cae" style="--i:0"><div class="anillo"><b>1888</b></div><span>Año de fundación</span></div>
+        <div class="medallon" data-entra="cae" style="--i:1"><div class="anillo"><b data-cuenta="anios">0</b></div><span>Años educando en Palmira</span></div>
+        <div class="medallon" data-entra="cae" style="--i:2"><div class="anillo"><b data-cuenta="15">0</b></div><span>Grados, de párvulos a once</span></div>
+        <div class="medallon" data-entra="cae" style="--i:3"><div class="anillo"><b data-cuenta="2">0</b></div><span>Lenguas: inglés y francés</span></div>
+      </div>
+      <div class="rejilla-porque">
+        <article class="razon vidrio" data-entra="gira" style="--i:0"><svg class="ico"><use href="iconos.svg#i-idiomas"/></svg><h3>Inglés y francés</h3><p>Plan integral en las cuatro habilidades: leer, escribir, escuchar y hablar.</p></article>
+        <article class="razon vidrio" data-entra="gira" style="--i:1"><svg class="ico"><use href="iconos.svg#i-robot"/></svg><h3>Investigación y robótica</h3><p>Semillero donde los estudiantes diseñan, programan y presentan sus proyectos.</p></article>
+        <article class="razon vidrio" data-entra="gira" style="--i:2"><svg class="ico"><use href="iconos.svg#i-arte"/></svg><h3>Arte y deporte</h3><p>Actividades lúdicas, deportivas y artísticas en cada etapa.</p></article>
+        <article class="razon vidrio" data-entra="gira" style="--i:3"><svg class="ico"><use href="iconos.svg#i-valores"/></svg><h3>Formación en valores</h3><p>Pastoral acogedora, inspirada en el carisma Bethlemita.</p></article>
+      </div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn" href="#admisiones">Agenda una visita <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="circulares" id="circulares" aria-labelledby="t-circulares">
+    <div class="envoltura">
+      <div class="titular">
+        <span class="antetitulo" data-entra="desliza">Circulares y comunicados</span>
+        <h2 id="t-circulares" data-entra="sube">Lo último que envió el colegio</h2>
+      </div>
+      <div class="lista-circulares">
+        <a class="circular" href="#" data-entra="izq" style="--i:0"><div class="fecha vidrio"><b>31</b><span>Ago</span></div><div><small>Circular n.º 1</small><h3>Bienvenida e inicio del año lectivo 2026 – 2027</h3></div><svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="circular" href="#" data-entra="der" style="--i:0"><div class="fecha vidrio"><b>16</b><span>May</span></div><div><small>Circular n.º 35</small><h3>Cronograma de cierre del año escolar</h3></div><svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="circular" href="#" data-entra="izq" style="--i:1"><div class="fecha vidrio"><b>16</b><span>May</span></div><div><small>Comunicado</small><h3>Ceremonia de graduación de grado once</h3></div><svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="circular" href="#" data-entra="der" style="--i:1"><div class="fecha vidrio"><b>16</b><span>May</span></div><div><small>Circular n.º 33</small><h3>Entrega de informes académicos finales</h3></div><svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+      </div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn claro" href="#">Ver todas las circulares <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="identidad" id="identidad" aria-labelledby="t-identidad">
+    <div class="cita">
+      <div class="fondo"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/capilla2-768x651.jpg" alt="" loading="lazy"></div>
+      <div class="envoltura">
+        <span class="antetitulo" data-entra="desliza" id="t-identidad">Nuestra misión</span>
+        <blockquote data-entra="zoom">“Somos una comunidad educativa católica, dinámica y creativa, que sirve a la sociedad desde su opción por Jesucristo y la vivencia de los valores humano-cristianos.”</blockquote>
+        <cite data-entra="sube" style="--i:1">Virtus et Sapientia</cite>
+      </div>
+    </div>
+    <div class="fundadores">
+      <div class="envoltura" style="padding:96px 0">
+        <div class="retrato" data-entra="cae" style="--i:0">
+          <div class="arco-chico"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/hermano-pedro.jpg" alt="Santo Hermano Pedro de San José Betancur" loading="lazy"></div></div>
+          <h3>Santo Hermano Pedro</h3><span>de San José Betancur</span>
+        </div>
+        <div class="retrato" data-entra="cae" style="--i:1">
+          <div class="arco-chico"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Hermana-Encarnacion-Rosal-768x985.jpg" alt="Beata Madre María Encarnación Rosal" loading="lazy"></div></div>
+          <h3>Beata Madre Encarnación</h3><span>María Encarnación Rosal</span>
+        </div>
+        <div class="red" data-entra="der" style="--i:2">
+          <span class="antetitulo">Nuestros fundadores</span>
+          <h2>Parte de la familia Bethlemita</h2>
+          <p>Hacemos parte de la red de colegios de las Hermanas Bethlemitas, presente en Colombia y en otros países de América, con la misma espiritualidad y la misma forma de educar.</p>
+          <a class="btn claro" href="#">Nuestra historia <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="admisiones" id="admisiones" aria-labelledby="t-admisiones">
+    <div class="mosaico" aria-hidden="true"></div>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="antetitulo" data-entra="desliza">Inscripciones abiertas</span>
+        <h2 id="t-admisiones" data-entra="sube">Año lectivo 2027 – 2028</h2>
+        <p data-entra="sube" style="--i:1">Tres pasos para que tu hijo o hija haga parte de la familia Bethlemita.</p>
+      </div>
+      <div class="pasos">
+        <article class="paso vidrio" data-entra="reparto" style="--i:0;--rx:-80px;--rr:-12deg"><span class="num">1</span><h3>Preinscripción</h3><p>Diligencia el formulario en línea con los datos del aspirante.</p></article>
+        <article class="paso vidrio" data-entra="reparto" style="--i:1;--rx:0px;--rr:6deg"><span class="num">2</span><h3>Entrevista y visita</h3><p>Conoce las instalaciones y a nuestro equipo de formación.</p></article>
+        <article class="paso vidrio" data-entra="reparto" style="--i:2;--rx:80px;--rr:14deg"><span class="num">3</span><h3>Matrícula</h3><p>Entrega de documentos y firma de la matrícula.</p></article>
+      </div>
+      <div class="acciones" data-entra="sube">
+        <a class="btn" href="#">Iniciar la preinscripción <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="btn claro" href="https://wa.me/573206927961" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-wa"/></svg> Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie" id="contacto">
+  <div class="envoltura">
+    <div class="columnas">
+      <div data-entra="sube">
+        <a class="marca" href="#inicio">
+          <span class="placa"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt=""></span>
+          <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
+        </a>
+        <p class="lema">Educamos en el amor para el servicio. Comunidad educativa católica y mixta desde 1888.</p>
+      </div>
+      <div data-entra="sube" style="--i:1">
+        <h4>Contacto</h4>
+        <ul>
+          <li><svg class="ico"><use href="iconos.svg#i-mapa"/></svg>Cra. 30 # 27-19, Palmira, Valle del Cauca</li>
+          <li><a href="tel:+576022870303"><svg class="ico"><use href="iconos.svg#i-tel"/></svg>(602) 287 0303 · 287 2525</a></li>
+          <li><a href="https://wa.me/573206927961"><svg class="ico"><use href="iconos.svg#i-wa"/></svg>+57 320 692 7961</a></li>
+          <li><a href="mailto:secretaria@bethlemitaspalmira.edu.co"><svg class="ico"><use href="iconos.svg#i-mail"/></svg>secretaria@bethlemitaspalmira.edu.co</a></li>
+        </ul>
+      </div>
+      <div data-entra="sube" style="--i:2">
+        <h4>El colegio</h4>
+        <ul>
+          <li><a href="#identidad">Misión y visión</a></li>
+          <li><a href="#niveles">Niveles</a></li>
+          <li><a href="#admisiones">Admisiones</a></li>
+          <li><a href="#">Manual de convivencia</a></li>
+        </ul>
+      </div>
+      <div data-entra="sube" style="--i:3">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/bethlemitaspalmira_/" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-insta"/></svg>@bethlemitaspalmira_</a></li>
+          <li><a href="#">Política de tratamiento de datos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="aliados" data-entra="sube">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/casageneral.png" alt="Casa General Hermanas Bethlemitas" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/conferencia-episcopal.png" alt="Conferencia Episcopal de Colombia" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/conferencia-nacional-catolica.png" alt="CONACED" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/icfes.png" alt="ICFES" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/mineducacion.png" alt="Ministerio de Educación Nacional" loading="lazy">
+    </div>
+    <p class="derechos">© 2026 Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira</p>
+  </div>
+</footer>
+
+<script>
+// Rosetón de la intro: 3 anillos de vidrios + escudo al centro.
+(() => {
+  const svg = document.getElementById("roseton");
+  if (!svg) return;
+  const colores = ["#c8183c", "#2659c9", "#eaa91d", "#14876b", "#6fb2ea", "#8d1c45"];
+  const sector = (r1, r2, a1, a2) => {
+    const p = (r, a) => [Math.cos(a) * r, Math.sin(a) * r].map(v => v.toFixed(2)).join(" ");
+    const g = a2 - a1 > Math.PI ? 1 : 0;
+    return `M${p(r1, a1)} L${p(r2, a1)} A${r2} ${r2} 0 ${g} 1 ${p(r2, a2)} L${p(r1, a2)} A${r1} ${r1} 0 ${g} 0 ${p(r1, a1)}Z`;
+  };
+  let html = "", k = 0;
+  [[38, 62, 8], [62, 86, 16], [86, 104, 24]].forEach(([r1, r2, n], anillo) => {
+    for (let i = 0; i < n; i++) {
+      const a1 = (i / n) * Math.PI * 2 - Math.PI / 2, a2 = ((i + 1) / n) * Math.PI * 2 - Math.PI / 2;
+      html += `<path class="vid" style="--k:${(i % 8) + anillo * 3}" d="${sector(r1, r2, a1, a2)}" fill="${colores[(i + anillo) % colores.length]}" stroke="#04060f" stroke-width="2.4"/>`;
+      k++;
+    }
+  });
+  html += `<circle r="38" fill="#fff" stroke="#04060f" stroke-width="3" class="vid" style="--k:2"/>`;
+  html += `<image class="escudo-intro" href="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" x="-31" y="-31" width="62" height="62"/>`;
+  html += `<circle r="106" fill="none" stroke="#eaa91d" stroke-width="2" class="vid" style="--k:12"/>`;
+  html += `<circle r="104" fill="#fff" class="destello"/>`;
+  svg.innerHTML = html;
+
+  // Mosaico de fondo de admisiones
+  const m = document.querySelector(".admisiones .mosaico");
+  if (m) {
+    const tonos = ["#c8183c", "#2659c9", "#eaa91d", "#14876b", "#6fb2ea", "#121c47", "#121c47", "#121c47"];
+    m.innerHTML = Array.from({ length: 96 }, (_, i) => `<i style="--c:${tonos[(i * 7 + (i >> 3)) % tonos.length]}"></i>`).join("");
+  }
+})();
+</script>
+<script src="comun.js"></script>
+</body>
+</html>

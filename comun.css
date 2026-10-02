@@ -1,0 +1,88 @@
+/* Piezas comunes de las 6 propuestas: entradas, íconos, recortes de foto y la cinta de muestra.
+   Cada propuesta trae su propio mundo en su <style>; esto es solo el motor compartido. */
+
+/* Los saltos del menú no quedan debajo de la cabecera fija; lo oculto se oculta siempre. */
+html { scroll-padding-top: 96px; }
+[hidden] { display: none !important; }
+html.menu-bloqueo { overflow: hidden; }
+.en-marco { scrollbar-width: none; }
+.en-marco::-webkit-scrollbar { display: none; }
+
+.ico { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ---------- Entradas al llegar (solo transform + opacity) ---------- */
+.js [data-entra]:not(.animar) { opacity: 0; }
+[data-entra].animar {
+  animation-name: var(--anim, e-sube);
+  animation-duration: var(--dur, .85s);
+  animation-timing-function: cubic-bezier(.16, 1, .3, 1);
+  animation-fill-mode: backwards;
+  animation-delay: calc(var(--i, 0) * 90ms + var(--d, 0ms));
+}
+[data-entra="sube"]    { --anim: e-sube; }
+[data-entra="izq"]     { --anim: e-izq; }
+[data-entra="der"]     { --anim: e-der; }
+[data-entra="zoom"]    { --anim: e-zoom; --dur: .9s; }
+[data-entra="cae"]     { --anim: e-cae; --dur: 1s; }
+[data-entra="reparto"] { --anim: e-reparto; --dur: 1s; }
+[data-entra="gira"]    { --anim: e-gira; --dur: 1s; }
+[data-entra="desliza"] { --anim: e-desliza; }
+
+@keyframes e-sube    { from { opacity: 0; transform: translateY(42px); } }
+@keyframes e-izq     { from { opacity: 0; transform: translateX(-70px) rotate(-3deg); } }
+@keyframes e-der     { from { opacity: 0; transform: translateX(70px) rotate(3deg); } }
+@keyframes e-zoom    { 0% { opacity: 0; transform: scale(.72); } 65% { opacity: 1; transform: scale(1.04); } 100% { } }
+@keyframes e-cae     { 0% { opacity: 0; transform: translateY(-70px); } 55% { opacity: 1; transform: translateY(10px); }
+                       78% { transform: translateY(-4px); } 100% { } }
+@keyframes e-reparto { from { opacity: 0; transform: translate(var(--rx, 0px), 140px) rotate(var(--rr, -14deg)); } }
+@keyframes e-gira    { from { opacity: 0; transform: perspective(900px) rotateY(-75deg); } }
+@keyframes e-desliza { from { opacity: 0; transform: translateX(-24px); } }
+
+/* ---------- Recortes de foto ---------- */
+.foto { position: relative; overflow: hidden; }
+.foto > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto > img.sin-banda     { object-position: 50% 0; transform: scale(1.4); transform-origin: 50% 0; }
+.foto > img.sin-banda-der { object-position: 0 40%; transform: scale(1.36); transform-origin: 0 40%; }
+
+/* ---------- Cinta "contenido de muestra" ---------- */
+.cinta {
+  position: fixed; left: 12px; bottom: 12px; z-index: 900;
+  display: flex; align-items: center; gap: 8px;
+  max-width: calc(100vw - 96px);
+  padding: 7px 12px 7px 10px; border-radius: 999px;
+  background: rgba(17, 20, 28, .9); color: #f1f1f1;
+  font: 600 12px/1.25 system-ui, "Segoe UI", sans-serif; letter-spacing: .01em;
+  text-decoration: none; box-shadow: 0 6px 22px rgba(0, 0, 0, .28);
+}
+.cinta b { flex: none; white-space: nowrap; background: #fff; color: #111; border-radius: 999px; padding: 2px 7px; font-weight: 800; }
+.cinta span { opacity: .72; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cinta span span { opacity: 1; }
+.cinta .corto { display: none; }
+.cinta:hover span { opacity: 1; }
+.en-marco .cinta { display: none; }
+
+/* ---------- Aviso de enlace de muestra ---------- */
+.aviso-muestra { position: fixed; left: 50%; bottom: 66px; z-index: 950; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 14px;
+  background: rgba(17, 20, 28, .94); color: #fff; font: 500 14px/1.35 system-ui, "Segoe UI", sans-serif; text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3); opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
+  transition: opacity .25s ease, transform .35s cubic-bezier(.16, 1, .3, 1); }
+.aviso-muestra.ver { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- Teléfono: cinta corta, pie libre y zonas de toque de 44 px ---------- */
+@media (max-width: 760px) {
+  .cinta .largo { display: none; }
+  .cinta .corto { display: inline; }
+  body[data-propuesta] footer { padding-bottom: 76px !important; }
+  .boton-menu { min-width: 48px; min-height: 48px; }
+  .pie li a { padding-block: 8px; }
+  a.mas, .mas { padding-block: 12px; }
+}
+
+/* ---------- Accesibilidad y movimiento reducido ---------- */
+.solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .js [data-entra]:not(.animar) { opacity: 1; }
+}
