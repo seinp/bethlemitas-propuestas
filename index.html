@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="only light">
-<title>Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira — nuevo sitio (versión 2)</title>
+<title>Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira — nuevo sitio (versión 3)</title>
 <meta name="description" content="Colegio Sagrado Corazón de Jesús Bethlemitas Palmira: comunidad educativa católica y mixta. Preescolar, primaria, básica secundaria y media académica, con inglés y francés.">
-<meta property="og:title" content="Nuevo sitio web · Bethlemitas Palmira (versión 2, en construcción)">
-<meta property="og:description" content="Así va quedando el nuevo sitio del colegio, con las correcciones de la primera ronda.">
+<meta property="og:title" content="Nuevo sitio web · Bethlemitas Palmira (versión 3, en construcción)">
+<meta property="og:description" content="Así va quedando el nuevo sitio del colegio, con las correcciones de la segunda ronda.">
 <meta property="og:image" content="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1024x576.jpeg">
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="576">
@@ -62,15 +62,15 @@ section { position: relative; padding: 90px 0; overflow: hidden; }
 
 /* ---------- Cabecera ---------- */
 .cabecera { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--fondo); border-bottom: var(--borde); }
-.cabecera .envoltura { display: flex; align-items: center; gap: 18px; height: 76px; }
+.cabecera .envoltura { display: flex; align-items: center; gap: 16px; height: 76px; width: min(1300px, 100% - 40px); }
 .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
 .marca .placa { width: 52px; height: 52px; border-radius: 50%; background: #fff; border: var(--borde); display: grid; place-items: center; flex: none; transition: transform .4s cubic-bezier(.3,1.6,.5,1); }
 .marca:hover .placa { transform: rotate(-12deg) scale(1.08); }
 .marca .placa img { width: 40px; height: 40px; object-fit: contain; }
 .marca b { display: block; font: 700 21px/1 var(--titulo); color: var(--azul); }
 .marca small { display: block; font: 700 12.5px/1.2 var(--cuerpo); color: var(--suave); }
-.menu { display: flex; gap: 4px; }
-.menu a { text-decoration: none; font: 600 16.5px/1 var(--titulo); padding: 10px 12px; border-radius: 999px; border: 3px solid transparent; transition: background .2s, border-color .2s, transform .2s; }
+.menu { display: flex; gap: 2px; }
+.menu a { text-decoration: none; font: 600 16px/1 var(--titulo); padding: 10px 10px; border-radius: 999px; border: 3px solid transparent; transition: background .2s, border-color .2s, transform .2s; }
 .menu a:nth-child(1):hover { background: #d3f1ff; } .menu a:nth-child(2):hover { background: #fff1b3; } .menu a:nth-child(3):hover { background: #ffd6df; }
 .menu a:nth-child(4):hover { background: #c9f5df; } .menu a:nth-child(5):hover { background: #e6dcff; } .menu a:nth-child(6):hover { background: #ffe1c7; }
 .menu a:hover { border-color: var(--tinta); transform: rotate(-2deg); }
@@ -284,6 +284,43 @@ dialog.catalogo::backdrop { background: rgba(10,29,120,.6); }
 .aliados img { width: 66px; height: 66px; object-fit: contain; background: #fff; border-radius: 50%; padding: 9px; border: var(--borde); }
 .derechos { text-align: center; color: #c8d4ff; font-size: 13px; }
 
+/* ---------- Ronda 2: PSE, pastoral y requisitos ---------- */
+.btn.pse { background: #fff; color: var(--tinta); gap: 8px; }
+.cabecera .btn, .marca b, .marca small { white-space: nowrap; }
+.cabecera .btn.pse, .boton-menu { flex: none; }
+.marca { min-width: 0; } .marca > span:last-child { min-width: 0; overflow: hidden; }
+.marca b, .marca small { overflow: hidden; text-overflow: ellipsis; }
+.btn.pse img { width: 30px; height: 22px; object-fit: cover; object-position: 50% 30%; border-radius: 5px; }
+.solo-movil { display: none !important; }
+.acceso-pse { outline: 4px dashed rgba(20,26,58,.35); outline-offset: 4px; }
+.acceso .icono.logo-pse { width: 86px; border-radius: 16px; }
+.acceso .icono.logo-pse img { width: 100%; height: 150%; object-fit: cover; object-position: 50% 26%; }
+.acceso .pagar { display: inline-block; margin-top: 6px; padding: 5px 10px; border-radius: 10px; background: var(--tinta); color: #fff; font: 700 13px/1 var(--titulo); }
+.nota-pse { display: inline-flex; align-items: center; gap: 12px; margin-top: 16px !important; padding: 10px 16px; border-radius: 16px; background: #fff; color: var(--tinta) !important;
+  border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); font-weight: 700; font-size: 16px !important; text-align: left; }
+.nota-pse img { width: 46px; height: 34px; object-fit: cover; object-position: 50% 28%; border-radius: 8px; flex: none; }
+.pastoral { display: grid; grid-template-columns: 230px 1fr; gap: 34px; align-items: center; padding: 30px; margin-bottom: 34px; border-radius: 30px; background: #efe8ff;
+  border: var(--borde); box-shadow: var(--sombra); position: relative; z-index: 1; }
+.pastoral .foto-pastoral { width: 230px; aspect-ratio: 229 / 301; border-radius: 50%; rotate: -3deg; }
+.pastoral h3 { font-size: 30px; color: var(--rey); margin-top: 14px; }
+.pastoral .cargo { display: block; font: 700 17px/1.2 var(--titulo); color: var(--rojo); margin: 4px 0 14px; }
+.pastoral p { color: var(--suave); font-size: 16px; margin-bottom: 10px; }
+.pastoral .acciones { margin-top: 18px; }
+.cuerpo-req { padding: 6px 24px 26px; }
+.cuerpo-req h3 { font-size: 22px; color: var(--rey); margin: 18px 0 10px; }
+.cuerpo-req ul { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+.cuerpo-req li { font-size: 15.5px; }
+.cuerpo-req a { color: var(--rojo); font-weight: 800; }
+
+/* Teléfonos angostos: la cabecera con marca + PSE + menú tiene que entrar */
+@media (max-width: 380px) {
+  .cabecera .envoltura { gap: 8px; width: calc(100% - 24px); }
+  .marca { gap: 8px; } .marca .placa { width: 38px; height: 38px; } .marca .placa img { width: 29px; height: 29px; }
+  .marca b { font-size: 15.5px; }
+  .btn.pse { padding: 8px 9px; font-size: 14px; gap: 6px; } .btn.pse img { width: 26px; height: 19px; }
+  .boton-menu { width: 46px; height: 46px; }
+}
+
 /* ---------- Versión y cambios (para revisar con el colegio) ---------- */
 .version { position: fixed; left: 12px; bottom: 12px; z-index: 900; display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px; border-radius: 999px; border: 0;
   background: rgba(17,20,28,.92); color: #fff; font: 600 13px/1.2 system-ui, "Segoe UI", sans-serif; cursor: pointer; box-shadow: 0 6px 22px rgba(0,0,0,.3); }
@@ -302,13 +339,15 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
 .cambios .hecho h3 { color: #15803d; } .cambios .confirmar h3 { color: #b45309; } .cambios .pendiente h3 { color: #be123c; }
 
 /* ---------- Tableta ---------- */
-@media (max-width: 1100px) {
+@media (max-width: 1320px) {
   .menu { position: fixed; top: 76px; left: 0; right: 0; flex-direction: column; gap: 6px; padding: 14px 20px 22px; background: var(--fondo); border-bottom: var(--borde);
     transform: translateY(-130%); transition: transform .4s cubic-bezier(.16,1,.3,1); }
   .menu a { font-size: 21px; border-color: var(--tinta); background: #fff; }
   .menu-abierto .menu { transform: none; }
   .boton-menu { display: grid; place-items: center; }
-  .cabecera .btn.chico { display: none; }
+  .cabecera .btn.chico:not(.pse) { display: none; }
+  .solo-movil { display: block !important; }
+  .menu .menu-pse { background: #c9f5df; }
   .portada .envoltura { grid-template-columns: 1fr; }
   .burbuja-foto { width: min(420px, 82%); }
   .rejilla-niveles, .rejilla-noticias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -373,6 +412,17 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
   .aliados img { width: 54px; height: 54px; }
   .forma { display: none; }
   .version { font-size: 12px; }
+  .btn.pse { padding: 9px 11px; font-size: 15px; }
+  .btn.pse .pse-txt { display: none; }
+  .marca small { display: none; }
+  .cabecera .envoltura { gap: 10px; }
+  .marca b { white-space: normal; font-size: 17px; line-height: 1.02; }
+  .pastoral { grid-template-columns: 1fr; gap: 18px; padding: 22px 18px; text-align: left; }
+  .pastoral .foto-pastoral { width: 150px; justify-self: center; }
+  .pastoral h3 { font-size: 24px; }
+  .pastoral p { font-size: 15px; }
+  .acceso .icono.logo-pse { width: 72px; }
+  .nota-pse { font-size: 14.5px !important; }
 }
 </style>
 </head>
@@ -393,6 +443,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
     </a>
     <nav class="menu" aria-label="Principal">
+      <a class="solo-movil menu-pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE</a>
       <a href="#identidad">Institución</a>
       <a href="#niveles">Niveles</a>
       <a href="#admisiones">Admisiones</a>
@@ -400,6 +451,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       <a href="#actualizate" data-filtro="pastoral">Pastoral</a>
       <a href="#contacto">Contacto</a>
     </nav>
+    <a class="btn chico pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt=""><span class="pse-txt">Pagar con </span>PSE</a>
     <a class="btn chico" href="#admisiones">Preinscripción</a>
     <button class="boton-menu" data-menu aria-expanded="false" aria-label="Abrir menú"><svg class="ico"><use href="iconos.svg#i-menu"/></svg></button>
   </div>
@@ -437,13 +489,13 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
     <div class="envoltura">
       <div class="titular">
         <span class="etiqueta" data-entra="cae">Para las familias</span>
-        <h2 id="t-accesos" data-entra="sube">Lo que más se consulta, <span class="marcado">a un clic</span></h2>
+        <h2 id="t-accesos" data-entra="sube">Información <span class="marcado">a un clic</span></h2>
       </div>
       <div class="rejilla-accesos">
-        <a class="acceso" href="#" style="--c:#fff1b3" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-circular"/></svg></span><span><b>Circulares y comunicados</b><span class="desc">Comunicados oficiales por año</span></span></a>
-        <a class="acceso" href="#" style="--c:#ffd6df;--i:1" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Normas y acuerdos vigentes</span></span></a>
-        <a class="acceso" href="#admisiones" style="--c:#d3f1ff;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg></span><span><b>Matrículas</b><span class="desc">Fechas, requisitos y documentos</span></span></a>
-        <a class="acceso" href="#" style="--c:#c9f5df;--i:3" data-entra="zoom"><span class="icono"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="Logo de PSE"></span><span><b>Pagos en línea</b><span class="desc">Pensiones y costos por PSE</span></span></a>
+        <a class="acceso acceso-pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener" style="--c:#c9f5df" data-entra="zoom"><span class="icono logo-pse"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="Logo de PSE"></span><span><b>Pagos en línea</b><span class="desc">Pensiones, matrícula e inscripción por PSE</span><span class="pagar">Pagar ahora →</span></span></a>
+        <a class="acceso" href="#" style="--c:#fff1b3;--i:1" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-circular"/></svg></span><span><b>Circulares y comunicados</b><span class="desc">Comunicados oficiales por año</span></span></a>
+        <a class="acceso" href="#" style="--c:#ffd6df;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Normas y acuerdos vigentes</span></span></a>
+        <a class="acceso" href="#admisiones" style="--c:#d3f1ff;--i:3" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg></span><span><b>Matrículas</b><span class="desc">Fechas, requisitos y documentos</span></span></a>
         <a class="acceso" href="#" style="--c:#e6dcff;--i:4" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-plataforma"/></svg></span><span><b>Plataforma académica</b><span class="desc">Notas, tareas y observaciones</span></span></a>
         <a class="acceso" href="#" style="--c:#ffe1c7;--i:5" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-uniforme"/></svg></span><span><b>Uniformes</b><span class="desc">Diario y educación física</span></span></a>
       </div>
@@ -528,6 +580,20 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <button role="tab" data-pestana="pastoral" aria-selected="false">Pastoral</button>
         <button role="tab" data-pestana="comunidad" aria-selected="false">Comunidad</button>
       </div>
+      <article class="pastoral" data-panel="pastoral" id="pastoral" data-entra="zoom">
+        <div class="foto-pastoral foto sticker-foto"><img src="media/pastoral-hna-milena-vargas.jpg" alt="Hna Milena Patricia Vargas Mayorga, coordinadora de Pastoral"></div>
+        <div>
+          <span class="etiqueta" style="background:var(--lila);color:#fff">Pastoral</span>
+          <h3>Hna Milena Patricia Vargas Mayorga</h3>
+          <span class="cargo">Coordinadora de Pastoral</span>
+          <p>La Pastoral educativa, como acción evangelizadora, dinamiza el quehacer escolar. A la luz del carisma Bethlemita e inspirada en el testimonio de los fundadores, está al servicio del proyecto educativo; las personas y los espacios favorecen un ambiente animado por el espíritu evangélico de caridad y libertad.</p>
+          <p>Planear, realizar, controlar y velar por la realización de la Gestión de Pastoral, creando estrategias, definiendo procesos y acompañando a la comunidad educativa en su formación integral.</p>
+          <div class="acciones">
+            <a class="btn chico" href="#">Conoce más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+            <a class="btn chico blanco" href="mailto:pastoral@bethlemitaspalmira.edu.co"><svg class="ico"><use href="iconos.svg#i-mail"/></svg> Escribir a pastoral</a>
+          </div>
+        </div>
+      </article>
       <div class="rejilla-noticias">
         <a class="noticia" href="#" data-panel="pastoral" style="--c:#e6dcff" data-entra="sube"><div class="foto"><img class="sin-banda-der" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Fraternidad-768x421.png" alt="Estudiantes en el parque del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Convivir en fraternidad</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
         <a class="noticia" href="#" data-panel="pastoral" style="--c:#e6dcff;--i:1" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Educamos-Bethlemitas-768x384.png" alt="Grupo de estudiantes del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Educamos en el amor para el servicio</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
@@ -576,6 +642,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <span class="etiqueta" data-entra="cae">¡Inscripciones abiertas!</span>
         <h2 id="t-admisiones" data-entra="sube">Año lectivo 2026 – 2027</h2>
         <p data-entra="sube" style="--i:1">Tres pasos para que tu hijo o hija haga parte de la familia Bethlemita.</p>
+        <p class="nota-pse" data-entra="sube" style="--i:2"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="">El valor de la inscripción se cancela por PSE ingresando a la página web del colegio.</p>
       </div>
       <div class="tablero">
         <svg class="ruta" viewBox="0 0 600 40" preserveAspectRatio="none"><path d="M0 20c100-30 200 30 300 0s200-30 300 0"/></svg>
@@ -585,7 +652,9 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       </div>
       <div class="acciones" data-entra="sube">
         <a class="btn amarillo" href="#">Iniciar la preinscripción <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
-        <a class="btn blanco" href="https://wa.me/573206927961" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-wa"/></svg> Escribir por WhatsApp</a>
+        <a class="btn blanco" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE <svg class="ico"><use href="iconos.svg#i-pago"/></svg></a>
+        <button class="btn blanco" type="button" data-requisitos><svg class="ico"><use href="iconos.svg#i-matricula"/></svg> Ver requisitos</button>
+        <a class="btn blanco" href="https://wa.me/573206927961" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-wa"/></svg> WhatsApp</a>
       </div>
     </div>
   </section>
@@ -668,44 +737,69 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
   </div>
 </dialog>
 
+<!-- Requisitos de inscripción y matrícula (#29), con las correcciones del colegio -->
+<dialog class="catalogo requisitos" id="requisitos" aria-labelledby="t-requisitos">
+  <div class="cab"><h2 id="t-requisitos">Requisitos</h2><button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+  <div class="cuerpo-req">
+    <h3>Documentos para la inscripción</h3>
+    <ul>
+      <li><b>El valor de la inscripción se cancela por PSE</b> ingresando a la página web del colegio. <a href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE →</a></li>
+      <li>Informe descriptivo o boletín del estudiante.</li>
+      <li>Constancia de comportamiento escolar del colegio de procedencia.</li>
+      <li>Paz y salvo de pensiones del colegio de procedencia (si viene de un jardín infantil o de un colegio privado).</li>
+      <li>Registro civil (notaría). Mayores de 7 años: tarjeta de identidad ampliada al 150 %.</li>
+      <li>El aspirante y sus padres deben contar con 2 horas disponibles para atender el proceso.</li>
+    </ul>
+    <h3>Documentos para la matrícula · año lectivo 2026 – 2027</h3>
+    <ul>
+      <li>Paz y salvo del colegio de procedencia (si viene de un jardín infantil o de un colegio privado).</li>
+      <li>Constancia de comportamiento escolar expedida por el colegio de procedencia.</li>
+      <li>Certificado original reciente del año anterior, en papel membretado, con intensidad horaria, valoración final, firmas y sellos. Para bachillerato, desde el grado 5.º de primaria.</li>
+      <li>Retiro del SIMAT en el colegio de procedencia.</li>
+      <li>Fotocopia del carné de la EPS o carta que certifique la afiliación activa a la fecha de matrícula.</li>
+      <li>Certificado médico.</li>
+      <li>Examen de hemoclasificación (tipo de sangre), si no figura en el registro civil o en otro documento.</li>
+      <li>Una foto a color tamaño 3×4 del estudiante, del papá y de la mamá, debidamente marcadas.</li>
+      <li>Fotocopia de la cédula de los padres de familia, ampliada al 150 %.</li>
+      <li>Pago total de la matrícula del año escolar 2026 – 2027.</li>
+      <li>Contrato de matrícula, pagaré y carta de instrucciones firmados por los padres de familia o el responsable financiero.</li>
+      <li>Estudiantes con 7 años cumplidos: fotocopia ampliada y legible de la tarjeta de identidad (no hace falta que sea tamaño oficio).</li>
+    </ul>
+  </div>
+</dialog>
+
 <!-- Versión y cambios de esta ronda, para revisar con el colegio -->
-<button class="version" type="button" id="ver-cambios"><b>V2</b> Ronda 1 aplicada · Ver cambios</button>
+<button class="version" type="button" id="ver-cambios"><b>V3</b> Ronda 2 aplicada · Ver cambios</button>
 <dialog class="cambios" id="cambios" aria-labelledby="t-cambios">
-  <div class="cab"><h2 id="t-cambios">Versión 2 · cambios de la ronda 1</h2><button type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+  <div class="cab"><h2 id="t-cambios">Versión 3 · cambios de la ronda 2</h2><button type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
   <div class="contenido">
-    <p style="margin-top:14px">Estilo elegido: <b>Recreo</b>, con detalles inspirados en la página del Colegio Bethlemitas Medellín. Los números son los de la planilla de correcciones.</p>
+    <p style="margin-top:14px">Estilo elegido: <b>Recreo</b>. Los números son los de la planilla de correcciones (la ronda 1 fue del #1 al #23).</p>
     <div class="hecho">
-      <h3>Aplicado</h3>
+      <h3>Aplicado en la ronda 2</h3>
       <ul>
-        <li><i>2</i><span>Colores más vivos en todo el sitio.</span></li>
-        <li><i>3</i><span>Portada en azul oscuro con estrellas que se mueven.</span></li>
-        <li><i>4</i><span>Fotos recortadas con borde blanco, que aparecen al bajar.</span></li>
-        <li><i>5</i><span>Fundadores en marcos ovalados de madera, como los del colegio, con su frase.</span></li>
-        <li><i>6</i><span>Pagos en línea con el logo de PSE.</span></li>
-        <li><i>7</i><span>Se quitó 1888 y los años de historia de todo el sitio.</span></li>
-        <li><i>8</i><span>Se quitó «15 grados».</span></li>
-        <li><i>9–10</i><span>Lúdicas: bloque y tarjeta que abren el catálogo.</span></li>
-        <li><i>11</i><span>Año lectivo 2026 – 2027.</span></li>
-        <li><i>12</i><span>Nombre completo de los fundadores.</span></li>
-        <li><i>13</i><span>Misión y visión completas.</span></li>
-        <li><i>15–17</i><span>Sale «Lo último que envió el colegio»; entra «Actualízate», con la categoría Pastoral y su botón en el menú.</span></li>
-        <li><i>18</i><span>Trabaja con nosotros, con el correo de talento humano.</span></li>
+        <li><i>24</i><span>El título de los accesos ahora dice «Información a un clic».</span></li>
+        <li><i>25</i><span>Pagos PSE es el primer acceso y tiene botón arriba, en la cabecera. Lleva al portal de pagos del colegio.</span></li>
+        <li><i>26</i><span>En admisiones: «El valor de la inscripción se cancela por PSE…», con su botón.</span></li>
+        <li><i>27</i><span>Pastoral con su coordinadora, la Hna Milena Patricia Vargas Mayorga: el mismo texto, su foto, «Conoce más» y el correo de pastoral.</span></li>
+        <li><i>29</i><span>«Ver requisitos» en admisiones, con las correcciones de la hoja.</span></li>
+        <li><i>15</i><span>Confirmado: el acceso «Circulares y comunicados» se queda.</span></li>
       </ul>
     </div>
     <div class="confirmar">
       <h3>Por confirmar</h3>
       <ul>
-        <li><i>14</i><span>Niveles: separamos Básica secundaria (6.º a 9.º) y Media académica (10.º y 11.º). ¿Es correcto?</span></li>
-        <li><i>15</i><span>El acceso «Circulares y comunicados» de arriba se mantiene. ¿Les parece bien?</span></li>
+        <li><i>14</i><span>Niveles: ¿Básica secundaria (6.º a 9.º) y Media académica (10.º y 11.º) separadas?</span></li>
+        <li><i>28</i><span>Manual de convivencia: el PDF dice 2025-2026. ¿Lo mostramos como 2026 – 2027 o nos envían el actualizado?</span></li>
+        <li><i>31</i><span>La reseña histórica del manual dice que el colegio se fundó en 1888, y en la ronda 1 se pidió no poner ese año. ¿Cómo la publicamos?</span></li>
       </ul>
     </div>
     <div class="pendiente">
       <h3>Lo que necesitamos del colegio</h3>
       <ul>
+        <li><i>30</i><span>El link de pastoral para el botón «Conoce más».</span></li>
+        <li><i>27</i><span>La foto de la Hna Milena en mejor calidad (la que llegó es pequeña).</span></li>
         <li><i>19</i><span>Fotos recientes del colegio.</span></li>
-        <li><i>20</i><span>Proceso de admisión de cada nivel.</span></li>
-        <li><i>21</i><span>Manual de convivencia.</span></li>
-        <li><i>22</i><span>Historia del colegio.</span></li>
+        <li><i>20</i><span>El proceso de admisión paso a paso (los requisitos ya llegaron).</span></li>
         <li><i>23</i><span>Lista de lúdicas disponibles.</span></li>
       </ul>
     </div>
@@ -754,10 +848,12 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
   };
   dialogo("catalogo", "[data-catalogo]");
   dialogo("cambios", "#ver-cambios");
+  dialogo("requisitos", "[data-requisitos]");
 
   // "Pastoral" en el menú abre Actualízate con ese filtro.
   document.querySelectorAll('[data-filtro="pastoral"]').forEach(a => a.addEventListener("click", () => {
     document.querySelector('.pestanas [data-pestana="pastoral"]')?.click();
+    setTimeout(() => document.getElementById("pastoral")?.scrollIntoView({ block: "start" }), 50);
   }));
 })();
 </script>
