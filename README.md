@@ -1,10 +1,7 @@
-# Propuestas gráficas · Colegio Bethlemitas Palmira
+# Nuevo sitio web · Colegio Bethlemitas Palmira
 
-Seis direcciones de estilo para la página de inicio del nuevo sitio web del Colegio Sagrado Corazón de Jesús — Bethlemitas Palmira.
-
-- **Galería:** `index.html` (las seis en vivo, con vista de celular).
-- **Propuestas:** `1-vitral.html` · `2-cuaderno.html` · `3-pizarra.html` · `4-mosaico.html` · `5-recreo.html` · `6-horizonte.html`.
+Versión en construcción del nuevo sitio del Colegio Sagrado Corazón de Jesús — Bethlemitas Palmira, sobre el estilo elegido (Recreo).
 
 **Ver en vivo:** https://seinp.github.io/bethlemitas-propuestas/
 
-Es una maqueta: los textos y las fotos son de muestra y los enlaces internos todavía no llevan a ninguna página.
+Es una maqueta: algunos textos y fotos todavía son de muestra. El botón «Ver cambios» de la página muestra lo aplicado en cada ronda y lo que falta.

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="only light">
-<title>Propuestas gráficas — Colegio Bethlemitas Palmira</title>
-<meta name="description" content="Seis propuestas de estilo visual para el nuevo sitio web del Colegio Sagrado Corazón de Jesús Bethlemitas Palmira.">
-<meta property="og:title" content="Propuestas gráficas · Nuevo sitio web Bethlemitas Palmira">
-<meta property="og:description" content="Seis estilos para elegir. Ábranlas, recórranlas y respondan con el número de la que más los represente.">
+<title>Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira — nuevo sitio (versión 2)</title>
+<meta name="description" content="Colegio Sagrado Corazón de Jesús Bethlemitas Palmira: comunidad educativa católica y mixta. Preescolar, primaria, básica secundaria y media académica, con inglés y francés.">
+<meta property="og:title" content="Nuevo sitio web · Bethlemitas Palmira (versión 2, en construcción)">
+<meta property="og:description" content="Así va quedando el nuevo sitio del colegio, con las correcciones de la primera ronda.">
 <meta property="og:image" content="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1024x576.jpeg">
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="576">
@@ -16,201 +16,751 @@
 <link rel="icon" href="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="comun.css">
 <style>
-:root { --fondo: #f5f4f0; --tinta: #14171f; --suave: #5e6472; --linea: #e3e0d8; --azul: #1d3d8f; --rojo: #c8183c; }
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--fondo); color: var(--tinta); font: 400 16px/1.6 "Inter", system-ui, sans-serif; overflow-x: hidden; }
-a { color: inherit; }
-h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -.02em; }
-p { margin: 0; }
-.envoltura { width: min(1320px, 100% - 48px); margin-inline: auto; }
-
-.encabezado { padding: 56px 0 36px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; border-bottom: 1px solid var(--linea); }
-.colegio { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
-.colegio img { width: 56px; height: 56px; object-fit: contain; mix-blend-mode: multiply; }
-.colegio b { display: block; font-size: 15px; }
-.colegio span { font-size: 13px; color: var(--suave); }
-.etapa { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--linea); font-size: 12.5px; font-weight: 700; letter-spacing: .04em; color: var(--rojo); margin-bottom: 14px; }
-.encabezado h1 { font-size: clamp(34px, 4.6vw, 60px); font-weight: 800; max-width: 14em; }
-.encabezado p.bajada { color: var(--suave); font-size: 18px; margin-top: 14px; max-width: 40em; }
-
-.como { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 30px 0 10px; }
-.como > div { display: grid; grid-template-columns: 38px 1fr; gap: 14px; padding: 20px; background: #fff; border: 1px solid var(--linea); border-radius: 16px; }
-.como b.n { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--tinta); color: #fff; font-weight: 800; }
-.como h3 { font-size: 16px; margin-bottom: 4px; }
-.como p { font-size: 14.5px; color: var(--suave); }
-
-.rejilla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; padding: 30px 0 60px; }
-.tarjeta { background: #fff; border: 1px solid var(--linea); border-radius: 22px; overflow: hidden; display: flex; flex-direction: column;
-  transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s; }
-.tarjeta:hover { transform: translateY(-4px); box-shadow: 0 24px 50px rgba(20,23,31,.10); }
-.vista { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #e9e7e1; border-bottom: 1px solid var(--linea); display: block; }
-.vista iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 900px; border: 0; transform-origin: 0 0; transform: scale(var(--s, .4)); pointer-events: none; }
-.vista .abrir-grande { position: absolute; inset: 0; z-index: 2; }
-.info { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-.fila-titulo { display: flex; align-items: center; gap: 14px; }
-.fila-titulo .num { font-size: 44px; font-weight: 800; line-height: 1; color: var(--c); letter-spacing: -.04em; }
-.fila-titulo h2 { font-size: 24px; font-weight: 800; }
-.fila-titulo .paleta { margin-left: auto; display: flex; }
-.paleta i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #fff; margin-left: -6px; box-shadow: 0 0 0 1px var(--linea); }
-.info p { color: var(--suave); }
-.info .ideal { font-size: 14px; color: var(--tinta); padding: 10px 14px; border-radius: 12px; background: var(--fondo); }
-.info .ideal b { color: var(--c); }
-.botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 6px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 999px; font: 700 14px/1 "Inter", sans-serif; text-decoration: none; cursor: pointer;
-  background: var(--tinta); color: #fff; border: 1px solid var(--tinta); transition: transform .2s; }
-.btn:hover { transform: translateY(-2px); }
-.btn .ico { font-size: 17px; }
-.btn.claro { background: #fff; color: var(--tinta); border-color: var(--linea); }
-
-.siguiente { margin: 0 0 60px; padding: 30px; border-radius: 22px; background: var(--tinta); color: #fff; display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; }
-.siguiente .ico { font-size: 40px; color: #ff8fa2; }
-.siguiente h3 { font-size: 20px; margin-bottom: 6px; }
-.siguiente p { color: rgba(255,255,255,.75); }
-
-/* ---------- Vista de celular ---------- */
-dialog.celular { border: 0; padding: 0; background: transparent; overflow: visible; }
-dialog.celular::backdrop { background: rgba(10,12,18,.75); }
-.marco-cel { position: relative; width: 414px; height: 868px; border-radius: 48px; border: 12px solid #111; background: #111; box-shadow: 0 30px 80px rgba(0,0,0,.5);
-  transform: scale(var(--sc, 1)); transform-origin: 50% 0; }
-.marco-cel::before { content: ""; position: absolute; top: 8px; left: 50%; width: 110px; height: 26px; margin-left: -55px; border-radius: 20px; background: #111; z-index: 2; }
-.marco-cel iframe { width: 100%; height: 100%; border: 0; border-radius: 36px; background: #fff; }
-.cerrar { position: absolute; top: -8px; right: -64px; width: 46px; height: 46px; border-radius: 50%; border: 0; background: #fff; color: #111; font-size: 22px; cursor: pointer; display: grid; place-items: center; }
-
-@media (max-width: 980px) {
-  .encabezado { grid-template-columns: 1fr; }
-  .como { grid-template-columns: 1fr; }
-  .rejilla { grid-template-columns: 1fr; }
+:root {
+  /* Recreo con colores más vivos (ronda 1, ítem 2) */
+  --azul: #1f4fe0; --rey: #1636b8; --noche: #0a1d78; --rojo: #e11d48; --rojo-osc: #be123c;
+  --amarillo: #ffcc00; --celeste: #22c3ff; --verde: #16c172; --naranja: #ff7a1a; --lila: #8b5cf6; --rosa: #ff5fa2;
+  --tinta: #141a3a; --suave: #4b5370; --fondo: #fffdf6;
+  --titulo: "Fredoka", system-ui, sans-serif; --cuerpo: "Mulish", system-ui, sans-serif;
+  --borde: 3px solid var(--tinta); --sombra: 6px 6px 0 var(--tinta);
 }
-@media (max-width: 600px) {
-  .envoltura { width: calc(100% - 28px); }
-  .encabezado { padding: 34px 0 26px; }
-  .encabezado p.bajada { font-size: 16px; }
-  .info { padding: 18px; }
-  .fila-titulo .num { font-size: 38px; } .fila-titulo h2 { font-size: 21px; }
-  .btn { flex: 1 1 auto; justify-content: center; }
-  .btn.ver-cel { display: none; }
-  .siguiente { grid-template-columns: 1fr; padding: 24px; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font: 400 17px/1.6 var(--cuerpo); overflow-x: hidden; }
+body.con-intro { overflow: hidden; }
+img { max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--titulo); font-weight: 700; line-height: 1.04; margin: 0; }
+p { margin: 0; }
+.envoltura { width: min(1200px, 100% - 48px); margin-inline: auto; position: relative; }
+section { position: relative; padding: 90px 0; overflow: hidden; }
+
+/* ---------- Formas que flotan ---------- */
+.forma { position: absolute; pointer-events: none; z-index: 0; animation: deriva var(--t, 9s) ease-in-out infinite; animation-delay: var(--dl, 0s); }
+.forma.circulo { width: var(--s, 60px); height: var(--s, 60px); border-radius: 50%; background: var(--c); border: var(--borde); }
+.forma.triangulo { width: 0; height: 0; border-left: calc(var(--s, 60px) / 2) solid transparent; border-right: calc(var(--s, 60px) / 2) solid transparent; border-bottom: var(--s, 60px) solid var(--c); }
+.forma.estrella, .forma.ola { width: var(--s, 60px); height: var(--s, 60px); color: var(--c); }
+.forma svg { width: 100%; height: 100%; }
+.forma.ola svg { fill: none; stroke: currentColor; stroke-width: 7; stroke-linecap: round; }
+@keyframes deriva { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(12px, -18px) rotate(18deg); } 66% { transform: translate(-10px, 10px) rotate(-12deg); } }
+
+/* ---------- Intro: llueven figuras ---------- */
+#intro { position: fixed; inset: 0; z-index: 1000; background: var(--rey); display: grid; place-items: center; overflow: hidden; cursor: pointer;
+  transition: transform .6s cubic-bezier(.7,0,.3,1); }
+#intro.fuera { transform: translateY(-100%); }
+#intro .lluvia i { position: absolute; top: 0; left: var(--x); width: var(--s); height: var(--s); border-radius: var(--br, 50%); background: var(--c); border: 3px solid var(--tinta);
+  opacity: 0; animation: llueve .9s cubic-bezier(.3,1.4,.5,1) forwards; animation-delay: var(--dl); }
+@keyframes llueve { 0% { opacity: 1; transform: translateY(-120px) rotate(0); } 100% { opacity: 1; transform: translateY(var(--y)) rotate(var(--r)); } }
+#intro .placa { position: relative; z-index: 2; text-align: center; opacity: 0; animation: rebota .7s cubic-bezier(.3,1.6,.5,1) forwards .55s; }
+#intro .placa .escudo { width: 150px; height: 150px; border-radius: 50%; background: #fff; border: 4px solid var(--tinta); box-shadow: 8px 8px 0 var(--tinta); display: grid; place-items: center; margin: 0 auto; }
+#intro .placa .escudo img { width: 118px; height: 118px; object-fit: contain; }
+#intro .placa .globo { display: inline-block; margin-top: 22px; padding: 12px 22px; background: #fff; border: var(--borde); border-radius: 22px; box-shadow: 5px 5px 0 var(--tinta); font: 700 26px/1 var(--titulo); }
+@keyframes rebota { 0% { opacity: 0; transform: scale(.3); } 100% { opacity: 1; transform: none; } }
+
+/* ---------- Cabecera ---------- */
+.cabecera { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--fondo); border-bottom: var(--borde); }
+.cabecera .envoltura { display: flex; align-items: center; gap: 18px; height: 76px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+.marca .placa { width: 52px; height: 52px; border-radius: 50%; background: #fff; border: var(--borde); display: grid; place-items: center; flex: none; transition: transform .4s cubic-bezier(.3,1.6,.5,1); }
+.marca:hover .placa { transform: rotate(-12deg) scale(1.08); }
+.marca .placa img { width: 40px; height: 40px; object-fit: contain; }
+.marca b { display: block; font: 700 21px/1 var(--titulo); color: var(--azul); }
+.marca small { display: block; font: 700 12.5px/1.2 var(--cuerpo); color: var(--suave); }
+.menu { display: flex; gap: 4px; }
+.menu a { text-decoration: none; font: 600 16.5px/1 var(--titulo); padding: 10px 12px; border-radius: 999px; border: 3px solid transparent; transition: background .2s, border-color .2s, transform .2s; }
+.menu a:nth-child(1):hover { background: #d3f1ff; } .menu a:nth-child(2):hover { background: #fff1b3; } .menu a:nth-child(3):hover { background: #ffd6df; }
+.menu a:nth-child(4):hover { background: #c9f5df; } .menu a:nth-child(5):hover { background: #e6dcff; } .menu a:nth-child(6):hover { background: #ffe1c7; }
+.menu a:hover { border-color: var(--tinta); transform: rotate(-2deg); }
+.boton-menu { display: none; background: var(--amarillo); border: var(--borde); border-radius: 14px; color: var(--tinta); font-size: 26px; width: 50px; height: 50px; cursor: pointer; box-shadow: 3px 3px 0 var(--tinta); }
+
+/* ---------- Botones gorditos ---------- */
+.btn { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 18px; overflow: hidden; text-decoration: none; cursor: pointer;
+  font: 700 19px/1 var(--titulo); color: #fff; background: var(--rojo); border: var(--borde); box-shadow: 5px 5px 0 var(--tinta); transition: transform .15s, box-shadow .15s; }
+.btn::before { content: ""; position: absolute; inset: 0 auto 0 -50%; width: 35%; transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: barrido 4.6s ease-in-out infinite; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--tinta); }
+.btn:active { transform: translate(4px, 4px); box-shadow: 1px 1px 0 var(--tinta); }
+.btn .ico { font-size: 21px; stroke-width: 2.4; }
+.btn.blanco { background: #fff; color: var(--tinta); }
+.btn.blanco::before { animation-delay: 2.3s; }
+.btn.amarillo { background: var(--amarillo); color: var(--tinta); }
+.btn.chico { padding: 11px 16px; font-size: 16px; box-shadow: 3px 3px 0 var(--tinta); }
+@keyframes barrido { 0%, 62% { transform: skewX(-20deg) translateX(0); } 100% { transform: skewX(-20deg) translateX(600%); } }
+.etiqueta { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: var(--amarillo); border: var(--borde); color: var(--tinta);
+  font: 700 15px/1 var(--titulo); box-shadow: 3px 3px 0 var(--tinta); rotate: -2deg; }
+
+/* ---------- Portada: noche azul con estrellas que se mueven (ítem 3) ---------- */
+.portada { min-height: 100svh; padding: 140px 0 120px; display: flex; align-items: center; color: #fff;
+  background: radial-gradient(1100px 700px at 70% 30%, #2f5ff5 0%, var(--rey) 45%, var(--noche) 100%); }
+.cielo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.cielo i { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); color: var(--c, #fff); opacity: .9;
+  animation: titila var(--t, 3s) ease-in-out infinite, viaja var(--v, 40s) linear infinite; animation-delay: var(--dl, 0s), var(--dl2, 0s); }
+.cielo i svg { width: 100%; height: 100%; fill: currentColor; display: block; }
+.cielo i.punto { border-radius: 50%; background: currentColor; }
+@keyframes titila { 0%, 100% { opacity: .95; } 50% { opacity: .25; } }
+@keyframes viaja { from { transform: translate(0, 0) rotate(0deg); } to { transform: translate(var(--dx, -60px), var(--dy, 30px)) rotate(var(--dr, 90deg)); } }
+.fugaz { position: absolute; top: 18%; left: 70%; width: 130px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #fff, transparent); opacity: 0;
+  transform: rotate(-24deg); animation: fugaz 9s ease-in infinite 2.5s; }
+.fugaz.dos { top: 8%; left: 30%; animation-delay: 6.5s; }
+@keyframes fugaz { 0%, 86% { opacity: 0; transform: rotate(-24deg) translateX(0); } 88% { opacity: 1; } 100% { opacity: 0; transform: rotate(-24deg) translateX(-420px); } }
+.avioncito { position: absolute; right: 7%; top: 18%; width: 110px; color: #fff; opacity: .85; animation: planea 11s ease-in-out infinite; }
+.avioncito svg { width: 100%; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes planea { 0%, 100% { transform: translate(0, 0) rotate(-6deg); } 50% { transform: translate(-40px, 22px) rotate(4deg); } }
+.ola-blanca { position: absolute; left: 0; right: 0; bottom: -2px; width: 100%; height: 70px; display: block; }
+.ola-blanca path { fill: var(--fondo); }
+.portada .envoltura { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; z-index: 1; }
+.portada h1 { font-size: clamp(46px, 6.3vw, 90px); margin: 24px 0 22px; color: #fff; letter-spacing: -.01em; text-shadow: 4px 4px 0 rgba(10,29,120,.6); }
+.portada h1 .pastilla { display: inline-block; padding: 0 .22em; background: var(--rojo); color: #fff; border: 4px solid var(--tinta); border-radius: .3em; rotate: -3deg;
+  box-shadow: 5px 5px 0 var(--tinta); line-height: 1.1; text-shadow: none; }
+.portada .bajada { font-size: 19px; color: #e3eaff; max-width: 32em; }
+.acciones { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
+
+/* ---------- Fotos recortadas con borde, tipo sticker (ítem 4) ---------- */
+.sticker-foto { border: 10px solid #fff; box-shadow: 0 0 0 3px var(--tinta), 10px 12px 0 3px rgba(20,26,58,.85); background: #fff; }
+.burbuja-foto { position: relative; justify-self: center; width: min(480px, 100%); }
+.burbuja-foto .flota { animation: flotar 6.5s ease-in-out infinite; }
+.burbuja-foto .mancha { aspect-ratio: 1 / 1; border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+.burbuja-foto .mancha.foto img { object-position: 50% 70%; }
+.burbuja-foto .sticker { position: absolute; display: grid; place-items: center; text-align: center; border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); color: var(--tinta); }
+.sticker.giro { right: -14px; top: 6%; width: 136px; height: 136px; border-radius: 50%; background: var(--amarillo); font: 700 16px/1.05 var(--titulo); animation: girarlento 14s linear infinite; }
+.sticker.giro::before { content: ""; position: absolute; inset: 7px; border-radius: 50%; border: 2px dashed var(--tinta); }
+.sticker.giro > div { animation: girarlento 14s linear infinite reverse; }
+.sticker.giro > div { padding: 0 14px; }
+.sticker.giro b { display: block; font-size: 16.5px; line-height: 1.05; color: var(--rey); margin-bottom: 3px; }
+.sticker.bandera { left: -20px; bottom: 10%; padding: 12px 16px; border-radius: 18px; background: #fff; font: 700 18px/1.1 var(--titulo); rotate: -6deg; }
+.sticker.bandera span { display: block; font: 800 12px/1 var(--cuerpo); color: var(--suave); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+@keyframes flotar { 50% { transform: translateY(-14px) rotate(1deg); } }
+@keyframes girarlento { to { transform: rotate(360deg); } }
+/* Al bajar, las fotos recortadas "se pegan" con un rebote */
+[data-entra="pega"] { --anim: e-pega; --dur: .9s; }
+@keyframes e-pega { 0% { opacity: 0; transform: scale(.4) rotate(-14deg); } 60% { opacity: 1; transform: scale(1.08) rotate(4deg); } 100% { } }
+
+/* ---------- Titulares ---------- */
+.titular { text-align: center; max-width: 780px; margin: 0 auto 50px; position: relative; z-index: 1; }
+.titular h2 { font-size: clamp(36px, 4.4vw, 60px); margin-top: 16px; color: var(--azul); }
+.titular h2 .marcado { color: var(--rojo); }
+.titular p { color: var(--suave); margin-top: 12px; font-size: 18px; }
+
+/* ---------- Accesos ---------- */
+.accesos { padding-top: 60px; }
+.rejilla-accesos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.acceso { display: flex; align-items: center; gap: 16px; padding: 22px; text-decoration: none; border-radius: 24px; background: var(--c); border: var(--borde); box-shadow: var(--sombra);
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1), box-shadow .25s; }
+.acceso:hover { transform: translate(-3px, -3px); rotate: -1.5deg; box-shadow: 9px 9px 0 var(--tinta); }
+.acceso .icono { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: #fff; border: var(--borde); font-size: 30px; flex: none; overflow: hidden; }
+.acceso .icono .ico { stroke-width: 2; }
+.acceso .icono img { width: 140%; height: 140%; object-fit: cover; object-position: 50% 34%; }
+.acceso b { display: block; font: 700 21px/1.1 var(--titulo); }
+.acceso span.desc { font-size: 14.5px; font-weight: 600; color: rgba(20,26,58,.82); }
+
+/* ---------- Niveles (ítem 14: cuatro niveles) ---------- */
+.niveles { background: #d4f1ff; }
+.rejilla-niveles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.nivel { position: relative; border-radius: 28px; background: #fff; border: var(--borde); box-shadow: var(--sombra); padding: 0 18px 24px; text-align: center; transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.nivel:hover { transform: translateY(-8px); rotate: var(--r); }
+.nivel .cabeza { height: 92px; margin: 0 -18px; border-radius: 25px 25px 0 0; background: var(--c); border-bottom: var(--borde); }
+.nivel .circulo-foto { width: 152px; height: 152px; margin: -76px auto 16px; border-radius: 50%; }
+.nivel .edad { display: inline-block; margin-bottom: 10px; padding: 7px 11px; border-radius: 12px; background: var(--c); border: var(--borde); font: 700 14px/1 var(--titulo); rotate: -3deg; }
+.nivel h3 { font-size: 27px; color: var(--azul); }
+.nivel p { color: var(--suave); margin-top: 8px; font-size: 15px; }
+.nivel .mas { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font: 700 17px/1 var(--titulo); color: var(--rojo); text-decoration: none; }
+
+/* ---------- Por qué: Lúdicas en lugar de las cifras (ítems 7–10) ---------- */
+.porque { background: #fff1b8; }
+.fila-ludicas { display: grid; grid-template-columns: 3fr 1fr; gap: 22px; margin-bottom: 40px; position: relative; z-index: 1; }
+.ludicas { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 30px 32px; border-radius: 30px; background: var(--lila); color: #fff;
+  border: var(--borde); box-shadow: var(--sombra); text-decoration: none; cursor: pointer; text-align: left; font: inherit; width: 100%; background: #7c3aed; }
+.ludicas h3 { font-size: 46px; text-shadow: 3px 3px 0 var(--tinta); }
+.ludicas p { margin-top: 8px; font-size: 17px; color: #fff; max-width: 34em; }
+.ludicas .iconos-ludicas { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.ludicas .iconos-ludicas span { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: #fff; color: var(--tinta); border: var(--borde); font-size: 24px; }
+.ludicas .iconos-ludicas span:nth-child(odd) { rotate: -6deg; } .ludicas .iconos-ludicas span:nth-child(even) { rotate: 5deg; }
+.ludicas .abrir { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 16px; background: var(--amarillo); color: var(--tinta); border: var(--borde);
+  box-shadow: 4px 4px 0 var(--tinta); font: 700 18px/1 var(--titulo); white-space: nowrap; transition: transform .15s; }
+.ludicas:hover .abrir { transform: translate(-2px, -2px) rotate(-2deg); }
+.cifra { text-align: center; padding: 26px 12px; border-radius: 28px; background: var(--verde); border: var(--borde); box-shadow: var(--sombra); display: grid; place-content: center; }
+.cifra b { display: block; font: 700 72px/1 var(--titulo); color: #fff; -webkit-text-stroke: 2px var(--tinta); paint-order: stroke fill; }
+.cifra span { display: block; margin-top: 8px; font: 700 17px/1.2 var(--titulo); }
+.rejilla-porque { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.razon { padding: 26px 22px; border-radius: 24px; background: #fff; border: var(--borde); box-shadow: var(--sombra); text-decoration: none; display: block; }
+button.razon { font: inherit; text-align: left; cursor: pointer; width: 100%; }
+.razon .icono { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 18px; background: var(--c); border: var(--borde); font-size: 30px; margin-bottom: 16px; rotate: -6deg; }
+.razon h3 { font-size: 23px; margin-bottom: 8px; color: var(--azul); }
+.razon p { color: var(--suave); font-size: 15.5px; }
+.razon .ver { display: inline-flex; gap: 6px; align-items: center; margin-top: 10px; font: 700 16px/1 var(--titulo); color: var(--rojo); }
+.pie-seccion { text-align: center; margin-top: 44px; position: relative; z-index: 1; }
+
+/* ---------- Catálogo de lúdicas ---------- */
+dialog.catalogo { width: min(860px, calc(100vw - 32px)); max-height: calc(100svh - 40px); padding: 0; border: 4px solid var(--tinta); border-radius: 28px; box-shadow: 10px 10px 0 var(--tinta); background: var(--fondo); color: var(--tinta); }
+dialog.catalogo::backdrop { background: rgba(10,29,120,.6); }
+.catalogo .cab { display: flex; align-items: center; gap: 14px; padding: 22px 24px; background: #7c3aed; color: #fff; border-bottom: var(--borde); position: sticky; top: 0; z-index: 2; }
+.catalogo .cab h2 { font-size: 34px; text-shadow: 2px 2px 0 var(--tinta); margin-right: auto; }
+.catalogo .cerrar { width: 48px; height: 48px; border-radius: 14px; border: var(--borde); background: #fff; color: var(--tinta); font-size: 22px; cursor: pointer; display: grid; place-items: center; }
+.catalogo .muestra { margin: 18px 24px 0; padding: 10px 14px; border-radius: 12px; background: #fff1b8; border: 2px dashed var(--tinta); font-size: 14.5px; }
+.catalogo .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; padding: 20px 24px 26px; }
+.catalogo .item { padding: 18px 16px; border-radius: 20px; background: var(--c); border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); }
+.catalogo .item b { display: block; font: 700 21px/1.1 var(--titulo); }
+.catalogo .item span { display: block; margin-top: 6px; font-size: 14px; font-weight: 600; }
+
+/* ---------- Actualízate (ítems 15–17) ---------- */
+.actualizate { background: var(--fondo); }
+.pestanas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -20px 0 34px; position: relative; z-index: 1; }
+.pestanas button { font: 700 17px/1 var(--titulo); padding: 12px 18px; border-radius: 999px; border: var(--borde); background: #fff; color: var(--tinta); cursor: pointer;
+  box-shadow: 3px 3px 0 var(--tinta); transition: transform .15s; }
+.pestanas button[aria-selected="true"] { background: var(--azul); color: #fff; }
+.pestanas button:hover { transform: translate(-1px, -1px) rotate(-2deg); }
+.rejilla-noticias { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.noticia { display: flex; flex-direction: column; border-radius: 26px; background: #fff; border: var(--borde); box-shadow: var(--sombra); overflow: hidden; text-decoration: none;
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1); }
+.noticia:hover { transform: translateY(-6px); rotate: -1deg; }
+.noticia .foto { aspect-ratio: 4 / 3; border-bottom: var(--borde); }
+.noticia .cuerpo { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.noticia .cat { align-self: flex-start; padding: 6px 10px; border-radius: 10px; background: var(--c); border: var(--borde); font: 700 13px/1 var(--titulo); rotate: -3deg; }
+.noticia h3 { font-size: 21px; line-height: 1.15; color: var(--tinta); }
+.noticia .leer { margin-top: auto; font: 700 16px/1 var(--titulo); color: var(--rojo); display: flex; gap: 6px; align-items: center; }
+
+/* ---------- Identidad: misión, visión y fundadores (ítems 5, 12, 13) ---------- */
+.identidad { background: #c9f5df; }
+.globos { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-bottom: 70px; position: relative; z-index: 1; }
+.globo { position: relative; background: #fff; border: 4px solid var(--tinta); border-radius: 34px; padding: 34px 32px; box-shadow: 8px 8px 0 var(--tinta); }
+.globo::after { content: ""; position: absolute; left: 60px; bottom: -30px; width: 40px; height: 40px; background: #fff; border-right: 4px solid var(--tinta); border-bottom: 4px solid var(--tinta);
+  transform: skewX(30deg) rotate(45deg); }
+.globo:nth-child(2)::after { left: auto; right: 70px; transform: skewX(-30deg) rotate(45deg); }
+.globo .etiqueta { margin-bottom: 14px; }
+.globo:nth-child(1) .etiqueta { background: var(--celeste); } .globo:nth-child(2) .etiqueta { background: var(--rosa); }
+.globo p { font: 600 19px/1.45 var(--titulo); }
+.globo cite { display: block; margin-top: 14px; font: 700 17px/1 var(--titulo); color: var(--rojo); font-style: normal; }
+.fundadores { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 30px; align-items: center; text-align: center; position: relative; z-index: 1; }
+.marco-oval { width: min(230px, 100%); aspect-ratio: 3 / 4; margin: 0 auto 16px; border-radius: 50%; padding: 15px;
+  background: radial-gradient(ellipse at 35% 25%, #8a4b2c, #5a2c17 55%, #3d1d0f);
+  box-shadow: inset 0 0 0 3px #d4a64a, inset 0 0 0 6px #6b3a1f, 0 0 0 3px var(--tinta), 8px 10px 0 3px rgba(20,26,58,.8); }
+.marco-oval .foto { width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 3px #d4a64a; }
+.fundador h3 { font-size: 21px; color: var(--azul); line-height: 1.15; }
+.fundador span { display: block; margin-top: 4px; font-size: 14px; color: var(--suave); font-weight: 700; }
+.lema-fundadores { font: 700 clamp(24px, 2.6vw, 34px)/1.25 var(--titulo); color: var(--rey); }
+.lema-fundadores small { display: block; margin-top: 12px; font: 800 13px/1 var(--cuerpo); letter-spacing: .12em; text-transform: uppercase; color: var(--suave); }
+.red { display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap; margin-top: 56px; padding: 26px 30px;
+  background: var(--amarillo); border: var(--borde); border-radius: 26px; box-shadow: var(--sombra); position: relative; z-index: 1; }
+.red h3 { font-size: 28px; color: var(--rey); } .red p { color: var(--tinta); margin-top: 6px; max-width: 44em; }
+
+/* ---------- Admisiones: el tablero de juego ---------- */
+.admisiones { background: var(--rojo-osc); color: #fff; }
+.admisiones .titular h2 { color: #fff; }
+.admisiones .titular p { color: #fff; }
+.tablero { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; margin-bottom: 46px; z-index: 1; }
+.tablero .ruta { position: absolute; left: 16%; right: 16%; top: 48px; height: 40px; fill: none; stroke: #fff; stroke-width: 4; stroke-dasharray: 10 12; stroke-linecap: round; z-index: -1; }
+.casilla { text-align: center; }
+.casilla .num { display: grid; place-items: center; width: 100px; height: 100px; margin: 0 auto 18px; border-radius: 28px; background: var(--c); color: var(--tinta); border: 4px solid var(--tinta);
+  box-shadow: 6px 6px 0 var(--tinta); font: 700 50px/1 var(--titulo); rotate: var(--r); }
+.casilla h3 { font-size: 27px; }
+.casilla p { color: #fff; margin-top: 6px; font-size: 16px; }
+.admisiones .acciones { justify-content: center; position: relative; z-index: 1; }
+
+/* ---------- Trabaja con nosotros (ítem 18) ---------- */
+.trabaja { padding: 0; background: var(--rojo-osc); overflow: visible; }
+.trabaja .tarjeta { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 26px 30px; border-radius: 28px; background: var(--celeste);
+  border: var(--borde); box-shadow: var(--sombra); transform: translateY(40px); position: relative; z-index: 2; }
+.trabaja .icono { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 20px; background: #fff; border: var(--borde); font-size: 34px; rotate: -6deg; }
+.trabaja h2 { font-size: 32px; color: var(--tinta); }
+.trabaja p { color: var(--tinta); font-weight: 600; margin-top: 4px; }
+.trabaja .correo { overflow-wrap: anywhere; }
+
+/* ---------- Pie con ola ---------- */
+.ola-pie { display: block; width: 100%; height: 60px; margin-bottom: -2px; background: var(--rojo-osc); }
+.ola-pie path { fill: var(--rey); }
+.pie { background: var(--rey); color: #fff; padding: 70px 0 30px; }
+.pie .columnas { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; }
+.pie .marca b { color: #fff; } .pie .marca small { color: #c8d4ff; }
+.pie .lema { color: #dbe4ff; margin-top: 14px; font-size: 15px; }
+.pie h4 { margin: 0 0 16px; font: 700 21px/1 var(--titulo); color: var(--amarillo); }
+.pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.pie li, .pie li a { display: flex; gap: 10px; align-items: flex-start; color: #e4eaff; text-decoration: none; font-size: 15px; }
+.pie li a:hover { color: #fff; text-decoration: underline; }
+.pie li .ico { font-size: 18px; margin-top: 3px; color: var(--amarillo); }
+.aliados { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 46px 0 26px; }
+.aliados img { width: 66px; height: 66px; object-fit: contain; background: #fff; border-radius: 50%; padding: 9px; border: var(--borde); }
+.derechos { text-align: center; color: #c8d4ff; font-size: 13px; }
+
+/* ---------- Versión y cambios (para revisar con el colegio) ---------- */
+.version { position: fixed; left: 12px; bottom: 12px; z-index: 900; display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px; border-radius: 999px; border: 0;
+  background: rgba(17,20,28,.92); color: #fff; font: 600 13px/1.2 system-ui, "Segoe UI", sans-serif; cursor: pointer; box-shadow: 0 6px 22px rgba(0,0,0,.3); }
+.version b { background: var(--amarillo); color: #111; border-radius: 999px; padding: 3px 8px; font-weight: 800; }
+dialog.cambios { width: min(640px, calc(100vw - 24px)); max-height: calc(100svh - 40px); padding: 0; border: 0; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  font: 400 15px/1.5 system-ui, "Segoe UI", sans-serif; color: #14171f; }
+dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
+.cambios .cab { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid #e3e0d8; position: sticky; top: 0; background: #fff; }
+.cambios .cab h2 { font: 800 19px/1.2 system-ui, "Segoe UI", sans-serif; margin-right: auto; }
+.cambios .cab button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e3e0d8; background: #fff; font-size: 18px; cursor: pointer; display: grid; place-items: center; }
+.cambios .contenido { padding: 6px 20px 22px; }
+.cambios h3 { font: 800 14px/1 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; margin: 20px 0 10px; }
+.cambios ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; }
+.cambios li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; }
+.cambios li i { font-style: normal; font-weight: 800; color: #5e6472; }
+.cambios .hecho h3 { color: #15803d; } .cambios .confirmar h3 { color: #b45309; } .cambios .pendiente h3 { color: #be123c; }
+
+/* ---------- Tableta ---------- */
+@media (max-width: 1100px) {
+  .menu { position: fixed; top: 76px; left: 0; right: 0; flex-direction: column; gap: 6px; padding: 14px 20px 22px; background: var(--fondo); border-bottom: var(--borde);
+    transform: translateY(-130%); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+  .menu a { font-size: 21px; border-color: var(--tinta); background: #fff; }
+  .menu-abierto .menu { transform: none; }
+  .boton-menu { display: grid; place-items: center; }
+  .cabecera .btn.chico { display: none; }
+  .portada .envoltura { grid-template-columns: 1fr; }
+  .burbuja-foto { width: min(420px, 82%); }
+  .rejilla-niveles, .rejilla-noticias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rejilla-porque { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fila-ludicas { grid-template-columns: 1fr; }
+  .fundadores { grid-template-columns: 1fr 1fr; }
+  .lema-fundadores { grid-column: 1 / -1; grid-row: 1; }
+  .pie .columnas { grid-template-columns: 1fr 1fr; }
+}
+/* ---------- Teléfono ---------- */
+@media (max-width: 760px) {
+  :root { --sombra: 4px 4px 0 var(--tinta); }
+  body { font-size: 16px; }
+  .envoltura { width: calc(100% - 40px); }
+  section { padding: 62px 0; }
+  .cabecera .envoltura { height: 66px; }
+  .menu { top: 66px; }
+  .marca .placa { width: 44px; height: 44px; } .marca .placa img { width: 33px; height: 33px; }
+  .marca b { font-size: 18px; } .marca small { font-size: 11px; }
+  .portada { padding: 100px 0 96px; min-height: auto; }
+  .portada h1 { margin: 18px 0 16px; }
+  .portada .bajada { font-size: 17px; }
+  .acciones .btn { flex: 1 1 100%; justify-content: center; }
+  .avioncito { width: 70px; top: 12%; right: 4%; }
+  .burbuja-foto { width: 84%; margin-top: 10px; }
+  .sticker-foto { border-width: 7px; }
+  .sticker.giro { width: 108px; height: 108px; font-size: 12px; right: -14px; } .sticker.giro b { font-size: 12.5px; } .sticker.giro > div { padding: 0 10px; }
+  .sticker.bandera { font-size: 15px; left: -14px; }
+  .titular { margin-bottom: 34px; } .titular p { font-size: 16px; }
+  .rejilla-accesos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .acceso { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 14px; border-radius: 20px; }
+  .acceso .icono { width: 50px; height: 50px; font-size: 24px; } .acceso b { font-size: 17px; } .acceso span.desc { font-size: 13px; }
+  .rejilla-niveles, .rejilla-noticias { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-inline: -20px; padding: 6px 20px 16px; scrollbar-width: none; }
+  .rejilla-niveles::-webkit-scrollbar, .rejilla-noticias::-webkit-scrollbar { display: none; }
+  .nivel, .noticia { flex: 0 0 78%; scroll-snap-align: center; min-width: 0; }
+  .ludicas { grid-template-columns: 1fr; padding: 24px 20px; }
+  .ludicas h3 { font-size: 38px; }
+  .ludicas .abrir { justify-self: start; }
+  .fila-ludicas { gap: 14px; margin-bottom: 26px; }
+  .cifra { padding: 18px; } .cifra b { font-size: 54px; }
+  .rejilla-porque { gap: 12px; }
+  .razon { padding: 18px 14px; border-radius: 20px; } .razon .icono { width: 48px; height: 48px; font-size: 24px; margin-bottom: 12px; }
+  .razon h3 { font-size: 19px; } .razon p { font-size: 14px; }
+  .pestanas { margin-top: -10px; gap: 8px; } .pestanas button { font-size: 15px; padding: 12px 14px; }
+  .globos { grid-template-columns: 1fr; gap: 44px; margin-bottom: 56px; }
+  .globo { padding: 26px 20px; } .globo p { font-size: 17px; }
+  .fundadores { gap: 16px; } .fundador h3 { font-size: 17px; } .fundador span { font-size: 12.5px; }
+  .marco-oval { padding: 10px; }
+  .red { padding: 22px 18px; margin-top: 40px; } .red h3 { font-size: 23px; }
+  .tablero { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+  .tablero .ruta { display: none; }
+  .casilla { display: grid; grid-template-columns: 76px 1fr; column-gap: 16px; text-align: left; align-items: center; }
+  .casilla .num { width: 70px; height: 70px; font-size: 36px; margin: 0; grid-row: span 2; border-radius: 20px; }
+  .casilla h3 { font-size: 23px; } .casilla p { font-size: 14.5px; margin-top: 2px; }
+  .trabaja .tarjeta { grid-template-columns: 1fr; gap: 12px; padding: 22px 20px; }
+  .trabaja h2 { font-size: 26px; }
+  .pie { padding-top: 80px; padding-bottom: 76px; }
+  .pie .columnas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 18px; }
+  .pie .columnas > div:first-child, .pie .columnas > div:nth-child(2), .pie .columnas > div:nth-child(3), .pie .columnas > div:nth-child(4) { grid-column: 1 / -1; }
+  .pie .columnas > div:nth-child(3) ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pie a[href^="mailto"] { overflow-wrap: anywhere; }
+  .aliados img { width: 54px; height: 54px; }
+  .forma { display: none; }
+  .version { font-size: 12px; }
 }
 </style>
 </head>
 <body>
-<div class="envoltura">
-  <header class="encabezado">
-    <div>
-      <div class="colegio"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt="Escudo del colegio"><div><b>Colegio Sagrado Corazón de Jesús</b><span>Bethlemitas Palmira</span></div></div>
-      <span class="etapa">ETAPA 1 · ESTILO VISUAL</span>
-      <h1>Seis propuestas para el nuevo sitio web</h1>
-      <p class="bajada">Cada una muestra la misma página de inicio con un estilo distinto. Recórranlas completas, también desde el celular, y elijan la que mejor represente al colegio.</p>
-    </div>
-  </header>
 
-  <section class="como" aria-label="Cómo elegir">
-    <div><b class="n">1</b><div><h3>Ábranlas y recórranlas</h3><p>Bajen hasta el final: cada una tiene su entrada animada y su forma de moverse.</p></div></div>
-    <div><b class="n">2</b><div><h3>Fíjense en el estilo</h3><p>Los textos y las fotos son de muestra. En esta etapa se eligen colores, letras, formas y movimiento.</p></div></div>
-    <div><b class="n">3</b><div><h3>Respondan con un número</h3><p>También se vale combinar: “los colores de la 2 con la estructura de la 4”.</p></div></div>
-  </section>
-
-  <main class="rejilla">
-    <article class="tarjeta" style="--c:#c8183c">
-      <a class="vista" href="1-vitral.html" target="_blank" aria-label="Abrir la propuesta 1"><iframe data-src="1-vitral.html" tabindex="-1" title="Vista previa de la propuesta 1"></iframe><span class="abrir-grande"></span></a>
-      <div class="info">
-        <div class="fila-titulo"><span class="num">1</span><h2>Vitral</h2><span class="paleta"><i style="background:#0b1230"></i><i style="background:#c8183c"></i><i style="background:#2659c9"></i><i style="background:#eaa91d"></i></span></div>
-        <p>La luz de la capilla. Vidrios de colores, arcos y un rosetón que se enciende al entrar. Solemne y con mucha identidad católica.</p>
-        <p class="ideal"><b>Ideal si</b> quieren transmitir tradición y espiritualidad.</p>
-        <div class="botones"><a class="btn" href="1-vitral.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="1-vitral.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
-      </div>
-    </article>
-
-    <article class="tarjeta" style="--c:#1d3c8f">
-      <a class="vista" href="2-cuaderno.html" target="_blank" aria-label="Abrir la propuesta 2"><iframe data-src="2-cuaderno.html" tabindex="-1" title="Vista previa de la propuesta 2"></iframe><span class="abrir-grande"></span></a>
-      <div class="info">
-        <div class="fila-titulo"><span class="num">2</span><h2>Cuaderno</h2><span class="paleta"><i style="background:#fcf9f1"></i><i style="background:#1d3c8f"></i><i style="background:#c8183c"></i><i style="background:#ffe45c"></i></span></div>
-        <p>El cuaderno del colegio. Hoja cuadriculada, cinta adhesiva, post-its y resaltador. Cercano y cálido.</p>
-        <p class="ideal"><b>Ideal si</b> el público principal son las familias de preescolar y primaria.</p>
-        <div class="botones"><a class="btn" href="2-cuaderno.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="2-cuaderno.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
-      </div>
-    </article>
-
-    <article class="tarjeta" style="--c:#2c6b4f">
-      <a class="vista" href="3-pizarra.html" target="_blank" aria-label="Abrir la propuesta 3"><iframe data-src="3-pizarra.html" tabindex="-1" title="Vista previa de la propuesta 3"></iframe><span class="abrir-grande"></span></a>
-      <div class="info">
-        <div class="fila-titulo"><span class="num">3</span><h2>Pizarra</h2><span class="paleta"><i style="background:#1e3a2e"></i><i style="background:#f3f1e7"></i><i style="background:#f7e27d"></i><i style="background:#a46a3b"></i></span></div>
-        <p>El salón de clase. Tablero verde, letra de tiza, marcos de madera y una cartelera de corcho para las circulares.</p>
-        <p class="ideal"><b>Ideal si</b> quieren algo nostálgico y muy reconocible.</p>
-        <div class="botones"><a class="btn" href="3-pizarra.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="3-pizarra.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
-      </div>
-    </article>
-
-    <article class="tarjeta" style="--c:#2b57c6">
-      <a class="vista" href="4-mosaico.html" target="_blank" aria-label="Abrir la propuesta 4"><iframe data-src="4-mosaico.html" tabindex="-1" title="Vista previa de la propuesta 4"></iframe><span class="abrir-grande"></span></a>
-      <div class="info">
-        <div class="fila-titulo"><span class="num">4</span><h2>Mosaico</h2><span class="paleta"><i style="background:#edf1f8"></i><i style="background:#2b57c6"></i><i style="background:#d0193f"></i><i style="background:#ffd166"></i></span></div>
-        <p>Bloques modernos, como una aplicación. Todo a la vista, ordenado y muy fácil de usar desde el celular.</p>
-        <p class="ideal"><b>Ideal si</b> priorizan la practicidad y una imagen actual.</p>
-        <div class="botones"><a class="btn" href="4-mosaico.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="4-mosaico.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
-      </div>
-    </article>
-
-    <article class="tarjeta" style="--c:#e8334f">
-      <a class="vista" href="5-recreo.html" target="_blank" aria-label="Abrir la propuesta 5"><iframe data-src="5-recreo.html" tabindex="-1" title="Vista previa de la propuesta 5"></iframe><span class="abrir-grande"></span></a>
-      <div class="info">
-        <div class="fila-titulo"><span class="num">5</span><h2>Recreo</h2><span class="paleta"><i style="background:#2448b8"></i><i style="background:#e8334f"></i><i style="background:#ffc531"></i><i style="background:#4fc1f0"></i></span></div>
-        <p>Colores vivos, formas que flotan y rebotan, bordes gruesos como de sticker. Alegre y con mucha energía.</p>
-        <p class="ideal"><b>Ideal si</b> quieren destacar la etapa infantil y la alegría del colegio.</p>
-        <div class="botones"><a class="btn" href="5-recreo.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="5-recreo.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
-      </div>
-    </article>
-
-    <article class="tarjeta" style="--c:#14306e">
-      <a class="vista" href="6-horizonte.html" target="_blank" aria-label="Abrir la propuesta 6"><iframe data-src="6-horizonte.html" tabindex="-1" title="Vista previa de la propuesta 6"></iframe><span class="abrir-grande"></span></a>
-      <div class="info">
-        <div class="fila-titulo"><span class="num">6</span><h2>Horizonte</h2><span class="paleta"><i style="background:#f5f2ec"></i><i style="background:#14306e"></i><i style="background:#b5162f"></i><i style="background:#12161f"></i></span></div>
-        <p>Editorial de prestigio. Foto a pantalla completa, letras grandes y líneas finas, como un colegio internacional.</p>
-        <p class="ideal"><b>Ideal si</b> quieren proyectar excelencia académica y seriedad.</p>
-        <div class="botones"><a class="btn" href="6-horizonte.html" target="_blank">Abrir propuesta <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a><button class="btn claro ver-cel" data-cel="6-horizonte.html"><svg class="ico"><use href="iconos.svg#i-celular"/></svg> Ver en celular</button></div>
-      </div>
-    </article>
-  </main>
-
-  <aside class="siguiente">
-    <svg class="ico"><use href="iconos.svg#i-flecha"/></svg>
-    <div><h3>¿Qué sigue después de elegir?</h3><p>Con el estilo elegido se arman las páginas internas (niveles, circulares, admisiones y contacto). Después se reemplazan los textos y fotos de muestra por los del colegio.</p></div>
-  </aside>
+<div id="intro" data-ms="1900" data-salida="400" aria-hidden="true">
+  <div class="lluvia"></div>
+  <div class="placa">
+    <div class="escudo"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt=""></div>
+    <span class="globo">¡Hola, familia Bethlemita!</span>
+  </div>
 </div>
 
-<dialog class="celular" id="celular">
-  <div class="marco-cel"><iframe title="Vista en celular"></iframe><button class="cerrar" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="#inicio">
+      <span class="placa"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt="Escudo del colegio"></span>
+      <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#identidad">Institución</a>
+      <a href="#niveles">Niveles</a>
+      <a href="#admisiones">Admisiones</a>
+      <a href="#actualizate">Actualízate</a>
+      <a href="#actualizate" data-filtro="pastoral">Pastoral</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn chico" href="#admisiones">Preinscripción</a>
+    <button class="boton-menu" data-menu aria-expanded="false" aria-label="Abrir menú"><svg class="ico"><use href="iconos.svg#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <div class="cielo" aria-hidden="true"></div>
+    <i class="fugaz" aria-hidden="true"></i><i class="fugaz dos" aria-hidden="true"></i>
+    <div class="avioncito" aria-hidden="true"><svg viewBox="0 0 110 70"><path d="M8 34 100 6 70 62 52 40Z"/><path d="M100 6 52 40l-6 22 10-14"/><path d="M6 60c10-6 22-10 36-10" stroke-dasharray="4 7"/></svg></div>
+    <div class="envoltura">
+      <div>
+        <span class="etiqueta" data-entra="cae">⭐ Palmira, Valle del Cauca</span>
+        <h1 data-entra="sube" style="--i:1">Educamos en el <span class="pastilla">amor</span> para el servicio</h1>
+        <p class="bajada" data-entra="sube" style="--i:2">Comunidad educativa católica y mixta en Palmira. Acompañamos a cada estudiante desde los 2 años hasta el grado once, con inglés y francés, ciencia y valores.</p>
+        <div class="acciones" data-entra="sube" style="--i:3">
+          <a class="btn amarillo" href="#admisiones">Inscripciones 2026 – 2027 <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+          <a class="btn blanco" href="#niveles">Conoce el colegio</a>
+        </div>
+      </div>
+      <div class="burbuja-foto" data-entra="pega" style="--d:250ms">
+        <div class="flota">
+          <div class="mancha foto sticker-foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/pregarden-768x576.png" alt="Niños de preescolar en su salón"></div>
+          <div class="sticker giro"><div><b>¡Inscripciones abiertas!</b>2026 – 2027</div></div>
+          <div class="sticker bandera">¡Desde los 2 años!<span>Preescolar a once</span></div>
+        </div>
+      </div>
+    </div>
+    <svg class="ola-blanca" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c120-34 240-34 360 0s240 34 360 0 240-34 360 0 240 34 360 0v30H0z"/></svg>
+  </section>
+
+  <section class="accesos" aria-labelledby="t-accesos">
+    <span class="forma circulo" style="--c:var(--amarillo);--s:46px;left:4%;top:12%"></span>
+    <span class="forma estrella" style="--c:var(--celeste);--s:50px;right:5%;top:20%;--t:12s"><svg viewBox="0 0 24 24"><use href="iconos.svg#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae">Para las familias</span>
+        <h2 id="t-accesos" data-entra="sube">Lo que más se consulta, <span class="marcado">a un clic</span></h2>
+      </div>
+      <div class="rejilla-accesos">
+        <a class="acceso" href="#" style="--c:#fff1b3" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-circular"/></svg></span><span><b>Circulares y comunicados</b><span class="desc">Comunicados oficiales por año</span></span></a>
+        <a class="acceso" href="#" style="--c:#ffd6df;--i:1" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Normas y acuerdos vigentes</span></span></a>
+        <a class="acceso" href="#admisiones" style="--c:#d3f1ff;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg></span><span><b>Matrículas</b><span class="desc">Fechas, requisitos y documentos</span></span></a>
+        <a class="acceso" href="#" style="--c:#c9f5df;--i:3" data-entra="zoom"><span class="icono"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="Logo de PSE"></span><span><b>Pagos en línea</b><span class="desc">Pensiones y costos por PSE</span></span></a>
+        <a class="acceso" href="#" style="--c:#e6dcff;--i:4" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-plataforma"/></svg></span><span><b>Plataforma académica</b><span class="desc">Notas, tareas y observaciones</span></span></a>
+        <a class="acceso" href="#" style="--c:#ffe1c7;--i:5" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-uniforme"/></svg></span><span><b>Uniformes</b><span class="desc">Diario y educación física</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="niveles" id="niveles" aria-labelledby="t-niveles">
+    <span class="forma triangulo" style="--c:var(--rojo);--s:40px;left:5%;top:14%;--t:9s"></span>
+    <span class="forma circulo" style="--c:var(--verde);--s:38px;right:6%;bottom:12%;--t:10s"></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--celeste)">Niveles</span>
+        <h2 id="t-niveles" data-entra="sube">De los 2 años al <span class="marcado">grado once</span></h2>
+      </div>
+      <div class="rejilla-niveles">
+        <article class="nivel" style="--c:var(--amarillo);--r:-1.5deg" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/pregarden-768x576.png" alt="Niños de preescolar trabajando en sus mesas" loading="lazy"></div>
+          <span class="edad">Desde 2 años</span><h3>Preescolar</h3><p>Párvulos, prejardín, jardín y transición. Estimulación temprana y experiencias que preparan para aprender.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" style="--c:var(--celeste);--r:1deg;--i:1" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img class="sin-banda-der" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Fraternidad-768x421.png" alt="Estudiantes de primaria en el parque del colegio" loading="lazy"></div>
+          <span class="edad">1.º a 5.º</span><h3>Primaria</h3><p>Lectura, pensamiento lógico e inglés diario, con arte, deporte y proyectos en equipo.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" style="--c:var(--verde);--r:-1deg;--i:2" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Senior-768x421.png" alt="Estudiantes de básica secundaria con su bandera" loading="lazy"></div>
+          <span class="edad">6.º a 9.º</span><h3>Básica secundaria</h3><p>Alto desempeño académico, inglés y francés, y semillero de investigación y robótica.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" style="--c:var(--rosa);--r:1.5deg;--i:3" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Agentes-768x421.png" alt="Estudiantes de media académica" loading="lazy"></div>
+          <span class="edad">10.º y 11.º</span><h3>Media académica</h3><p>Preparación para las pruebas Saber 11 y para la vida universitaria, con liderazgo y servicio.</p>
+          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="porque" aria-labelledby="t-porque">
+    <span class="forma estrella" style="--c:var(--rojo);--s:44px;left:4%;top:10%;--t:11s"><svg viewBox="0 0 24 24"><use href="iconos.svg#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <span class="forma ola" style="--c:var(--lila);--s:70px;right:5%;top:16%;--t:9s"><svg viewBox="0 0 70 70"><path d="M5 40c10-14 20-14 30 0s20 14 30 0"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--verde)">Por qué Bethlemitas</span>
+        <h2 id="t-porque" data-entra="sube">Ciencia, cultura y evangelio <span class="marcado">en la misma aula</span></h2>
+      </div>
+      <div class="fila-ludicas">
+        <button class="ludicas" type="button" data-catalogo data-entra="zoom">
+          <div>
+            <h3>Lúdicas</h3>
+            <p>Danza, música, deporte, arte y mucho más. Conoce las actividades que acompañan la formación de nuestros estudiantes.</p>
+            <div class="iconos-ludicas" aria-hidden="true"><span><svg class="ico"><use href="iconos.svg#i-arte"/></svg></span><span><svg class="ico"><use href="iconos.svg#i-estrella"/></svg></span><span><svg class="ico"><use href="iconos.svg#i-robot"/></svg></span><span><svg class="ico"><use href="iconos.svg#i-valores"/></svg></span></div>
+          </div>
+          <span class="abrir">Ver el catálogo <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span>
+        </button>
+        <div class="cifra" data-entra="zoom" style="--i:1"><b data-cuenta="2">0</b><span>Lenguas extranjeras: inglés y francés</span></div>
+      </div>
+      <div class="rejilla-porque">
+        <article class="razon" style="--c:#fff1b3" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-idiomas"/></svg></span><h3>Inglés y francés</h3><p>Plan integral en las cuatro habilidades: leer, escribir, escuchar y hablar.</p></article>
+        <article class="razon" style="--c:#d3f1ff;--i:1;--rx:-40px;--rr:8deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-robot"/></svg></span><h3>Investigación y robótica</h3><p>Semillero donde los estudiantes diseñan, programan y presentan sus proyectos.</p></article>
+        <button class="razon" type="button" data-catalogo style="--c:#e6dcff;--i:2;--rx:40px;--rr:-6deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-arte"/></svg></span><h3>Lúdicas</h3><p>Actividades lúdicas, deportivas y artísticas en cada etapa.</p><span class="ver">Ver el catálogo <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></button>
+        <article class="razon" style="--c:#c9f5df;--i:3;--rx:90px;--rr:14deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-valores"/></svg></span><h3>Formación en valores</h3><p>Pastoral acogedora, inspirada en el carisma Bethlemita.</p></article>
+      </div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn" href="#admisiones">Agenda una visita <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="actualizate" id="actualizate" aria-labelledby="t-actualizate">
+    <span class="forma circulo" style="--c:var(--naranja);--s:40px;left:6%;bottom:14%;--t:9s"></span>
+    <div class="envoltura" data-pestanas>
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--naranja)">Actualízate</span>
+        <h2 id="t-actualizate" data-entra="sube">Lo bueno del colegio, <span class="marcado">para las familias</span></h2>
+      </div>
+      <div class="pestanas" role="tablist" data-entra="sube">
+        <button role="tab" data-pestana="todo" aria-selected="true">Todo</button>
+        <button role="tab" data-pestana="pastoral" aria-selected="false">Pastoral</button>
+        <button role="tab" data-pestana="comunidad" aria-selected="false">Comunidad</button>
+      </div>
+      <div class="rejilla-noticias">
+        <a class="noticia" href="#" data-panel="pastoral" style="--c:#e6dcff" data-entra="sube"><div class="foto"><img class="sin-banda-der" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Fraternidad-768x421.png" alt="Estudiantes en el parque del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Convivir en fraternidad</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="#" data-panel="pastoral" style="--c:#e6dcff;--i:1" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Educamos-Bethlemitas-768x384.png" alt="Grupo de estudiantes del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Educamos en el amor para el servicio</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="#" data-panel="comunidad" style="--c:#c9f5df;--i:2" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/05/BEthlemitas-educa-2024-768x421.png" alt="Estudiantes con trajes típicos" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Proyectos de construcción social</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="#" data-panel="comunidad" style="--c:#c9f5df;--i:3" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/05/Bethlemitas-social-2024-768x421.png" alt="Niños compartiendo en una actividad del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Compartir en familia</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+      </div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn amarillo" href="#">Ver todas las publicaciones <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="identidad" id="identidad" aria-labelledby="t-identidad">
+    <span class="forma estrella" style="--c:var(--amarillo);--s:46px;right:4%;top:8%;--t:12s"><svg viewBox="0 0 24 24"><use href="iconos.svg#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--verde)">Institución</span>
+        <h2 id="t-identidad" data-entra="sube">Quiénes <span class="marcado">somos</span></h2>
+      </div>
+      <div class="globos">
+        <div class="globo" data-entra="izq">
+          <span class="etiqueta">Misión</span>
+          <p>Somos una comunidad educativa católica, dinámica y creativa, que sirve a la sociedad desde su opción por Jesucristo y la vivencia de los valores humano-cristianos. Acompañamos el proceso de formación integral de nuestros estudiantes iluminados por el Carisma y la Espiritualidad Bethlemita, mediante una educación de calidad que integra ciencia, cultura y evangelio.</p>
+          <cite>Virtus et Sapientia · virtud y sabiduría</cite>
+        </div>
+        <div class="globo" data-entra="der" style="--i:1">
+          <span class="etiqueta">Visión</span>
+          <p>En el año 2028 seremos reconocidos como una comunidad educativa iluminada por el Evangelio, el Carisma y la Espiritualidad Bethlemita; líder en la formación integral de seres humanos competentes, con alto desempeño académico, espíritu investigativo, conciencia ecológica y habilidades en el idioma inglés, que promueve el compromiso por la construcción de un mundo más fraterno y solidario.</p>
+        </div>
+      </div>
+      <div class="fundadores">
+        <div class="fundador" data-entra="pega"><div class="marco-oval"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/hermano-pedro.jpg" alt="Santo Hermano Pedro de San José Betancur" loading="lazy"></div></div><h3>Santo Hermano Pedro de San José Betancur</h3><span>Fundador</span></div>
+        <p class="lema-fundadores" data-entra="zoom" style="--i:1">«Su vida, una irradiación del Dios de Belén y de la Cruz.»<small>Fundadores del Instituto Bethlemita</small></p>
+        <div class="fundador" data-entra="pega" style="--i:2"><div class="marco-oval"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Hermana-Encarnacion-Rosal-768x985.jpg" alt="Beata Madre María Encarnación Rosal" loading="lazy"></div></div><h3>Beata Madre María Encarnación Rosal</h3><span>Fundadora</span></div>
+      </div>
+      <div class="red" data-entra="sube">
+        <div><h3>Parte de la familia Bethlemita</h3><p>Hacemos parte de la red de colegios de las Hermanas Bethlemitas, presente en Colombia y en otros países de América.</p></div>
+        <a class="btn blanco" href="#">Nuestra historia <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="admisiones" id="admisiones" aria-labelledby="t-admisiones">
+    <span class="forma circulo" style="--c:var(--amarillo);--s:50px;left:5%;top:16%;--t:9s"></span>
+    <span class="forma estrella" style="--c:#fff;--s:46px;right:6%;bottom:16%;--t:11s"><svg viewBox="0 0 24 24"><use href="iconos.svg#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae">¡Inscripciones abiertas!</span>
+        <h2 id="t-admisiones" data-entra="sube">Año lectivo 2026 – 2027</h2>
+        <p data-entra="sube" style="--i:1">Tres pasos para que tu hijo o hija haga parte de la familia Bethlemita.</p>
+      </div>
+      <div class="tablero">
+        <svg class="ruta" viewBox="0 0 600 40" preserveAspectRatio="none"><path d="M0 20c100-30 200 30 300 0s200-30 300 0"/></svg>
+        <article class="casilla" style="--c:var(--amarillo);--r:-4deg" data-entra="cae"><span class="num">1</span><h3>Preinscripción</h3><p>Diligencia el formulario en línea con los datos del aspirante.</p></article>
+        <article class="casilla" style="--c:var(--celeste);--r:3deg;--i:1" data-entra="cae"><span class="num">2</span><h3>Entrevista y visita</h3><p>Conoce las instalaciones y a nuestro equipo de formación.</p></article>
+        <article class="casilla" style="--c:var(--verde);--r:-2deg;--i:2" data-entra="cae"><span class="num">3</span><h3>Matrícula</h3><p>Entrega de documentos y firma de la matrícula.</p></article>
+      </div>
+      <div class="acciones" data-entra="sube">
+        <a class="btn amarillo" href="#">Iniciar la preinscripción <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="btn blanco" href="https://wa.me/573206927961" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-wa"/></svg> Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trabaja" aria-labelledby="t-trabaja">
+    <div class="envoltura">
+      <div class="tarjeta" data-entra="zoom">
+        <span class="icono"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg></span>
+        <div><h2 id="t-trabaja">Trabaja con nosotros</h2><p>¿Quieres hacer parte de nuestro equipo de formación? Envía tu hoja de vida a <b class="correo">talentohumano@bethlemitaspalmira.edu.co</b></p></div>
+        <a class="btn blanco" href="mailto:talentohumano@bethlemitaspalmira.edu.co"><svg class="ico"><use href="iconos.svg#i-mail"/></svg> Enviar mi hoja de vida</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<svg class="ola-pie" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30c120-30 240-30 360 0s240 30 360 0 240-30 360 0 240 30 360 0v30H0z"/></svg>
+<footer class="pie" id="contacto">
+  <div class="envoltura">
+    <div class="columnas">
+      <div data-entra="sube">
+        <a class="marca" href="#inicio">
+          <span class="placa"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt=""></span>
+          <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
+        </a>
+        <p class="lema">Educamos en el amor para el servicio. Comunidad educativa católica y mixta en Palmira, Valle del Cauca.</p>
+      </div>
+      <div data-entra="sube" style="--i:1">
+        <h4>Contacto</h4>
+        <ul>
+          <li><svg class="ico"><use href="iconos.svg#i-mapa"/></svg>Cra. 30 # 27-19, Palmira, Valle del Cauca</li>
+          <li><a href="tel:+576022870303"><svg class="ico"><use href="iconos.svg#i-tel"/></svg>(602) 287 0303 · 287 2525</a></li>
+          <li><a href="https://wa.me/573206927961"><svg class="ico"><use href="iconos.svg#i-wa"/></svg>+57 320 692 7961</a></li>
+          <li><a href="mailto:secretaria@bethlemitaspalmira.edu.co"><svg class="ico"><use href="iconos.svg#i-mail"/></svg>secretaria@bethlemitaspalmira.edu.co</a></li>
+        </ul>
+      </div>
+      <div data-entra="sube" style="--i:2">
+        <h4>El colegio</h4>
+        <ul>
+          <li><a href="#identidad">Misión y visión</a></li>
+          <li><a href="#niveles">Niveles</a></li>
+          <li><a href="#admisiones">Admisiones</a></li>
+          <li><a href="#actualizate">Actualízate</a></li>
+          <li><a href="#actualizate" data-filtro="pastoral">Pastoral</a></li>
+          <li><a href="#">Manual de convivencia</a></li>
+          <li><a href="mailto:talentohumano@bethlemitaspalmira.edu.co">Trabaja con nosotros</a></li>
+        </ul>
+      </div>
+      <div data-entra="sube" style="--i:3">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/bethlemitaspalmira_/" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-insta"/></svg>@bethlemitaspalmira_</a></li>
+          <li><a href="#">Política de tratamiento de datos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="aliados" data-entra="sube">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/casageneral.png" alt="Casa General Hermanas Bethlemitas" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/conferencia-episcopal.png" alt="Conferencia Episcopal de Colombia" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/conferencia-nacional-catolica.png" alt="CONACED" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/icfes.png" alt="ICFES" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/mineducacion.png" alt="Ministerio de Educación Nacional" loading="lazy">
+    </div>
+    <p class="derechos">© 2026 Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira</p>
+  </div>
+</footer>
+
+<!-- Catálogo de lúdicas (ítem 9). La lista es de muestra hasta que el colegio envíe la real. -->
+<dialog class="catalogo" id="catalogo" aria-labelledby="t-catalogo">
+  <div class="cab"><h2 id="t-catalogo">Lúdicas</h2><button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+  <p class="muestra"><b>Lista de muestra.</b> El colegio nos enviará las lúdicas disponibles para reemplazar estas.</p>
+  <div class="lista">
+    <div class="item" style="--c:#fff1b3"><b>Danza</b><span>Folclor y danza moderna</span></div>
+    <div class="item" style="--c:#ffd6df"><b>Música</b><span>Coro e instrumentos</span></div>
+    <div class="item" style="--c:#d3f1ff"><b>Teatro</b><span>Expresión y escena</span></div>
+    <div class="item" style="--c:#c9f5df"><b>Artes plásticas</b><span>Dibujo, pintura y manualidades</span></div>
+    <div class="item" style="--c:#e6dcff"><b>Fútbol</b><span>Formación deportiva</span></div>
+    <div class="item" style="--c:#ffe1c7"><b>Baloncesto</b><span>Formación deportiva</span></div>
+    <div class="item" style="--c:#fff1b3"><b>Ajedrez</b><span>Pensamiento estratégico</span></div>
+    <div class="item" style="--c:#d3f1ff"><b>Robótica</b><span>Semillero de investigación</span></div>
+  </div>
+</dialog>
+
+<!-- Versión y cambios de esta ronda, para revisar con el colegio -->
+<button class="version" type="button" id="ver-cambios"><b>V2</b> Ronda 1 aplicada · Ver cambios</button>
+<dialog class="cambios" id="cambios" aria-labelledby="t-cambios">
+  <div class="cab"><h2 id="t-cambios">Versión 2 · cambios de la ronda 1</h2><button type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+  <div class="contenido">
+    <p style="margin-top:14px">Estilo elegido: <b>Recreo</b>, con detalles inspirados en la página del Colegio Bethlemitas Medellín. Los números son los de la planilla de correcciones.</p>
+    <div class="hecho">
+      <h3>Aplicado</h3>
+      <ul>
+        <li><i>2</i><span>Colores más vivos en todo el sitio.</span></li>
+        <li><i>3</i><span>Portada en azul oscuro con estrellas que se mueven.</span></li>
+        <li><i>4</i><span>Fotos recortadas con borde blanco, que aparecen al bajar.</span></li>
+        <li><i>5</i><span>Fundadores en marcos ovalados de madera, como los del colegio, con su frase.</span></li>
+        <li><i>6</i><span>Pagos en línea con el logo de PSE.</span></li>
+        <li><i>7</i><span>Se quitó 1888 y los años de historia de todo el sitio.</span></li>
+        <li><i>8</i><span>Se quitó «15 grados».</span></li>
+        <li><i>9–10</i><span>Lúdicas: bloque y tarjeta que abren el catálogo.</span></li>
+        <li><i>11</i><span>Año lectivo 2026 – 2027.</span></li>
+        <li><i>12</i><span>Nombre completo de los fundadores.</span></li>
+        <li><i>13</i><span>Misión y visión completas.</span></li>
+        <li><i>15–17</i><span>Sale «Lo último que envió el colegio»; entra «Actualízate», con la categoría Pastoral y su botón en el menú.</span></li>
+        <li><i>18</i><span>Trabaja con nosotros, con el correo de talento humano.</span></li>
+      </ul>
+    </div>
+    <div class="confirmar">
+      <h3>Por confirmar</h3>
+      <ul>
+        <li><i>14</i><span>Niveles: separamos Básica secundaria (6.º a 9.º) y Media académica (10.º y 11.º). ¿Es correcto?</span></li>
+        <li><i>15</i><span>El acceso «Circulares y comunicados» de arriba se mantiene. ¿Les parece bien?</span></li>
+      </ul>
+    </div>
+    <div class="pendiente">
+      <h3>Lo que necesitamos del colegio</h3>
+      <ul>
+        <li><i>19</i><span>Fotos recientes del colegio.</span></li>
+        <li><i>20</i><span>Proceso de admisión de cada nivel.</span></li>
+        <li><i>21</i><span>Manual de convivencia.</span></li>
+        <li><i>22</i><span>Historia del colegio.</span></li>
+        <li><i>23</i><span>Lista de lúdicas disponibles.</span></li>
+      </ul>
+    </div>
+  </div>
 </dialog>
 
 <script>
-// Escala de las vistas previas (cada propuesta se muestra a 1440 px de ancho).
-const escalar = () => document.querySelectorAll(".vista").forEach(v => v.style.setProperty("--s", v.clientWidth / 1440));
-addEventListener("resize", escalar);
-escalar();
-// Cada vista previa carga recién al acercarse a la pantalla.
-const cargar = f => { if (!f.src || f.src === "about:blank") f.src = f.dataset.src; };
-if ("IntersectionObserver" in window) {
-  const io = new IntersectionObserver(l => l.forEach(x => { if (x.isIntersecting) { cargar(x.target); io.unobserve(x.target); } }), { rootMargin: "300px 0px" });
-  document.querySelectorAll(".vista iframe").forEach(f => io.observe(f));
-} else document.querySelectorAll(".vista iframe").forEach(cargar);
+// Lluvia de figuras de la intro.
+(() => {
+  const ll = document.querySelector("#intro .lluvia");
+  if (ll) {
+    const col = ["#ffcc00", "#e11d48", "#22c3ff", "#16c172", "#ff7a1a", "#8b5cf6", "#ffffff", "#ff5fa2"];
+    const alto = innerHeight;
+    let h = "";
+    for (let i = 0; i < 22; i++) {
+      const s = 26 + Math.round(Math.random() * 46);
+      const y = Math.round(alto * (.55 + Math.random() * .4));
+      h += `<i style="--x:${Math.round(Math.random() * 96)}%;--s:${s}px;--c:${col[i % col.length]};--y:${y}px;--r:${Math.round(Math.random() * 300 - 150)}deg;--dl:${i * 40}ms;--br:${i % 3 ? "50%" : "10px"}"></i>`;
+    }
+    ll.innerHTML = h;
+  }
 
-// Vista de celular en un marco de 390 × 844.
-const dlg = document.getElementById("celular");
-const marco = dlg.querySelector(".marco-cel");
-const ifr = dlg.querySelector("iframe");
-const ajustarCel = () => marco.style.setProperty("--sc", Math.min(1, (innerHeight - 40) / 892));
-document.querySelectorAll("[data-cel]").forEach(b => b.addEventListener("click", () => {
-  ifr.src = b.dataset.cel;
-  ajustarCel();
-  dlg.showModal();
-}));
-dlg.querySelector(".cerrar").addEventListener("click", () => dlg.close());
-dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
-dlg.addEventListener("close", () => { ifr.src = "about:blank"; });
-addEventListener("resize", ajustarCel);
+  // Cielo de la portada: estrellas que titilan y se desplazan despacio.
+  const cielo = document.querySelector(".cielo");
+  if (cielo) {
+    const estrella = '<svg viewBox="0 0 24 24"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg>';
+    const tonos = ["#ffffff", "#ffffff", "#ffe066", "#bfe9ff"];
+    const n = innerWidth < 760 ? 26 : 46;
+    let h = "";
+    for (let i = 0; i < n; i++) {
+      const grande = i % 5 === 0;
+      const s = grande ? 14 + Math.random() * 12 : 3 + Math.random() * 4;
+      h += `<i class="${grande ? "" : "punto"}" style="--x:${(Math.random() * 100).toFixed(1)}%;--y:${(Math.random() * 92).toFixed(1)}%;--s:${s.toFixed(1)}px;--c:${tonos[i % tonos.length]};` +
+        `--t:${(2 + Math.random() * 3).toFixed(1)}s;--v:${(30 + Math.random() * 40).toFixed(0)}s;--dl:-${(Math.random() * 4).toFixed(1)}s;--dl2:-${(Math.random() * 40).toFixed(0)}s;` +
+        `--dx:${(Math.random() * 120 - 60).toFixed(0)}px;--dy:${(Math.random() * 60 - 10).toFixed(0)}px;--dr:${grande ? 180 : 0}deg">${grande ? estrella : ""}</i>`;
+    }
+    cielo.innerHTML = h;
+  }
+
+  // Catálogo de lúdicas y panel de cambios.
+  const dialogo = (id, disparadores) => {
+    const d = document.getElementById(id);
+    document.querySelectorAll(disparadores).forEach(b => b.addEventListener("click", e => { e.preventDefault(); d.showModal(); }));
+    d.querySelector(".cab button").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });
+  };
+  dialogo("catalogo", "[data-catalogo]");
+  dialogo("cambios", "#ver-cambios");
+
+  // "Pastoral" en el menú abre Actualízate con ese filtro.
+  document.querySelectorAll('[data-filtro="pastoral"]').forEach(a => a.addEventListener("click", () => {
+    document.querySelector('.pestanas [data-pestana="pastoral"]')?.click();
+  }));
+})();
 </script>
+<script src="comun.js"></script>
 </body>
 </html>
