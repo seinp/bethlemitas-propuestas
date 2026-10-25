@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="only light">
-<title>Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira — nuevo sitio (versión 3)</title>
+<title>Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira — nuevo sitio (versión 4)</title>
 <meta name="description" content="Colegio Sagrado Corazón de Jesús Bethlemitas Palmira: comunidad educativa católica y mixta. Preescolar, primaria, básica secundaria y media académica, con inglés y francés.">
-<meta property="og:title" content="Nuevo sitio web · Bethlemitas Palmira (versión 3, en construcción)">
-<meta property="og:description" content="Así va quedando el nuevo sitio del colegio, con las correcciones de la segunda ronda.">
+<meta property="og:title" content="Nuevo sitio web · Bethlemitas Palmira (versión 4)">
+<meta property="og:description" content="Así va quedando el nuevo sitio del colegio, con las correcciones de la tercera ronda.">
 <meta property="og:image" content="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/armedia2-1024x576.jpeg">
 <meta property="og:image:width" content="1024">
 <meta property="og:image:height" content="576">
@@ -204,6 +204,10 @@ dialog.catalogo::backdrop { background: rgba(10,29,120,.6); }
 .catalogo .item { padding: 18px 16px; border-radius: 20px; background: var(--c); border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); }
 .catalogo .item b { display: block; font: 700 21px/1.1 var(--titulo); }
 .catalogo .item span { display: block; margin-top: 6px; font-size: 14px; font-weight: 600; }
+.catalogo .muestra.anio { background: #fff; border-style: solid; }
+.catalogo .item.inscribirme { --c: var(--amarillo); color: var(--tinta); text-decoration: none; display: flex; flex-direction: column; justify-content: center; transition: transform .2s; }
+.catalogo .item.inscribirme span { display: inline-flex; align-items: center; gap: 6px; }
+.catalogo .item.inscribirme:hover { transform: translate(-2px, -2px) rotate(-1.5deg); }
 
 /* ---------- Actualízate (ítems 15–17) ---------- */
 .actualizate { background: var(--fondo); }
@@ -424,6 +428,15 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
   .acceso .icono.logo-pse { width: 72px; }
   .nota-pse { font-size: 14.5px !important; }
 }
+/* Teléfono: el catálogo de lúdicas en dos columnas (#36) */
+@media (max-width: 600px) {
+  .catalogo .lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px 16px 20px; }
+  .catalogo .item { padding: 14px 12px; border-radius: 16px; }
+  .catalogo .item b { font-size: 17px; }
+  .catalogo .item span { font-size: 13px; }
+  .catalogo .muestra { margin: 14px 16px 0; }
+  .catalogo .cab h2 { font-size: 26px; }
+}
 </style>
 </head>
 <body>
@@ -474,7 +487,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       </div>
       <div class="burbuja-foto" data-entra="pega" style="--d:250ms">
         <div class="flota">
-          <div class="mancha foto sticker-foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/pregarden-768x576.png" alt="Niños de preescolar en su salón"></div>
+          <div class="mancha foto sticker-foto"><img src="media/portada-preescolar.jpg" alt="Niños de preescolar celebrando en su salón"></div>
           <div class="sticker giro"><div><b>¡Inscripciones abiertas!</b>2026 – 2027</div></div>
           <div class="sticker bandera">¡Desde los 2 años!<span>Preescolar a once</span></div>
         </div>
@@ -493,11 +506,11 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       </div>
       <div class="rejilla-accesos">
         <a class="acceso acceso-pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener" style="--c:#c9f5df" data-entra="zoom"><span class="icono logo-pse"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="Logo de PSE"></span><span><b>Pagos en línea</b><span class="desc">Pensiones, matrícula e inscripción por PSE</span><span class="pagar">Pagar ahora →</span></span></a>
-        <a class="acceso" href="#" style="--c:#fff1b3;--i:1" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-circular"/></svg></span><span><b>Circulares y comunicados</b><span class="desc">Comunicados oficiales por año</span></span></a>
-        <a class="acceso" href="#" style="--c:#ffd6df;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Normas y acuerdos vigentes</span></span></a>
+        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/circulares-y-comunicados-2026-2027/" style="--c:#fff1b3;--i:1" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-circular"/></svg></span><span><b>Circulares y comunicados</b><span class="desc">Comunicados oficiales por año</span></span></a>
+        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/manual-de-convivencia-2/" style="--c:#ffd6df;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Año lectivo 2026 – 2027</span></span></a>
         <a class="acceso" href="#admisiones" style="--c:#d3f1ff;--i:3" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg></span><span><b>Matrículas</b><span class="desc">Fechas, requisitos y documentos</span></span></a>
-        <a class="acceso" href="#" style="--c:#e6dcff;--i:4" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-plataforma"/></svg></span><span><b>Plataforma académica</b><span class="desc">Notas, tareas y observaciones</span></span></a>
-        <a class="acceso" href="#" style="--c:#ffe1c7;--i:5" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-uniforme"/></svg></span><span><b>Uniformes</b><span class="desc">Diario y educación física</span></span></a>
+        <a class="acceso" href="https://q.plataformaintegra.net/bethlemitaspalmira/" target="_blank" rel="noopener" style="--c:#e6dcff;--i:4" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-plataforma"/></svg></span><span><b>Plataforma académica</b><span class="desc">Notas, tareas y observaciones</span></span></a>
+        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/uniforme/" style="--c:#ffe1c7;--i:5" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-uniforme"/></svg></span><span><b>Uniformes</b><span class="desc">Diario y educación física</span></span></a>
       </div>
     </div>
   </section>
@@ -513,27 +526,27 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       <div class="rejilla-niveles">
         <article class="nivel" style="--c:var(--amarillo);--r:-1.5deg" data-entra="cae">
           <div class="cabeza"></div>
-          <div class="circulo-foto foto sticker-foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/pregarden-768x576.png" alt="Niños de preescolar trabajando en sus mesas" loading="lazy"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="media/nivel-preescolar.jpg" alt="Niños de preescolar en su salón" loading="lazy"></div>
           <span class="edad">Desde 2 años</span><h3>Preescolar</h3><p>Párvulos, prejardín, jardín y transición. Estimulación temprana y experiencias que preparan para aprender.</p>
-          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/preescolar/">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
         </article>
         <article class="nivel" style="--c:var(--celeste);--r:1deg;--i:1" data-entra="cae">
           <div class="cabeza"></div>
-          <div class="circulo-foto foto sticker-foto"><img class="sin-banda-der" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Fraternidad-768x421.png" alt="Estudiantes de primaria en el parque del colegio" loading="lazy"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="media/nivel-primaria.jpg" alt="Estudiantes de primaria jugando en ronda" loading="lazy"></div>
           <span class="edad">1.º a 5.º</span><h3>Primaria</h3><p>Lectura, pensamiento lógico e inglés diario, con arte, deporte y proyectos en equipo.</p>
-          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/primaria/">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
         </article>
         <article class="nivel" style="--c:var(--verde);--r:-1deg;--i:2" data-entra="cae">
           <div class="cabeza"></div>
-          <div class="circulo-foto foto sticker-foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Senior-768x421.png" alt="Estudiantes de básica secundaria con su bandera" loading="lazy"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="media/nivel-secundaria.jpg" alt="Estudiantes en la sala de sistemas" loading="lazy"></div>
           <span class="edad">6.º a 9.º</span><h3>Básica secundaria</h3><p>Alto desempeño académico, inglés y francés, y semillero de investigación y robótica.</p>
-          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/bachillerato/">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
         </article>
         <article class="nivel" style="--c:var(--rosa);--r:1.5deg;--i:3" data-entra="cae">
           <div class="cabeza"></div>
-          <div class="circulo-foto foto sticker-foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Agentes-768x421.png" alt="Estudiantes de media académica" loading="lazy"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="media/nivel-media.jpg" alt="Estudiantes de media académica en la cancha del colegio" loading="lazy"></div>
           <span class="edad">10.º y 11.º</span><h3>Media académica</h3><p>Preparación para las pruebas Saber 11 y para la vida universitaria, con liderazgo y servicio.</p>
-          <a class="mas" href="#">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/bachillerato/">Conocer el nivel <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
         </article>
       </div>
     </div>
@@ -551,7 +564,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <button class="ludicas" type="button" data-catalogo data-entra="zoom">
           <div>
             <h3>Lúdicas</h3>
-            <p>Danza, música, deporte, arte y mucho más. Conoce las actividades que acompañan la formación de nuestros estudiantes.</p>
+            <p>Danza, deporte, arte, robótica y mucho más. Conoce los 11 talleres lúdicos del año lectivo 2026 – 2027.</p>
             <div class="iconos-ludicas" aria-hidden="true"><span><svg class="ico"><use href="iconos.svg#i-arte"/></svg></span><span><svg class="ico"><use href="iconos.svg#i-estrella"/></svg></span><span><svg class="ico"><use href="iconos.svg#i-robot"/></svg></span><span><svg class="ico"><use href="iconos.svg#i-valores"/></svg></span></div>
           </div>
           <span class="abrir">Ver el catálogo <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span>
@@ -561,7 +574,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       <div class="rejilla-porque">
         <article class="razon" style="--c:#fff1b3" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-idiomas"/></svg></span><h3>Inglés y francés</h3><p>Plan integral en las cuatro habilidades: leer, escribir, escuchar y hablar.</p></article>
         <article class="razon" style="--c:#d3f1ff;--i:1;--rx:-40px;--rr:8deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-robot"/></svg></span><h3>Investigación y robótica</h3><p>Semillero donde los estudiantes diseñan, programan y presentan sus proyectos.</p></article>
-        <button class="razon" type="button" data-catalogo style="--c:#e6dcff;--i:2;--rx:40px;--rr:-6deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-arte"/></svg></span><h3>Lúdicas</h3><p>Actividades lúdicas, deportivas y artísticas en cada etapa.</p><span class="ver">Ver el catálogo <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></button>
+        <button class="razon" type="button" data-catalogo style="--c:#e6dcff;--i:2;--rx:40px;--rr:-6deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-arte"/></svg></span><h3>Lúdicas</h3><p>Talleres de danza, deporte, arte y tecnología en cada etapa.</p><span class="ver">Ver el catálogo <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></button>
         <article class="razon" style="--c:#c9f5df;--i:3;--rx:90px;--rr:14deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="iconos.svg#i-valores"/></svg></span><h3>Formación en valores</h3><p>Pastoral acogedora, inspirada en el carisma Bethlemita.</p></article>
       </div>
       <div class="pie-seccion" data-entra="sube"><a class="btn" href="#admisiones">Agenda una visita <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
@@ -589,18 +602,18 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
           <p>La Pastoral educativa, como acción evangelizadora, dinamiza el quehacer escolar. A la luz del carisma Bethlemita e inspirada en el testimonio de los fundadores, está al servicio del proyecto educativo; las personas y los espacios favorecen un ambiente animado por el espíritu evangélico de caridad y libertad.</p>
           <p>Planear, realizar, controlar y velar por la realización de la Gestión de Pastoral, creando estrategias, definiendo procesos y acompañando a la comunidad educativa en su formación integral.</p>
           <div class="acciones">
-            <a class="btn chico" href="#">Conoce más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+            <a class="btn chico" href="https://www.bethlemitaspalmira.edu.co/coordinacion-de-pastoral/">Conoce más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
             <a class="btn chico blanco" href="mailto:pastoral@bethlemitaspalmira.edu.co"><svg class="ico"><use href="iconos.svg#i-mail"/></svg> Escribir a pastoral</a>
           </div>
         </div>
       </article>
       <div class="rejilla-noticias">
-        <a class="noticia" href="#" data-panel="pastoral" style="--c:#e6dcff" data-entra="sube"><div class="foto"><img class="sin-banda-der" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Fraternidad-768x421.png" alt="Estudiantes en el parque del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Convivir en fraternidad</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
-        <a class="noticia" href="#" data-panel="pastoral" style="--c:#e6dcff;--i:1" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Educamos-Bethlemitas-768x384.png" alt="Grupo de estudiantes del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Educamos en el amor para el servicio</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
-        <a class="noticia" href="#" data-panel="comunidad" style="--c:#c9f5df;--i:2" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/05/BEthlemitas-educa-2024-768x421.png" alt="Estudiantes con trajes típicos" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Proyectos de construcción social</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
-        <a class="noticia" href="#" data-panel="comunidad" style="--c:#c9f5df;--i:3" data-entra="sube"><div class="foto"><img class="sin-banda" src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/05/Bethlemitas-social-2024-768x421.png" alt="Niños compartiendo en una actividad del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Compartir en familia</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/coordinacion-de-pastoral/" data-panel="pastoral" style="--c:#e6dcff" data-entra="sube"><div class="foto"><img src="media/act-pastoral.jpg" alt="Celebración en la capilla del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Coordinación de Pastoral</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/nuestros-fundadores/" data-panel="pastoral" style="--c:#e6dcff;--i:1" data-entra="sube"><div class="foto"><img src="media/act-fundadores.jpg" alt="Estudiantes en la capilla del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Nuestros fundadores</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/alianza-familia-y-colegio/" data-panel="comunidad" style="--c:#c9f5df;--i:2" data-entra="sube"><div class="foto"><img src="media/act-familia.jpg" alt="Estudiantes reunidos en el auditorio" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Alianza familia y colegio</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/escucha-activa/" data-panel="comunidad" style="--c:#c9f5df;--i:3" data-entra="sube"><div class="foto"><img src="media/act-escucha.jpg" alt="Estudiantes leyendo juntos" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Escucha activa</h3><span class="leer">Leer más <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></div></a>
       </div>
-      <div class="pie-seccion" data-entra="sube"><a class="btn amarillo" href="#">Ver todas las publicaciones <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn amarillo" href="https://www.bethlemitaspalmira.edu.co/circulares-y-comunicados-2026-2027/">Ver circulares y comunicados <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a></div>
     </div>
   </section>
 
@@ -629,7 +642,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
       </div>
       <div class="red" data-entra="sube">
         <div><h3>Parte de la familia Bethlemita</h3><p>Hacemos parte de la red de colegios de las Hermanas Bethlemitas, presente en Colombia y en otros países de América.</p></div>
-        <a class="btn blanco" href="#">Nuestra historia <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="btn blanco" href="https://www.bethlemitaspalmira.edu.co/historia/">Nuestra historia <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
       </div>
     </div>
   </section>
@@ -651,7 +664,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <article class="casilla" style="--c:var(--verde);--r:-2deg;--i:2" data-entra="cae"><span class="num">3</span><h3>Matrícula</h3><p>Entrega de documentos y firma de la matrícula.</p></article>
       </div>
       <div class="acciones" data-entra="sube">
-        <a class="btn amarillo" href="#">Iniciar la preinscripción <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
+        <a class="btn amarillo" href="https://www.bethlemitaspalmira.edu.co/p/">Iniciar la preinscripción <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></a>
         <a class="btn blanco" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE <svg class="ico"><use href="iconos.svg#i-pago"/></svg></a>
         <button class="btn blanco" type="button" data-requisitos><svg class="ico"><use href="iconos.svg#i-matricula"/></svg> Ver requisitos</button>
         <a class="btn blanco" href="https://wa.me/573206927961" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-wa"/></svg> WhatsApp</a>
@@ -698,7 +711,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
           <li><a href="#admisiones">Admisiones</a></li>
           <li><a href="#actualizate">Actualízate</a></li>
           <li><a href="#actualizate" data-filtro="pastoral">Pastoral</a></li>
-          <li><a href="#">Manual de convivencia</a></li>
+          <li><a href="https://www.bethlemitaspalmira.edu.co/manual-de-convivencia-2/">Manual de convivencia</a></li>
           <li><a href="mailto:talentohumano@bethlemitaspalmira.edu.co">Trabaja con nosotros</a></li>
         </ul>
       </div>
@@ -706,7 +719,7 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <h4>Síguenos</h4>
         <ul>
           <li><a href="https://www.instagram.com/bethlemitaspalmira_/" target="_blank" rel="noopener"><svg class="ico"><use href="iconos.svg#i-insta"/></svg>@bethlemitaspalmira_</a></li>
-          <li><a href="#">Política de tratamiento de datos</a></li>
+          <li><a href="https://www.bethlemitaspalmira.edu.co/politica-de-tratamiento-de-datos-personales/">Política de tratamiento de datos</a></li>
         </ul>
       </div>
     </div>
@@ -721,19 +734,23 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
   </div>
 </footer>
 
-<!-- Catálogo de lúdicas (ítem 9). La lista es de muestra hasta que el colegio envíe la real. -->
+<!-- Catálogo de lúdicas (#9, #36): talleres lúdicos 2026 – 2027, tal como los presenta el colegio en su reel. -->
 <dialog class="catalogo" id="catalogo" aria-labelledby="t-catalogo">
-  <div class="cab"><h2 id="t-catalogo">Lúdicas</h2><button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
-  <p class="muestra"><b>Lista de muestra.</b> El colegio nos enviará las lúdicas disponibles para reemplazar estas.</p>
+  <div class="cab"><h2 id="t-catalogo">Talleres lúdicos</h2><button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+  <p class="muestra anio">Año lectivo <b>2026 – 2027</b>. La inscripción se hace en línea, con la cuenta del estudiante o del familiar.</p>
   <div class="lista">
-    <div class="item" style="--c:#fff1b3"><b>Danza</b><span>Folclor y danza moderna</span></div>
-    <div class="item" style="--c:#ffd6df"><b>Música</b><span>Coro e instrumentos</span></div>
-    <div class="item" style="--c:#d3f1ff"><b>Teatro</b><span>Expresión y escena</span></div>
-    <div class="item" style="--c:#c9f5df"><b>Artes plásticas</b><span>Dibujo, pintura y manualidades</span></div>
-    <div class="item" style="--c:#e6dcff"><b>Fútbol</b><span>Formación deportiva</span></div>
-    <div class="item" style="--c:#ffe1c7"><b>Baloncesto</b><span>Formación deportiva</span></div>
-    <div class="item" style="--c:#fff1b3"><b>Ajedrez</b><span>Pensamiento estratégico</span></div>
-    <div class="item" style="--c:#d3f1ff"><b>Robótica</b><span>Semillero de investigación</span></div>
+    <div class="item" style="--c:#ffd6df"><b>Baile latino</b><span>Danza</span></div>
+    <div class="item" style="--c:#d3f1ff"><b>Semillero en robótica</b><span>Ciencia y tecnología</span></div>
+    <div class="item" style="--c:#c9f5df"><b>Fútbol prejuvenil</b><span>Deporte</span></div>
+    <div class="item" style="--c:#fff1b3"><b>Taller de manualidades</b><span>Arte</span></div>
+    <div class="item" style="--c:#ffe1c7"><b>Danza folclórica</b><span>Danza</span></div>
+    <div class="item" style="--c:#e6dcff"><b>Pintura</b><span>Arte</span></div>
+    <div class="item" style="--c:#d3f1ff"><b>Gamer</b><span>Tecnología</span></div>
+    <div class="item" style="--c:#c9f5df"><b>Voleibol</b><span>Deporte</span></div>
+    <div class="item" style="--c:#fff1b3"><b>Lectura y escritura creativa</b><span>Letras</span></div>
+    <div class="item" style="--c:#ffd6df"><b>Baloncesto</b><span>Deporte</span></div>
+    <div class="item" style="--c:#ffe1c7"><b>Fútbol infantil</b><span>Deporte</span></div>
+    <a class="item inscribirme" href="https://docs.google.com/forms/d/e/1FAIpQLSfrWk2VaPWjxSLr0OCZyId4DxOoj5mvk-L9Mhu3gbFI-BQRZA/viewform" target="_blank" rel="noopener"><b>Inscribirme</b><span>Formulario de inscripción <svg class="ico"><use href="iconos.svg#i-flecha"/></svg></span></a>
   </div>
 </dialog>
 
@@ -769,38 +786,34 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
 </dialog>
 
 <!-- Versión y cambios de esta ronda, para revisar con el colegio -->
-<button class="version" type="button" id="ver-cambios"><b>V3</b> Ronda 2 aplicada · Ver cambios</button>
+<button class="version" type="button" id="ver-cambios"><b>V4</b> Ronda 3 aplicada · Ver cambios</button>
 <dialog class="cambios" id="cambios" aria-labelledby="t-cambios">
-  <div class="cab"><h2 id="t-cambios">Versión 3 · cambios de la ronda 2</h2><button type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
+  <div class="cab"><h2 id="t-cambios">Versión 4 · cambios de la ronda 3</h2><button type="button" aria-label="Cerrar"><svg class="ico"><use href="iconos.svg#i-cerrar"/></svg></button></div>
   <div class="contenido">
-    <p style="margin-top:14px">Estilo elegido: <b>Recreo</b>. Los números son los de la planilla de correcciones (la ronda 1 fue del #1 al #23).</p>
+    <p style="margin-top:14px">Estilo elegido: <b>Recreo</b>. Los números son los de la planilla de correcciones (la ronda 2 terminó en el #31).</p>
     <div class="hecho">
-      <h3>Aplicado en la ronda 2</h3>
+      <h3>Aplicado en la ronda 3</h3>
       <ul>
-        <li><i>24</i><span>El título de los accesos ahora dice «Información a un clic».</span></li>
-        <li><i>25</i><span>Pagos PSE es el primer acceso y tiene botón arriba, en la cabecera. Lleva al portal de pagos del colegio.</span></li>
-        <li><i>26</i><span>En admisiones: «El valor de la inscripción se cancela por PSE…», con su botón.</span></li>
-        <li><i>27</i><span>Pastoral con su coordinadora, la Hna Milena Patricia Vargas Mayorga: el mismo texto, su foto, «Conoce más» y el correo de pastoral.</span></li>
-        <li><i>29</i><span>«Ver requisitos» en admisiones, con las correcciones de la hoja.</span></li>
-        <li><i>15</i><span>Confirmado: el acceso «Circulares y comunicados» se queda.</span></li>
+        <li><i>32</i><span>Manual de convivencia con el año lectivo 2026 – 2027.</span></li>
+        <li><i>34</i><span>Confirmado: Básica secundaria (6.º a 9.º) y Media académica (10.º y 11.º) van separadas.</span></li>
+        <li><i>35</i><span>Fotos recientes del colegio en la portada, los niveles y Actualízate.</span></li>
+        <li><i>36</i><span>Catálogo de lúdicas con los 11 talleres lúdicos 2026 – 2027.</span></li>
+        <li><i>37</i><span>Botón «Inscribirme» al formulario de los talleres.</span></li>
+        <li><i>—</i><span>Cada botón lleva ya a su página real del colegio (niveles, circulares, manual, uniformes, plataforma, pastoral, historia, preinscripción).</span></li>
       </ul>
     </div>
     <div class="confirmar">
       <h3>Por confirmar</h3>
       <ul>
-        <li><i>14</i><span>Niveles: ¿Básica secundaria (6.º a 9.º) y Media académica (10.º y 11.º) separadas?</span></li>
-        <li><i>28</i><span>Manual de convivencia: el PDF dice 2025-2026. ¿Lo mostramos como 2026 – 2027 o nos envían el actualizado?</span></li>
-        <li><i>31</i><span>La reseña histórica del manual dice que el colegio se fundó en 1888, y en la ronda 1 se pidió no poner ese año. ¿Cómo la publicamos?</span></li>
+        <li><i>33</i><span>La historia y el año de fundación: la reseña del manual dice 1888 y en la ronda 1 se pidió no poner ese año. Mientras tanto no aparece.</span></li>
       </ul>
     </div>
     <div class="pendiente">
       <h3>Lo que necesitamos del colegio</h3>
       <ul>
-        <li><i>30</i><span>El link de pastoral para el botón «Conoce más».</span></li>
+        <li><i>30</i><span>El link de pastoral para el botón «Conoce más» (hoy lleva a la página de Coordinación de Pastoral).</span></li>
         <li><i>27</i><span>La foto de la Hna Milena en mejor calidad (la que llegó es pequeña).</span></li>
-        <li><i>19</i><span>Fotos recientes del colegio.</span></li>
         <li><i>20</i><span>El proceso de admisión paso a paso (los requisitos ya llegaron).</span></li>
-        <li><i>23</i><span>Lista de lúdicas disponibles.</span></li>
       </ul>
     </div>
   </div>

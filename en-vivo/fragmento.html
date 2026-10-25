@@ -1,0 +1,1115 @@
+<!-- Portada nueva del colegio · generada con armar-en-vivo.js (no editar aquí: se regenera) -->
+<script>(function(){var deja=/admin-bar|dashicons|bth-/;function limpiar(){document.querySelectorAll('link[rel="stylesheet"],style').forEach(function(e){if(deja.test(e.id||"")||e.hasAttribute("data-bth"))return;e.remove();});document.body.className=document.body.className.replace(/\belementor-kit-\d+\b/g,"");}limpiar();document.addEventListener("DOMContentLoaded",limpiar);window.addEventListener("load",limpiar);})();</script>
+<link data-bth rel="preconnect" href="https://fonts.googleapis.com">
+<link data-bth rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Mulish:wght@400;600;700;800&display=swap">
+<style data-bth>
+/* Piezas comunes de las 6 propuestas: entradas, íconos, recortes de foto y la cinta de muestra.
+   Cada propuesta trae su propio mundo en su <style>; esto es solo el motor compartido. */
+
+/* Los saltos del menú no quedan debajo de la cabecera fija; lo oculto se oculta siempre. */
+html { scroll-padding-top: 96px; }
+[hidden] { display: none !important; }
+html.menu-bloqueo { overflow: hidden; }
+.en-marco { scrollbar-width: none; }
+.en-marco::-webkit-scrollbar { display: none; }
+
+.ico { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ---------- Entradas al llegar (solo transform + opacity) ---------- */
+.js [data-entra]:not(.animar) { opacity: 0; }
+[data-entra].animar {
+  animation-name: var(--anim, e-sube);
+  animation-duration: var(--dur, .85s);
+  animation-timing-function: cubic-bezier(.16, 1, .3, 1);
+  animation-fill-mode: backwards;
+  animation-delay: calc(var(--i, 0) * 90ms + var(--d, 0ms));
+}
+[data-entra="sube"]    { --anim: e-sube; }
+[data-entra="izq"]     { --anim: e-izq; }
+[data-entra="der"]     { --anim: e-der; }
+[data-entra="zoom"]    { --anim: e-zoom; --dur: .9s; }
+[data-entra="cae"]     { --anim: e-cae; --dur: 1s; }
+[data-entra="reparto"] { --anim: e-reparto; --dur: 1s; }
+[data-entra="gira"]    { --anim: e-gira; --dur: 1s; }
+[data-entra="desliza"] { --anim: e-desliza; }
+
+@keyframes e-sube    { from { opacity: 0; transform: translateY(42px); } }
+@keyframes e-izq     { from { opacity: 0; transform: translateX(-70px) rotate(-3deg); } }
+@keyframes e-der     { from { opacity: 0; transform: translateX(70px) rotate(3deg); } }
+@keyframes e-zoom    { 0% { opacity: 0; transform: scale(.72); } 65% { opacity: 1; transform: scale(1.04); } 100% { } }
+@keyframes e-cae     { 0% { opacity: 0; transform: translateY(-70px); } 55% { opacity: 1; transform: translateY(10px); }
+                       78% { transform: translateY(-4px); } 100% { } }
+@keyframes e-reparto { from { opacity: 0; transform: translate(var(--rx, 0px), 140px) rotate(var(--rr, -14deg)); } }
+@keyframes e-gira    { from { opacity: 0; transform: perspective(900px) rotateY(-75deg); } }
+@keyframes e-desliza { from { opacity: 0; transform: translateX(-24px); } }
+
+/* Las entradas que llegan de costado no ensanchan la página mientras corren */
+main, footer { overflow-x: clip; }
+
+/* ---------- Recortes de foto ---------- */
+.foto { position: relative; overflow: hidden; }
+.foto > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.foto > img.sin-banda     { object-position: 50% 0; transform: scale(1.4); transform-origin: 50% 0; }
+.foto > img.sin-banda-der { object-position: 0 40%; transform: scale(1.36); transform-origin: 0 40%; }
+
+/* ---------- Cinta "contenido de muestra" ---------- */
+.cinta {
+  position: fixed; left: 12px; bottom: 12px; z-index: 900;
+  display: flex; align-items: center; gap: 8px;
+  max-width: calc(100vw - 96px);
+  padding: 7px 12px 7px 10px; border-radius: 999px;
+  background: rgba(17, 20, 28, .9); color: #f1f1f1;
+  font: 600 12px/1.25 system-ui, "Segoe UI", sans-serif; letter-spacing: .01em;
+  text-decoration: none; box-shadow: 0 6px 22px rgba(0, 0, 0, .28);
+}
+.cinta b { flex: none; white-space: nowrap; background: #fff; color: #111; border-radius: 999px; padding: 2px 7px; font-weight: 800; }
+.cinta span { opacity: .72; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cinta span span { opacity: 1; }
+.cinta .corto { display: none; }
+.cinta:hover span { opacity: 1; }
+.en-marco .cinta { display: none; }
+
+/* ---------- Aviso de enlace de muestra ---------- */
+.aviso-muestra { position: fixed; left: 50%; bottom: 66px; z-index: 950; width: max-content; max-width: calc(100vw - 32px); padding: 12px 18px; border-radius: 14px;
+  background: rgba(17, 20, 28, .94); color: #fff; font: 500 14px/1.35 system-ui, "Segoe UI", sans-serif; text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .3); opacity: 0; transform: translate(-50%, 16px); pointer-events: none;
+  transition: opacity .25s ease, transform .35s cubic-bezier(.16, 1, .3, 1); }
+.aviso-muestra.ver { opacity: 1; transform: translate(-50%, 0); }
+
+/* ---------- Teléfono: cinta corta, pie libre y zonas de toque de 44 px ---------- */
+@media (max-width: 760px) {
+  .cinta .largo { display: none; }
+  .cinta .corto { display: inline; }
+  body[data-propuesta] footer { padding-bottom: 76px !important; }
+  .boton-menu { min-width: 48px; min-height: 48px; }
+  .pie li a { padding-block: 8px; }
+  a.mas, .mas { padding-block: 12px; }
+}
+
+/* ---------- Accesibilidad y movimiento reducido ---------- */
+.solo-lector { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .js [data-entra]:not(.animar) { opacity: 1; }
+}
+
+
+:root {
+  /* Recreo con colores más vivos (ronda 1, ítem 2) */
+  --azul: #1f4fe0; --rey: #1636b8; --noche: #0a1d78; --rojo: #e11d48; --rojo-osc: #be123c;
+  --amarillo: #ffcc00; --celeste: #22c3ff; --verde: #16c172; --naranja: #ff7a1a; --lila: #8b5cf6; --rosa: #ff5fa2;
+  --tinta: #141a3a; --suave: #4b5370; --fondo: #fffdf6;
+  --titulo: "Fredoka", system-ui, sans-serif; --cuerpo: "Mulish", system-ui, sans-serif;
+  --borde: 3px solid var(--tinta); --sombra: 6px 6px 0 var(--tinta);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--fondo); color: var(--tinta); font: 400 17px/1.6 var(--cuerpo); overflow-x: hidden; }
+body.con-intro { overflow: hidden; }
+img { max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--titulo); font-weight: 700; line-height: 1.04; margin: 0; }
+p { margin: 0; }
+.envoltura { width: min(1200px, 100% - 48px); margin-inline: auto; position: relative; }
+section { position: relative; padding: 90px 0; overflow: hidden; }
+
+/* ---------- Formas que flotan ---------- */
+.forma { position: absolute; pointer-events: none; z-index: 0; animation: deriva var(--t, 9s) ease-in-out infinite; animation-delay: var(--dl, 0s); }
+.forma.circulo { width: var(--s, 60px); height: var(--s, 60px); border-radius: 50%; background: var(--c); border: var(--borde); }
+.forma.triangulo { width: 0; height: 0; border-left: calc(var(--s, 60px) / 2) solid transparent; border-right: calc(var(--s, 60px) / 2) solid transparent; border-bottom: var(--s, 60px) solid var(--c); }
+.forma.estrella, .forma.ola { width: var(--s, 60px); height: var(--s, 60px); color: var(--c); }
+.forma svg { width: 100%; height: 100%; }
+.forma.ola svg { fill: none; stroke: currentColor; stroke-width: 7; stroke-linecap: round; }
+@keyframes deriva { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(12px, -18px) rotate(18deg); } 66% { transform: translate(-10px, 10px) rotate(-12deg); } }
+
+/* ---------- Intro: llueven figuras ---------- */
+#intro { position: fixed; inset: 0; z-index: 1000; background: var(--rey); display: grid; place-items: center; overflow: hidden; cursor: pointer;
+  transition: transform .6s cubic-bezier(.7,0,.3,1); }
+#intro.fuera { transform: translateY(-100%); }
+#intro .lluvia i { position: absolute; top: 0; left: var(--x); width: var(--s); height: var(--s); border-radius: var(--br, 50%); background: var(--c); border: 3px solid var(--tinta);
+  opacity: 0; animation: llueve .9s cubic-bezier(.3,1.4,.5,1) forwards; animation-delay: var(--dl); }
+@keyframes llueve { 0% { opacity: 1; transform: translateY(-120px) rotate(0); } 100% { opacity: 1; transform: translateY(var(--y)) rotate(var(--r)); } }
+#intro .placa { position: relative; z-index: 2; text-align: center; opacity: 0; animation: rebota .7s cubic-bezier(.3,1.6,.5,1) forwards .55s; }
+#intro .placa .escudo { width: 150px; height: 150px; border-radius: 50%; background: #fff; border: 4px solid var(--tinta); box-shadow: 8px 8px 0 var(--tinta); display: grid; place-items: center; margin: 0 auto; }
+#intro .placa .escudo img { width: 118px; height: 118px; object-fit: contain; }
+#intro .placa .globo { display: inline-block; margin-top: 22px; padding: 12px 22px; background: #fff; border: var(--borde); border-radius: 22px; box-shadow: 5px 5px 0 var(--tinta); font: 700 26px/1 var(--titulo); }
+@keyframes rebota { 0% { opacity: 0; transform: scale(.3); } 100% { opacity: 1; transform: none; } }
+
+/* ---------- Cabecera ---------- */
+.cabecera { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--fondo); border-bottom: var(--borde); }
+.cabecera .envoltura { display: flex; align-items: center; gap: 16px; height: 76px; width: min(1300px, 100% - 40px); }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+.marca .placa { width: 52px; height: 52px; border-radius: 50%; background: #fff; border: var(--borde); display: grid; place-items: center; flex: none; transition: transform .4s cubic-bezier(.3,1.6,.5,1); }
+.marca:hover .placa { transform: rotate(-12deg) scale(1.08); }
+.marca .placa img { width: 40px; height: 40px; object-fit: contain; }
+.marca b { display: block; font: 700 21px/1 var(--titulo); color: var(--azul); }
+.marca small { display: block; font: 700 12.5px/1.2 var(--cuerpo); color: var(--suave); }
+.menu { display: flex; gap: 2px; }
+.menu a { text-decoration: none; font: 600 16px/1 var(--titulo); padding: 10px 10px; border-radius: 999px; border: 3px solid transparent; transition: background .2s, border-color .2s, transform .2s; }
+.menu a:nth-child(1):hover { background: #d3f1ff; } .menu a:nth-child(2):hover { background: #fff1b3; } .menu a:nth-child(3):hover { background: #ffd6df; }
+.menu a:nth-child(4):hover { background: #c9f5df; } .menu a:nth-child(5):hover { background: #e6dcff; } .menu a:nth-child(6):hover { background: #ffe1c7; }
+.menu a:hover { border-color: var(--tinta); transform: rotate(-2deg); }
+.boton-menu { display: none; background: var(--amarillo); border: var(--borde); border-radius: 14px; color: var(--tinta); font-size: 26px; width: 50px; height: 50px; cursor: pointer; box-shadow: 3px 3px 0 var(--tinta); }
+
+/* ---------- Botones gorditos ---------- */
+.btn { position: relative; display: inline-flex; align-items: center; gap: 10px; padding: 16px 24px; border-radius: 18px; overflow: hidden; text-decoration: none; cursor: pointer;
+  font: 700 19px/1 var(--titulo); color: #fff; background: var(--rojo); border: var(--borde); box-shadow: 5px 5px 0 var(--tinta); transition: transform .15s, box-shadow .15s; }
+.btn::before { content: ""; position: absolute; inset: 0 auto 0 -50%; width: 35%; transform: skewX(-20deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: barrido 4.6s ease-in-out infinite; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--tinta); }
+.btn:active { transform: translate(4px, 4px); box-shadow: 1px 1px 0 var(--tinta); }
+.btn .ico { font-size: 21px; stroke-width: 2.4; }
+.btn.blanco { background: #fff; color: var(--tinta); }
+.btn.blanco::before { animation-delay: 2.3s; }
+.btn.amarillo { background: var(--amarillo); color: var(--tinta); }
+.btn.chico { padding: 11px 16px; font-size: 16px; box-shadow: 3px 3px 0 var(--tinta); }
+@keyframes barrido { 0%, 62% { transform: skewX(-20deg) translateX(0); } 100% { transform: skewX(-20deg) translateX(600%); } }
+.etiqueta { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; background: var(--amarillo); border: var(--borde); color: var(--tinta);
+  font: 700 15px/1 var(--titulo); box-shadow: 3px 3px 0 var(--tinta); rotate: -2deg; }
+
+/* ---------- Portada: noche azul con estrellas que se mueven (ítem 3) ---------- */
+.portada { min-height: 100svh; padding: 140px 0 120px; display: flex; align-items: center; color: #fff;
+  background: radial-gradient(1100px 700px at 70% 30%, #2f5ff5 0%, var(--rey) 45%, var(--noche) 100%); }
+.cielo { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.cielo i { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); color: var(--c, #fff); opacity: .9;
+  animation: titila var(--t, 3s) ease-in-out infinite, viaja var(--v, 40s) linear infinite; animation-delay: var(--dl, 0s), var(--dl2, 0s); }
+.cielo i svg { width: 100%; height: 100%; fill: currentColor; display: block; }
+.cielo i.punto { border-radius: 50%; background: currentColor; }
+@keyframes titila { 0%, 100% { opacity: .95; } 50% { opacity: .25; } }
+@keyframes viaja { from { transform: translate(0, 0) rotate(0deg); } to { transform: translate(var(--dx, -60px), var(--dy, 30px)) rotate(var(--dr, 90deg)); } }
+.fugaz { position: absolute; top: 18%; left: 70%; width: 130px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #fff, transparent); opacity: 0;
+  transform: rotate(-24deg); animation: fugaz 9s ease-in infinite 2.5s; }
+.fugaz.dos { top: 8%; left: 30%; animation-delay: 6.5s; }
+@keyframes fugaz { 0%, 86% { opacity: 0; transform: rotate(-24deg) translateX(0); } 88% { opacity: 1; } 100% { opacity: 0; transform: rotate(-24deg) translateX(-420px); } }
+.avioncito { position: absolute; right: 7%; top: 18%; width: 110px; color: #fff; opacity: .85; animation: planea 11s ease-in-out infinite; }
+.avioncito svg { width: 100%; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes planea { 0%, 100% { transform: translate(0, 0) rotate(-6deg); } 50% { transform: translate(-40px, 22px) rotate(4deg); } }
+.ola-blanca { position: absolute; left: 0; right: 0; bottom: -2px; width: 100%; height: 70px; display: block; }
+.ola-blanca path { fill: var(--fondo); }
+.portada .envoltura { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; z-index: 1; }
+.portada h1 { font-size: clamp(46px, 6.3vw, 90px); margin: 24px 0 22px; color: #fff; letter-spacing: -.01em; text-shadow: 4px 4px 0 rgba(10,29,120,.6); }
+.portada h1 .pastilla { display: inline-block; padding: 0 .22em; background: var(--rojo); color: #fff; border: 4px solid var(--tinta); border-radius: .3em; rotate: -3deg;
+  box-shadow: 5px 5px 0 var(--tinta); line-height: 1.1; text-shadow: none; }
+.portada .bajada { font-size: 19px; color: #e3eaff; max-width: 32em; }
+.acciones { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 34px; }
+
+/* ---------- Fotos recortadas con borde, tipo sticker (ítem 4) ---------- */
+.sticker-foto { border: 10px solid #fff; box-shadow: 0 0 0 3px var(--tinta), 10px 12px 0 3px rgba(20,26,58,.85); background: #fff; }
+.burbuja-foto { position: relative; justify-self: center; width: min(480px, 100%); }
+.burbuja-foto .flota { animation: flotar 6.5s ease-in-out infinite; }
+.burbuja-foto .mancha { aspect-ratio: 1 / 1; border-radius: 58% 42% 52% 48% / 46% 56% 44% 54%; }
+.burbuja-foto .mancha.foto img { object-position: 50% 70%; }
+.burbuja-foto .sticker { position: absolute; display: grid; place-items: center; text-align: center; border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); color: var(--tinta); }
+.sticker.giro { right: -14px; top: 6%; width: 136px; height: 136px; border-radius: 50%; background: var(--amarillo); font: 700 16px/1.05 var(--titulo); animation: girarlento 14s linear infinite; }
+.sticker.giro::before { content: ""; position: absolute; inset: 7px; border-radius: 50%; border: 2px dashed var(--tinta); }
+.sticker.giro > div { animation: girarlento 14s linear infinite reverse; }
+.sticker.giro > div { padding: 0 14px; }
+.sticker.giro b { display: block; font-size: 16.5px; line-height: 1.05; color: var(--rey); margin-bottom: 3px; }
+.sticker.bandera { left: -20px; bottom: 10%; padding: 12px 16px; border-radius: 18px; background: #fff; font: 700 18px/1.1 var(--titulo); rotate: -6deg; }
+.sticker.bandera span { display: block; font: 800 12px/1 var(--cuerpo); color: var(--suave); letter-spacing: .08em; text-transform: uppercase; margin-top: 4px; }
+@keyframes flotar { 50% { transform: translateY(-14px) rotate(1deg); } }
+@keyframes girarlento { to { transform: rotate(360deg); } }
+/* Al bajar, las fotos recortadas "se pegan" con un rebote */
+[data-entra="pega"] { --anim: e-pega; --dur: .9s; }
+@keyframes e-pega { 0% { opacity: 0; transform: scale(.4) rotate(-14deg); } 60% { opacity: 1; transform: scale(1.08) rotate(4deg); } 100% { } }
+
+/* ---------- Titulares ---------- */
+.titular { text-align: center; max-width: 780px; margin: 0 auto 50px; position: relative; z-index: 1; }
+.titular h2 { font-size: clamp(36px, 4.4vw, 60px); margin-top: 16px; color: var(--azul); }
+.titular h2 .marcado { color: var(--rojo); }
+.titular p { color: var(--suave); margin-top: 12px; font-size: 18px; }
+
+/* ---------- Accesos ---------- */
+.accesos { padding-top: 60px; }
+.rejilla-accesos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.acceso { display: flex; align-items: center; gap: 16px; padding: 22px; text-decoration: none; border-radius: 24px; background: var(--c); border: var(--borde); box-shadow: var(--sombra);
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1), box-shadow .25s; }
+.acceso:hover { transform: translate(-3px, -3px); rotate: -1.5deg; box-shadow: 9px 9px 0 var(--tinta); }
+.acceso .icono { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: #fff; border: var(--borde); font-size: 30px; flex: none; overflow: hidden; }
+.acceso .icono .ico { stroke-width: 2; }
+.acceso .icono img { width: 140%; height: 140%; object-fit: cover; object-position: 50% 34%; }
+.acceso b { display: block; font: 700 21px/1.1 var(--titulo); }
+.acceso span.desc { font-size: 14.5px; font-weight: 600; color: rgba(20,26,58,.82); }
+
+/* ---------- Niveles (ítem 14: cuatro niveles) ---------- */
+.niveles { background: #d4f1ff; }
+.rejilla-niveles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.nivel { position: relative; border-radius: 28px; background: #fff; border: var(--borde); box-shadow: var(--sombra); padding: 0 18px 24px; text-align: center; transition: transform .3s cubic-bezier(.3,1.6,.5,1); }
+.nivel:hover { transform: translateY(-8px); rotate: var(--r); }
+.nivel .cabeza { height: 92px; margin: 0 -18px; border-radius: 25px 25px 0 0; background: var(--c); border-bottom: var(--borde); }
+.nivel .circulo-foto { width: 152px; height: 152px; margin: -76px auto 16px; border-radius: 50%; }
+.nivel .edad { display: inline-block; margin-bottom: 10px; padding: 7px 11px; border-radius: 12px; background: var(--c); border: var(--borde); font: 700 14px/1 var(--titulo); rotate: -3deg; }
+.nivel h3 { font-size: 27px; color: var(--azul); }
+.nivel p { color: var(--suave); margin-top: 8px; font-size: 15px; }
+.nivel .mas { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font: 700 17px/1 var(--titulo); color: var(--rojo); text-decoration: none; }
+
+/* ---------- Por qué: Lúdicas en lugar de las cifras (ítems 7–10) ---------- */
+.porque { background: #fff1b8; }
+.fila-ludicas { display: grid; grid-template-columns: 3fr 1fr; gap: 22px; margin-bottom: 40px; position: relative; z-index: 1; }
+.ludicas { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 30px 32px; border-radius: 30px; background: var(--lila); color: #fff;
+  border: var(--borde); box-shadow: var(--sombra); text-decoration: none; cursor: pointer; text-align: left; font: inherit; width: 100%; background: #7c3aed; }
+.ludicas h3 { font-size: 46px; text-shadow: 3px 3px 0 var(--tinta); }
+.ludicas p { margin-top: 8px; font-size: 17px; color: #fff; max-width: 34em; }
+.ludicas .iconos-ludicas { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+.ludicas .iconos-ludicas span { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; background: #fff; color: var(--tinta); border: var(--borde); font-size: 24px; }
+.ludicas .iconos-ludicas span:nth-child(odd) { rotate: -6deg; } .ludicas .iconos-ludicas span:nth-child(even) { rotate: 5deg; }
+.ludicas .abrir { display: inline-flex; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 16px; background: var(--amarillo); color: var(--tinta); border: var(--borde);
+  box-shadow: 4px 4px 0 var(--tinta); font: 700 18px/1 var(--titulo); white-space: nowrap; transition: transform .15s; }
+.ludicas:hover .abrir { transform: translate(-2px, -2px) rotate(-2deg); }
+.cifra { text-align: center; padding: 26px 12px; border-radius: 28px; background: var(--verde); border: var(--borde); box-shadow: var(--sombra); display: grid; place-content: center; }
+.cifra b { display: block; font: 700 72px/1 var(--titulo); color: #fff; -webkit-text-stroke: 2px var(--tinta); paint-order: stroke fill; }
+.cifra span { display: block; margin-top: 8px; font: 700 17px/1.2 var(--titulo); }
+.rejilla-porque { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.razon { padding: 26px 22px; border-radius: 24px; background: #fff; border: var(--borde); box-shadow: var(--sombra); text-decoration: none; display: block; }
+button.razon { font: inherit; text-align: left; cursor: pointer; width: 100%; }
+.razon .icono { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 18px; background: var(--c); border: var(--borde); font-size: 30px; margin-bottom: 16px; rotate: -6deg; }
+.razon h3 { font-size: 23px; margin-bottom: 8px; color: var(--azul); }
+.razon p { color: var(--suave); font-size: 15.5px; }
+.razon .ver { display: inline-flex; gap: 6px; align-items: center; margin-top: 10px; font: 700 16px/1 var(--titulo); color: var(--rojo); }
+.pie-seccion { text-align: center; margin-top: 44px; position: relative; z-index: 1; }
+
+/* ---------- Catálogo de lúdicas ---------- */
+dialog.catalogo { width: min(860px, calc(100vw - 32px)); max-height: calc(100svh - 40px); padding: 0; border: 4px solid var(--tinta); border-radius: 28px; box-shadow: 10px 10px 0 var(--tinta); background: var(--fondo); color: var(--tinta); }
+dialog.catalogo::backdrop { background: rgba(10,29,120,.6); }
+.catalogo .cab { display: flex; align-items: center; gap: 14px; padding: 22px 24px; background: #7c3aed; color: #fff; border-bottom: var(--borde); position: sticky; top: 0; z-index: 2; }
+.catalogo .cab h2 { font-size: 34px; text-shadow: 2px 2px 0 var(--tinta); margin-right: auto; }
+.catalogo .cerrar { width: 48px; height: 48px; border-radius: 14px; border: var(--borde); background: #fff; color: var(--tinta); font-size: 22px; cursor: pointer; display: grid; place-items: center; }
+.catalogo .muestra { margin: 18px 24px 0; padding: 10px 14px; border-radius: 12px; background: #fff1b8; border: 2px dashed var(--tinta); font-size: 14.5px; }
+.catalogo .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; padding: 20px 24px 26px; }
+.catalogo .item { padding: 18px 16px; border-radius: 20px; background: var(--c); border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); }
+.catalogo .item b { display: block; font: 700 21px/1.1 var(--titulo); }
+.catalogo .item span { display: block; margin-top: 6px; font-size: 14px; font-weight: 600; }
+.catalogo .muestra.anio { background: #fff; border-style: solid; }
+.catalogo .item.inscribirme { --c: var(--amarillo); color: var(--tinta); text-decoration: none; display: flex; flex-direction: column; justify-content: center; transition: transform .2s; }
+.catalogo .item.inscribirme span { display: inline-flex; align-items: center; gap: 6px; }
+.catalogo .item.inscribirme:hover { transform: translate(-2px, -2px) rotate(-1.5deg); }
+
+/* ---------- Actualízate (ítems 15–17) ---------- */
+.actualizate { background: var(--fondo); }
+.pestanas { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -20px 0 34px; position: relative; z-index: 1; }
+.pestanas button { font: 700 17px/1 var(--titulo); padding: 12px 18px; border-radius: 999px; border: var(--borde); background: #fff; color: var(--tinta); cursor: pointer;
+  box-shadow: 3px 3px 0 var(--tinta); transition: transform .15s; }
+.pestanas button[aria-selected="true"] { background: var(--azul); color: #fff; }
+.pestanas button:hover { transform: translate(-1px, -1px) rotate(-2deg); }
+.rejilla-noticias { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 1; }
+.noticia { display: flex; flex-direction: column; border-radius: 26px; background: #fff; border: var(--borde); box-shadow: var(--sombra); overflow: hidden; text-decoration: none;
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1); }
+.noticia:hover { transform: translateY(-6px); rotate: -1deg; }
+.noticia .foto { aspect-ratio: 4 / 3; border-bottom: var(--borde); }
+.noticia .cuerpo { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.noticia .cat { align-self: flex-start; padding: 6px 10px; border-radius: 10px; background: var(--c); border: var(--borde); font: 700 13px/1 var(--titulo); rotate: -3deg; }
+.noticia h3 { font-size: 21px; line-height: 1.15; color: var(--tinta); }
+.noticia .leer { margin-top: auto; font: 700 16px/1 var(--titulo); color: var(--rojo); display: flex; gap: 6px; align-items: center; }
+
+/* ---------- Identidad: misión, visión y fundadores (ítems 5, 12, 13) ---------- */
+.identidad { background: #c9f5df; }
+.globos { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-bottom: 70px; position: relative; z-index: 1; }
+.globo { position: relative; background: #fff; border: 4px solid var(--tinta); border-radius: 34px; padding: 34px 32px; box-shadow: 8px 8px 0 var(--tinta); }
+.globo::after { content: ""; position: absolute; left: 60px; bottom: -30px; width: 40px; height: 40px; background: #fff; border-right: 4px solid var(--tinta); border-bottom: 4px solid var(--tinta);
+  transform: skewX(30deg) rotate(45deg); }
+.globo:nth-child(2)::after { left: auto; right: 70px; transform: skewX(-30deg) rotate(45deg); }
+.globo .etiqueta { margin-bottom: 14px; }
+.globo:nth-child(1) .etiqueta { background: var(--celeste); } .globo:nth-child(2) .etiqueta { background: var(--rosa); }
+.globo p { font: 600 19px/1.45 var(--titulo); }
+.globo cite { display: block; margin-top: 14px; font: 700 17px/1 var(--titulo); color: var(--rojo); font-style: normal; }
+.fundadores { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: 30px; align-items: center; text-align: center; position: relative; z-index: 1; }
+.marco-oval { width: min(230px, 100%); aspect-ratio: 3 / 4; margin: 0 auto 16px; border-radius: 50%; padding: 15px;
+  background: radial-gradient(ellipse at 35% 25%, #8a4b2c, #5a2c17 55%, #3d1d0f);
+  box-shadow: inset 0 0 0 3px #d4a64a, inset 0 0 0 6px #6b3a1f, 0 0 0 3px var(--tinta), 8px 10px 0 3px rgba(20,26,58,.8); }
+.marco-oval .foto { width: 100%; height: 100%; border-radius: 50%; box-shadow: 0 0 0 3px #d4a64a; }
+.fundador h3 { font-size: 21px; color: var(--azul); line-height: 1.15; }
+.fundador span { display: block; margin-top: 4px; font-size: 14px; color: var(--suave); font-weight: 700; }
+.lema-fundadores { font: 700 clamp(24px, 2.6vw, 34px)/1.25 var(--titulo); color: var(--rey); }
+.lema-fundadores small { display: block; margin-top: 12px; font: 800 13px/1 var(--cuerpo); letter-spacing: .12em; text-transform: uppercase; color: var(--suave); }
+.red { display: flex; align-items: center; justify-content: space-between; gap: 26px; flex-wrap: wrap; margin-top: 56px; padding: 26px 30px;
+  background: var(--amarillo); border: var(--borde); border-radius: 26px; box-shadow: var(--sombra); position: relative; z-index: 1; }
+.red h3 { font-size: 28px; color: var(--rey); } .red p { color: var(--tinta); margin-top: 6px; max-width: 44em; }
+
+/* ---------- Admisiones: el tablero de juego ---------- */
+.admisiones { background: var(--rojo-osc); color: #fff; }
+.admisiones .titular h2 { color: #fff; }
+.admisiones .titular p { color: #fff; }
+.tablero { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; margin-bottom: 46px; z-index: 1; }
+.tablero .ruta { position: absolute; left: 16%; right: 16%; top: 48px; height: 40px; fill: none; stroke: #fff; stroke-width: 4; stroke-dasharray: 10 12; stroke-linecap: round; z-index: -1; }
+.casilla { text-align: center; }
+.casilla .num { display: grid; place-items: center; width: 100px; height: 100px; margin: 0 auto 18px; border-radius: 28px; background: var(--c); color: var(--tinta); border: 4px solid var(--tinta);
+  box-shadow: 6px 6px 0 var(--tinta); font: 700 50px/1 var(--titulo); rotate: var(--r); }
+.casilla h3 { font-size: 27px; }
+.casilla p { color: #fff; margin-top: 6px; font-size: 16px; }
+.admisiones .acciones { justify-content: center; position: relative; z-index: 1; }
+
+/* ---------- Trabaja con nosotros (ítem 18) ---------- */
+.trabaja { padding: 0; background: var(--rojo-osc); overflow: visible; }
+.trabaja .tarjeta { display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; padding: 26px 30px; border-radius: 28px; background: var(--celeste);
+  border: var(--borde); box-shadow: var(--sombra); transform: translateY(40px); position: relative; z-index: 2; }
+.trabaja .icono { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 20px; background: #fff; border: var(--borde); font-size: 34px; rotate: -6deg; }
+.trabaja h2 { font-size: 32px; color: var(--tinta); }
+.trabaja p { color: var(--tinta); font-weight: 600; margin-top: 4px; }
+.trabaja .correo { overflow-wrap: anywhere; }
+
+/* ---------- Pie con ola ---------- */
+.ola-pie { display: block; width: 100%; height: 60px; margin-bottom: -2px; background: var(--rojo-osc); }
+.ola-pie path { fill: var(--rey); }
+.pie { background: var(--rey); color: #fff; padding: 70px 0 30px; }
+.pie .columnas { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; }
+.pie .marca b { color: #fff; } .pie .marca small { color: #c8d4ff; }
+.pie .lema { color: #dbe4ff; margin-top: 14px; font-size: 15px; }
+.pie h4 { margin: 0 0 16px; font: 700 21px/1 var(--titulo); color: var(--amarillo); }
+.pie ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.pie li, .pie li a { display: flex; gap: 10px; align-items: flex-start; color: #e4eaff; text-decoration: none; font-size: 15px; }
+.pie li a:hover { color: #fff; text-decoration: underline; }
+.pie li .ico { font-size: 18px; margin-top: 3px; color: var(--amarillo); }
+.aliados { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 46px 0 26px; }
+.aliados img { width: 66px; height: 66px; object-fit: contain; background: #fff; border-radius: 50%; padding: 9px; border: var(--borde); }
+.derechos { text-align: center; color: #c8d4ff; font-size: 13px; }
+
+/* ---------- Ronda 2: PSE, pastoral y requisitos ---------- */
+.btn.pse { background: #fff; color: var(--tinta); gap: 8px; }
+.cabecera .btn, .marca b, .marca small { white-space: nowrap; }
+.cabecera .btn.pse, .boton-menu { flex: none; }
+.marca { min-width: 0; } .marca > span:last-child { min-width: 0; overflow: hidden; }
+.marca b, .marca small { overflow: hidden; text-overflow: ellipsis; }
+.btn.pse img { width: 30px; height: 22px; object-fit: cover; object-position: 50% 30%; border-radius: 5px; }
+.solo-movil { display: none !important; }
+.acceso-pse { outline: 4px dashed rgba(20,26,58,.35); outline-offset: 4px; }
+.acceso .icono.logo-pse { width: 86px; border-radius: 16px; }
+.acceso .icono.logo-pse img { width: 100%; height: 150%; object-fit: cover; object-position: 50% 26%; }
+.acceso .pagar { display: inline-block; margin-top: 6px; padding: 5px 10px; border-radius: 10px; background: var(--tinta); color: #fff; font: 700 13px/1 var(--titulo); }
+.nota-pse { display: inline-flex; align-items: center; gap: 12px; margin-top: 16px !important; padding: 10px 16px; border-radius: 16px; background: #fff; color: var(--tinta) !important;
+  border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); font-weight: 700; font-size: 16px !important; text-align: left; }
+.nota-pse img { width: 46px; height: 34px; object-fit: cover; object-position: 50% 28%; border-radius: 8px; flex: none; }
+.pastoral { display: grid; grid-template-columns: 230px 1fr; gap: 34px; align-items: center; padding: 30px; margin-bottom: 34px; border-radius: 30px; background: #efe8ff;
+  border: var(--borde); box-shadow: var(--sombra); position: relative; z-index: 1; }
+.pastoral .foto-pastoral { width: 230px; aspect-ratio: 229 / 301; border-radius: 50%; rotate: -3deg; }
+.pastoral h3 { font-size: 30px; color: var(--rey); margin-top: 14px; }
+.pastoral .cargo { display: block; font: 700 17px/1.2 var(--titulo); color: var(--rojo); margin: 4px 0 14px; }
+.pastoral p { color: var(--suave); font-size: 16px; margin-bottom: 10px; }
+.pastoral .acciones { margin-top: 18px; }
+.cuerpo-req { padding: 6px 24px 26px; }
+.cuerpo-req h3 { font-size: 22px; color: var(--rey); margin: 18px 0 10px; }
+.cuerpo-req ul { margin: 0; padding-left: 22px; display: grid; gap: 8px; }
+.cuerpo-req li { font-size: 15.5px; }
+.cuerpo-req a { color: var(--rojo); font-weight: 800; }
+
+/* Teléfonos angostos: la cabecera con marca + PSE + menú tiene que entrar */
+@media (max-width: 380px) {
+  .cabecera .envoltura { gap: 8px; width: calc(100% - 24px); }
+  .marca { gap: 8px; } .marca .placa { width: 38px; height: 38px; } .marca .placa img { width: 29px; height: 29px; }
+  .marca b { font-size: 15.5px; }
+  .btn.pse { padding: 8px 9px; font-size: 14px; gap: 6px; } .btn.pse img { width: 26px; height: 19px; }
+  .boton-menu { width: 46px; height: 46px; }
+}
+
+/* ---------- Versión y cambios (para revisar con el colegio) ---------- */
+.version { position: fixed; left: 12px; bottom: 12px; z-index: 900; display: flex; align-items: center; gap: 8px; padding: 8px 14px 8px 8px; border-radius: 999px; border: 0;
+  background: rgba(17,20,28,.92); color: #fff; font: 600 13px/1.2 system-ui, "Segoe UI", sans-serif; cursor: pointer; box-shadow: 0 6px 22px rgba(0,0,0,.3); }
+.version b { background: var(--amarillo); color: #111; border-radius: 999px; padding: 3px 8px; font-weight: 800; }
+dialog.cambios { width: min(640px, calc(100vw - 24px)); max-height: calc(100svh - 40px); padding: 0; border: 0; border-radius: 18px; box-shadow: 0 30px 80px rgba(0,0,0,.45);
+  font: 400 15px/1.5 system-ui, "Segoe UI", sans-serif; color: #14171f; }
+dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
+.cambios .cab { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid #e3e0d8; position: sticky; top: 0; background: #fff; }
+.cambios .cab h2 { font: 800 19px/1.2 system-ui, "Segoe UI", sans-serif; margin-right: auto; }
+.cambios .cab button { width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e3e0d8; background: #fff; font-size: 18px; cursor: pointer; display: grid; place-items: center; }
+.cambios .contenido { padding: 6px 20px 22px; }
+.cambios h3 { font: 800 14px/1 system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; margin: 20px 0 10px; }
+.cambios ul { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; }
+.cambios li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; }
+.cambios li i { font-style: normal; font-weight: 800; color: #5e6472; }
+.cambios .hecho h3 { color: #15803d; } .cambios .confirmar h3 { color: #b45309; } .cambios .pendiente h3 { color: #be123c; }
+
+/* ---------- Tableta ---------- */
+@media (max-width: 1320px) {
+  .menu { position: fixed; top: 76px; left: 0; right: 0; flex-direction: column; gap: 6px; padding: 14px 20px 22px; background: var(--fondo); border-bottom: var(--borde);
+    transform: translateY(-130%); transition: transform .4s cubic-bezier(.16,1,.3,1); }
+  .menu a { font-size: 21px; border-color: var(--tinta); background: #fff; }
+  .menu-abierto .menu { transform: none; }
+  .boton-menu { display: grid; place-items: center; }
+  .cabecera .btn.chico:not(.pse) { display: none; }
+  .solo-movil { display: block !important; }
+  .menu .menu-pse { background: #c9f5df; }
+  .portada .envoltura { grid-template-columns: 1fr; }
+  .burbuja-foto { width: min(420px, 82%); }
+  .rejilla-niveles, .rejilla-noticias { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rejilla-porque { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fila-ludicas { grid-template-columns: 1fr; }
+  .fundadores { grid-template-columns: 1fr 1fr; }
+  .lema-fundadores { grid-column: 1 / -1; grid-row: 1; }
+  .pie .columnas { grid-template-columns: 1fr 1fr; }
+}
+/* ---------- Teléfono ---------- */
+@media (max-width: 760px) {
+  :root { --sombra: 4px 4px 0 var(--tinta); }
+  body { font-size: 16px; }
+  .envoltura { width: calc(100% - 40px); }
+  section { padding: 62px 0; }
+  .cabecera .envoltura { height: 66px; }
+  .menu { top: 66px; }
+  .marca .placa { width: 44px; height: 44px; } .marca .placa img { width: 33px; height: 33px; }
+  .marca b { font-size: 18px; } .marca small { font-size: 11px; }
+  .portada { padding: 100px 0 96px; min-height: auto; }
+  .portada h1 { margin: 18px 0 16px; }
+  .portada .bajada { font-size: 17px; }
+  .acciones .btn { flex: 1 1 100%; justify-content: center; }
+  .avioncito { width: 70px; top: 12%; right: 4%; }
+  .burbuja-foto { width: 84%; margin-top: 10px; }
+  .sticker-foto { border-width: 7px; }
+  .sticker.giro { width: 108px; height: 108px; font-size: 12px; right: -14px; } .sticker.giro b { font-size: 12.5px; } .sticker.giro > div { padding: 0 10px; }
+  .sticker.bandera { font-size: 15px; left: -14px; }
+  .titular { margin-bottom: 34px; } .titular p { font-size: 16px; }
+  .rejilla-accesos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .acceso { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px 14px; border-radius: 20px; }
+  .acceso .icono { width: 50px; height: 50px; font-size: 24px; } .acceso b { font-size: 17px; } .acceso span.desc { font-size: 13px; }
+  .rejilla-niveles, .rejilla-noticias { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-inline: -20px; padding: 6px 20px 16px; scrollbar-width: none; }
+  .rejilla-niveles::-webkit-scrollbar, .rejilla-noticias::-webkit-scrollbar { display: none; }
+  .nivel, .noticia { flex: 0 0 78%; scroll-snap-align: center; min-width: 0; }
+  .ludicas { grid-template-columns: 1fr; padding: 24px 20px; }
+  .ludicas h3 { font-size: 38px; }
+  .ludicas .abrir { justify-self: start; }
+  .fila-ludicas { gap: 14px; margin-bottom: 26px; }
+  .cifra { padding: 18px; } .cifra b { font-size: 54px; }
+  .rejilla-porque { gap: 12px; }
+  .razon { padding: 18px 14px; border-radius: 20px; } .razon .icono { width: 48px; height: 48px; font-size: 24px; margin-bottom: 12px; }
+  .razon h3 { font-size: 19px; } .razon p { font-size: 14px; }
+  .pestanas { margin-top: -10px; gap: 8px; } .pestanas button { font-size: 15px; padding: 12px 14px; }
+  .globos { grid-template-columns: 1fr; gap: 44px; margin-bottom: 56px; }
+  .globo { padding: 26px 20px; } .globo p { font-size: 17px; }
+  .fundadores { gap: 16px; } .fundador h3 { font-size: 17px; } .fundador span { font-size: 12.5px; }
+  .marco-oval { padding: 10px; }
+  .red { padding: 22px 18px; margin-top: 40px; } .red h3 { font-size: 23px; }
+  .tablero { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+  .tablero .ruta { display: none; }
+  .casilla { display: grid; grid-template-columns: 76px 1fr; column-gap: 16px; text-align: left; align-items: center; }
+  .casilla .num { width: 70px; height: 70px; font-size: 36px; margin: 0; grid-row: span 2; border-radius: 20px; }
+  .casilla h3 { font-size: 23px; } .casilla p { font-size: 14.5px; margin-top: 2px; }
+  .trabaja .tarjeta { grid-template-columns: 1fr; gap: 12px; padding: 22px 20px; }
+  .trabaja h2 { font-size: 26px; }
+  .pie { padding-top: 80px; padding-bottom: 76px; }
+  .pie .columnas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 18px; }
+  .pie .columnas > div:first-child, .pie .columnas > div:nth-child(2), .pie .columnas > div:nth-child(3), .pie .columnas > div:nth-child(4) { grid-column: 1 / -1; }
+  .pie .columnas > div:nth-child(3) ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pie a[href^="mailto"] { overflow-wrap: anywhere; }
+  .aliados img { width: 54px; height: 54px; }
+  .forma { display: none; }
+  .version { font-size: 12px; }
+  .btn.pse { padding: 9px 11px; font-size: 15px; }
+  .btn.pse .pse-txt { display: none; }
+  .marca small { display: none; }
+  .cabecera .envoltura { gap: 10px; }
+  .marca b { white-space: normal; font-size: 17px; line-height: 1.02; }
+  .pastoral { grid-template-columns: 1fr; gap: 18px; padding: 22px 18px; text-align: left; }
+  .pastoral .foto-pastoral { width: 150px; justify-self: center; }
+  .pastoral h3 { font-size: 24px; }
+  .pastoral p { font-size: 15px; }
+  .acceso .icono.logo-pse { width: 72px; }
+  .nota-pse { font-size: 14.5px !important; }
+}
+/* Teléfono: el catálogo de lúdicas en dos columnas (#36) */
+@media (max-width: 600px) {
+  .catalogo .lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px 16px 20px; }
+  .catalogo .item { padding: 14px 12px; border-radius: 16px; }
+  .catalogo .item b { font-size: 17px; }
+  .catalogo .item span { font-size: 13px; }
+  .catalogo .muestra { margin: 14px 16px 0; }
+  .catalogo .cab h2 { font-size: 26px; }
+}
+
+</style>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="i-circular" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/><path d="M10 13h6M10 17h6"/></symbol>
+  <symbol id="i-manual" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5V5.5"/><path d="M9 8h7M9 11.5h5"/></symbol>
+  <symbol id="i-matricula" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="m9 13 2 2 4-4"/></symbol>
+  <symbol id="i-pago" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></symbol>
+  <symbol id="i-plataforma" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/><path d="m8 11 2-2 2 2 3-3"/></symbol>
+  <symbol id="i-uniforme" viewBox="0 0 24 24"><path d="M8.5 3 4 6l2 4 2.5-1.2V21h7V8.8L18 10l2-4-4.5-3c-.8 1.4-2 2.2-3.5 2.2S9.3 4.4 8.5 3z"/></symbol>
+  <symbol id="i-idiomas" viewBox="0 0 24 24"><path d="M3 5h11v8H8l-5 3.5z"/><path d="M14 9h7v8.5L17.5 15H11v-2"/></symbol>
+  <symbol id="i-robot" viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="2.5"/><path d="M12 4.5V8M9.5 12.5v.5M14.5 12.5v.5M9.5 16h5M3 13v2M21 13v2"/><circle cx="12" cy="3.5" r="1"/></symbol>
+  <symbol id="i-arte" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.9 1.2-1.8-.5-1.2.3-2.4 1.6-2.4H17a4 4 0 0 0 4-4C21 7.3 17 3 12 3z"/><circle cx="7.5" cy="11.5" r="1.1"/><circle cx="10" cy="7.3" r="1.1"/><circle cx="15" cy="7.6" r="1.1"/></symbol>
+  <symbol id="i-valores" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.2a4.2 4.2 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/><path d="M12 9.5v5M9.8 11.7h4.4"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5.2 3.5h3.6l1.8 4.6-2.3 1.4a11.5 11.5 0 0 0 6.2 6.2l1.4-2.3 4.6 1.8v3.6a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 3.3 5.5a1.9 1.9 0 0 1 1.9-2z"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5 4.8 16A8.5 8.5 0 1 1 8 19.3z"/><path d="M9 8.6c-.2 2.9 3 6.4 6.3 6.4l1.1-1.6-2.1-1-1 .9c-1.1-.5-2-1.5-2.6-2.6l.9-1-.9-2.1z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-mapa" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.4-7 11.5-7 11.5z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".7"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-cruz" viewBox="0 0 24 24"><path d="M12 3v18M6 8.5h12"/></symbol>
+  <symbol id="i-estrella" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+  <symbol id="i-celular" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+</svg>
+
+<div id="intro" data-ms="1900" data-salida="400" aria-hidden="true">
+  <div class="lluvia"></div>
+  <div class="placa">
+    <div class="escudo"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt=""></div>
+    <span class="globo">¡Hola, familia Bethlemita!</span>
+  </div>
+</div>
+
+<header class="cabecera">
+  <div class="envoltura">
+    <a class="marca" href="#inicio">
+      <span class="placa"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt="Escudo del colegio"></span>
+      <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a class="solo-movil menu-pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE</a>
+      <a href="#identidad">Institución</a>
+      <a href="#niveles">Niveles</a>
+      <a href="#admisiones">Admisiones</a>
+      <a href="#actualizate">Actualízate</a>
+      <a href="#actualizate" data-filtro="pastoral">Pastoral</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="btn chico pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt=""><span class="pse-txt">Pagar con </span>PSE</a>
+    <a class="btn chico" href="#admisiones">Preinscripción</a>
+    <button class="boton-menu" data-menu aria-expanded="false" aria-label="Abrir menú"><svg class="ico"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="portada">
+    <div class="cielo" aria-hidden="true"></div>
+    <i class="fugaz" aria-hidden="true"></i><i class="fugaz dos" aria-hidden="true"></i>
+    <div class="avioncito" aria-hidden="true"><svg viewBox="0 0 110 70"><path d="M8 34 100 6 70 62 52 40Z"/><path d="M100 6 52 40l-6 22 10-14"/><path d="M6 60c10-6 22-10 36-10" stroke-dasharray="4 7"/></svg></div>
+    <div class="envoltura">
+      <div>
+        <span class="etiqueta" data-entra="cae">⭐ Palmira, Valle del Cauca</span>
+        <h1 data-entra="sube" style="--i:1">Educamos en el <span class="pastilla">amor</span> para el servicio</h1>
+        <p class="bajada" data-entra="sube" style="--i:2">Comunidad educativa católica y mixta en Palmira. Acompañamos a cada estudiante desde los 2 años hasta el grado once, con inglés y francés, ciencia y valores.</p>
+        <div class="acciones" data-entra="sube" style="--i:3">
+          <a class="btn amarillo" href="#admisiones">Inscripciones 2026 – 2027 <svg class="ico"><use href="#i-flecha"/></svg></a>
+          <a class="btn blanco" href="#niveles">Conoce el colegio</a>
+        </div>
+      </div>
+      <div class="burbuja-foto" data-entra="pega" style="--d:250ms">
+        <div class="flota">
+          <div class="mancha foto sticker-foto"><img src="{{MEDIA:portada-preescolar.jpg}}" alt="Niños de preescolar celebrando en su salón"></div>
+          <div class="sticker giro"><div><b>¡Inscripciones abiertas!</b>2026 – 2027</div></div>
+          <div class="sticker bandera">¡Desde los 2 años!<span>Preescolar a once</span></div>
+        </div>
+      </div>
+    </div>
+    <svg class="ola-blanca" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c120-34 240-34 360 0s240 34 360 0 240-34 360 0 240 34 360 0v30H0z"/></svg>
+  </section>
+
+  <section class="accesos" aria-labelledby="t-accesos">
+    <span class="forma circulo" style="--c:var(--amarillo);--s:46px;left:4%;top:12%"></span>
+    <span class="forma estrella" style="--c:var(--celeste);--s:50px;right:5%;top:20%;--t:12s"><svg viewBox="0 0 24 24"><use href="#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae">Para las familias</span>
+        <h2 id="t-accesos" data-entra="sube">Información <span class="marcado">a un clic</span></h2>
+      </div>
+      <div class="rejilla-accesos">
+        <a class="acceso acceso-pse" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener" style="--c:#c9f5df" data-entra="zoom"><span class="icono logo-pse"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="Logo de PSE"></span><span><b>Pagos en línea</b><span class="desc">Pensiones, matrícula e inscripción por PSE</span><span class="pagar">Pagar ahora →</span></span></a>
+        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/circulares-y-comunicados-2026-2027/" style="--c:#fff1b3;--i:1" data-entra="zoom"><span class="icono"><svg class="ico"><use href="#i-circular"/></svg></span><span><b>Circulares y comunicados</b><span class="desc">Comunicados oficiales por año</span></span></a>
+        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/manual-de-convivencia-2/" style="--c:#ffd6df;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Año lectivo 2026 – 2027</span></span></a>
+        <a class="acceso" href="#admisiones" style="--c:#d3f1ff;--i:3" data-entra="zoom"><span class="icono"><svg class="ico"><use href="#i-matricula"/></svg></span><span><b>Matrículas</b><span class="desc">Fechas, requisitos y documentos</span></span></a>
+        <a class="acceso" href="https://q.plataformaintegra.net/bethlemitaspalmira/" target="_blank" rel="noopener" style="--c:#e6dcff;--i:4" data-entra="zoom"><span class="icono"><svg class="ico"><use href="#i-plataforma"/></svg></span><span><b>Plataforma académica</b><span class="desc">Notas, tareas y observaciones</span></span></a>
+        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/uniforme/" style="--c:#ffe1c7;--i:5" data-entra="zoom"><span class="icono"><svg class="ico"><use href="#i-uniforme"/></svg></span><span><b>Uniformes</b><span class="desc">Diario y educación física</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="niveles" id="niveles" aria-labelledby="t-niveles">
+    <span class="forma triangulo" style="--c:var(--rojo);--s:40px;left:5%;top:14%;--t:9s"></span>
+    <span class="forma circulo" style="--c:var(--verde);--s:38px;right:6%;bottom:12%;--t:10s"></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--celeste)">Niveles</span>
+        <h2 id="t-niveles" data-entra="sube">De los 2 años al <span class="marcado">grado once</span></h2>
+      </div>
+      <div class="rejilla-niveles">
+        <article class="nivel" style="--c:var(--amarillo);--r:-1.5deg" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="{{MEDIA:nivel-preescolar.jpg}}" alt="Niños de preescolar en su salón" loading="lazy"></div>
+          <span class="edad">Desde 2 años</span><h3>Preescolar</h3><p>Párvulos, prejardín, jardín y transición. Estimulación temprana y experiencias que preparan para aprender.</p>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/preescolar/">Conocer el nivel <svg class="ico"><use href="#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" style="--c:var(--celeste);--r:1deg;--i:1" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="{{MEDIA:nivel-primaria.jpg}}" alt="Estudiantes de primaria jugando en ronda" loading="lazy"></div>
+          <span class="edad">1.º a 5.º</span><h3>Primaria</h3><p>Lectura, pensamiento lógico e inglés diario, con arte, deporte y proyectos en equipo.</p>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/primaria/">Conocer el nivel <svg class="ico"><use href="#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" style="--c:var(--verde);--r:-1deg;--i:2" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="{{MEDIA:nivel-secundaria.jpg}}" alt="Estudiantes en la sala de sistemas" loading="lazy"></div>
+          <span class="edad">6.º a 9.º</span><h3>Básica secundaria</h3><p>Alto desempeño académico, inglés y francés, y semillero de investigación y robótica.</p>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/bachillerato/">Conocer el nivel <svg class="ico"><use href="#i-flecha"/></svg></a>
+        </article>
+        <article class="nivel" style="--c:var(--rosa);--r:1.5deg;--i:3" data-entra="cae">
+          <div class="cabeza"></div>
+          <div class="circulo-foto foto sticker-foto"><img src="{{MEDIA:nivel-media.jpg}}" alt="Estudiantes de media académica en la cancha del colegio" loading="lazy"></div>
+          <span class="edad">10.º y 11.º</span><h3>Media académica</h3><p>Preparación para las pruebas Saber 11 y para la vida universitaria, con liderazgo y servicio.</p>
+          <a class="mas" href="https://www.bethlemitaspalmira.edu.co/bachillerato/">Conocer el nivel <svg class="ico"><use href="#i-flecha"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="porque" aria-labelledby="t-porque">
+    <span class="forma estrella" style="--c:var(--rojo);--s:44px;left:4%;top:10%;--t:11s"><svg viewBox="0 0 24 24"><use href="#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <span class="forma ola" style="--c:var(--lila);--s:70px;right:5%;top:16%;--t:9s"><svg viewBox="0 0 70 70"><path d="M5 40c10-14 20-14 30 0s20 14 30 0"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--verde)">Por qué Bethlemitas</span>
+        <h2 id="t-porque" data-entra="sube">Ciencia, cultura y evangelio <span class="marcado">en la misma aula</span></h2>
+      </div>
+      <div class="fila-ludicas">
+        <button class="ludicas" type="button" data-catalogo data-entra="zoom">
+          <div>
+            <h3>Lúdicas</h3>
+            <p>Danza, deporte, arte, robótica y mucho más. Conoce los 11 talleres lúdicos del año lectivo 2026 – 2027.</p>
+            <div class="iconos-ludicas" aria-hidden="true"><span><svg class="ico"><use href="#i-arte"/></svg></span><span><svg class="ico"><use href="#i-estrella"/></svg></span><span><svg class="ico"><use href="#i-robot"/></svg></span><span><svg class="ico"><use href="#i-valores"/></svg></span></div>
+          </div>
+          <span class="abrir">Ver el catálogo <svg class="ico"><use href="#i-flecha"/></svg></span>
+        </button>
+        <div class="cifra" data-entra="zoom" style="--i:1"><b data-cuenta="2">0</b><span>Lenguas extranjeras: inglés y francés</span></div>
+      </div>
+      <div class="rejilla-porque">
+        <article class="razon" style="--c:#fff1b3" data-entra="reparto"><span class="icono"><svg class="ico"><use href="#i-idiomas"/></svg></span><h3>Inglés y francés</h3><p>Plan integral en las cuatro habilidades: leer, escribir, escuchar y hablar.</p></article>
+        <article class="razon" style="--c:#d3f1ff;--i:1;--rx:-40px;--rr:8deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="#i-robot"/></svg></span><h3>Investigación y robótica</h3><p>Semillero donde los estudiantes diseñan, programan y presentan sus proyectos.</p></article>
+        <button class="razon" type="button" data-catalogo style="--c:#e6dcff;--i:2;--rx:40px;--rr:-6deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="#i-arte"/></svg></span><h3>Lúdicas</h3><p>Talleres de danza, deporte, arte y tecnología en cada etapa.</p><span class="ver">Ver el catálogo <svg class="ico"><use href="#i-flecha"/></svg></span></button>
+        <article class="razon" style="--c:#c9f5df;--i:3;--rx:90px;--rr:14deg" data-entra="reparto"><span class="icono"><svg class="ico"><use href="#i-valores"/></svg></span><h3>Formación en valores</h3><p>Pastoral acogedora, inspirada en el carisma Bethlemita.</p></article>
+      </div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn" href="#admisiones">Agenda una visita <svg class="ico"><use href="#i-flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="actualizate" id="actualizate" aria-labelledby="t-actualizate">
+    <span class="forma circulo" style="--c:var(--naranja);--s:40px;left:6%;bottom:14%;--t:9s"></span>
+    <div class="envoltura" data-pestanas>
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--naranja)">Actualízate</span>
+        <h2 id="t-actualizate" data-entra="sube">Lo bueno del colegio, <span class="marcado">para las familias</span></h2>
+      </div>
+      <div class="pestanas" role="tablist" data-entra="sube">
+        <button role="tab" data-pestana="todo" aria-selected="true">Todo</button>
+        <button role="tab" data-pestana="pastoral" aria-selected="false">Pastoral</button>
+        <button role="tab" data-pestana="comunidad" aria-selected="false">Comunidad</button>
+      </div>
+      <article class="pastoral" data-panel="pastoral" id="pastoral" data-entra="zoom">
+        <div class="foto-pastoral foto sticker-foto"><img src="{{MEDIA:pastoral-hna-milena-vargas.jpg}}" alt="Hna Milena Patricia Vargas Mayorga, coordinadora de Pastoral"></div>
+        <div>
+          <span class="etiqueta" style="background:var(--lila);color:#fff">Pastoral</span>
+          <h3>Hna Milena Patricia Vargas Mayorga</h3>
+          <span class="cargo">Coordinadora de Pastoral</span>
+          <p>La Pastoral educativa, como acción evangelizadora, dinamiza el quehacer escolar. A la luz del carisma Bethlemita e inspirada en el testimonio de los fundadores, está al servicio del proyecto educativo; las personas y los espacios favorecen un ambiente animado por el espíritu evangélico de caridad y libertad.</p>
+          <p>Planear, realizar, controlar y velar por la realización de la Gestión de Pastoral, creando estrategias, definiendo procesos y acompañando a la comunidad educativa en su formación integral.</p>
+          <div class="acciones">
+            <a class="btn chico" href="https://www.bethlemitaspalmira.edu.co/coordinacion-de-pastoral/">Conoce más <svg class="ico"><use href="#i-flecha"/></svg></a>
+            <a class="btn chico blanco" href="mailto:pastoral@bethlemitaspalmira.edu.co"><svg class="ico"><use href="#i-mail"/></svg> Escribir a pastoral</a>
+          </div>
+        </div>
+      </article>
+      <div class="rejilla-noticias">
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/coordinacion-de-pastoral/" data-panel="pastoral" style="--c:#e6dcff" data-entra="sube"><div class="foto"><img src="{{MEDIA:act-pastoral.jpg}}" alt="Celebración en la capilla del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Coordinación de Pastoral</h3><span class="leer">Leer más <svg class="ico"><use href="#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/nuestros-fundadores/" data-panel="pastoral" style="--c:#e6dcff;--i:1" data-entra="sube"><div class="foto"><img src="{{MEDIA:act-fundadores.jpg}}" alt="Estudiantes en la capilla del colegio" loading="lazy"></div><div class="cuerpo"><span class="cat">Pastoral</span><h3>Nuestros fundadores</h3><span class="leer">Leer más <svg class="ico"><use href="#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/alianza-familia-y-colegio/" data-panel="comunidad" style="--c:#c9f5df;--i:2" data-entra="sube"><div class="foto"><img src="{{MEDIA:act-familia.jpg}}" alt="Estudiantes reunidos en el auditorio" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Alianza familia y colegio</h3><span class="leer">Leer más <svg class="ico"><use href="#i-flecha"/></svg></span></div></a>
+        <a class="noticia" href="https://www.bethlemitaspalmira.edu.co/escucha-activa/" data-panel="comunidad" style="--c:#c9f5df;--i:3" data-entra="sube"><div class="foto"><img src="{{MEDIA:act-escucha.jpg}}" alt="Estudiantes leyendo juntos" loading="lazy"></div><div class="cuerpo"><span class="cat">Comunidad</span><h3>Escucha activa</h3><span class="leer">Leer más <svg class="ico"><use href="#i-flecha"/></svg></span></div></a>
+      </div>
+      <div class="pie-seccion" data-entra="sube"><a class="btn amarillo" href="https://www.bethlemitaspalmira.edu.co/circulares-y-comunicados-2026-2027/">Ver circulares y comunicados <svg class="ico"><use href="#i-flecha"/></svg></a></div>
+    </div>
+  </section>
+
+  <section class="identidad" id="identidad" aria-labelledby="t-identidad">
+    <span class="forma estrella" style="--c:var(--amarillo);--s:46px;right:4%;top:8%;--t:12s"><svg viewBox="0 0 24 24"><use href="#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae" style="background:var(--verde)">Institución</span>
+        <h2 id="t-identidad" data-entra="sube">Quiénes <span class="marcado">somos</span></h2>
+      </div>
+      <div class="globos">
+        <div class="globo" data-entra="izq">
+          <span class="etiqueta">Misión</span>
+          <p>Somos una comunidad educativa católica, dinámica y creativa, que sirve a la sociedad desde su opción por Jesucristo y la vivencia de los valores humano-cristianos. Acompañamos el proceso de formación integral de nuestros estudiantes iluminados por el Carisma y la Espiritualidad Bethlemita, mediante una educación de calidad que integra ciencia, cultura y evangelio.</p>
+          <cite>Virtus et Sapientia · virtud y sabiduría</cite>
+        </div>
+        <div class="globo" data-entra="der" style="--i:1">
+          <span class="etiqueta">Visión</span>
+          <p>En el año 2028 seremos reconocidos como una comunidad educativa iluminada por el Evangelio, el Carisma y la Espiritualidad Bethlemita; líder en la formación integral de seres humanos competentes, con alto desempeño académico, espíritu investigativo, conciencia ecológica y habilidades en el idioma inglés, que promueve el compromiso por la construcción de un mundo más fraterno y solidario.</p>
+        </div>
+      </div>
+      <div class="fundadores">
+        <div class="fundador" data-entra="pega"><div class="marco-oval"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/hermano-pedro.jpg" alt="Santo Hermano Pedro de San José Betancur" loading="lazy"></div></div><h3>Santo Hermano Pedro de San José Betancur</h3><span>Fundador</span></div>
+        <p class="lema-fundadores" data-entra="zoom" style="--i:1">«Su vida, una irradiación del Dios de Belén y de la Cruz.»<small>Fundadores del Instituto Bethlemita</small></p>
+        <div class="fundador" data-entra="pega" style="--i:2"><div class="marco-oval"><div class="foto"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Hermana-Encarnacion-Rosal-768x985.jpg" alt="Beata Madre María Encarnación Rosal" loading="lazy"></div></div><h3>Beata Madre María Encarnación Rosal</h3><span>Fundadora</span></div>
+      </div>
+      <div class="red" data-entra="sube">
+        <div><h3>Parte de la familia Bethlemita</h3><p>Hacemos parte de la red de colegios de las Hermanas Bethlemitas, presente en Colombia y en otros países de América.</p></div>
+        <a class="btn blanco" href="https://www.bethlemitaspalmira.edu.co/historia/">Nuestra historia <svg class="ico"><use href="#i-flecha"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="admisiones" id="admisiones" aria-labelledby="t-admisiones">
+    <span class="forma circulo" style="--c:var(--amarillo);--s:50px;left:5%;top:16%;--t:9s"></span>
+    <span class="forma estrella" style="--c:#fff;--s:46px;right:6%;bottom:16%;--t:11s"><svg viewBox="0 0 24 24"><use href="#i-estrella" style="fill:currentColor;stroke:#141a3a;stroke-width:1.4"/></svg></span>
+    <div class="envoltura">
+      <div class="titular">
+        <span class="etiqueta" data-entra="cae">¡Inscripciones abiertas!</span>
+        <h2 id="t-admisiones" data-entra="sube">Año lectivo 2026 – 2027</h2>
+        <p data-entra="sube" style="--i:1">Tres pasos para que tu hijo o hija haga parte de la familia Bethlemita.</p>
+        <p class="nota-pse" data-entra="sube" style="--i:2"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/Pagos-pse.png" alt="">El valor de la inscripción se cancela por PSE ingresando a la página web del colegio.</p>
+      </div>
+      <div class="tablero">
+        <svg class="ruta" viewBox="0 0 600 40" preserveAspectRatio="none"><path d="M0 20c100-30 200 30 300 0s200-30 300 0"/></svg>
+        <article class="casilla" style="--c:var(--amarillo);--r:-4deg" data-entra="cae"><span class="num">1</span><h3>Preinscripción</h3><p>Diligencia el formulario en línea con los datos del aspirante.</p></article>
+        <article class="casilla" style="--c:var(--celeste);--r:3deg;--i:1" data-entra="cae"><span class="num">2</span><h3>Entrevista y visita</h3><p>Conoce las instalaciones y a nuestro equipo de formación.</p></article>
+        <article class="casilla" style="--c:var(--verde);--r:-2deg;--i:2" data-entra="cae"><span class="num">3</span><h3>Matrícula</h3><p>Entrega de documentos y firma de la matrícula.</p></article>
+      </div>
+      <div class="acciones" data-entra="sube">
+        <a class="btn amarillo" href="https://www.bethlemitaspalmira.edu.co/p/">Iniciar la preinscripción <svg class="ico"><use href="#i-flecha"/></svg></a>
+        <a class="btn blanco" href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE <svg class="ico"><use href="#i-pago"/></svg></a>
+        <button class="btn blanco" type="button" data-requisitos><svg class="ico"><use href="#i-matricula"/></svg> Ver requisitos</button>
+        <a class="btn blanco" href="https://wa.me/573206927961" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wa"/></svg> WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trabaja" aria-labelledby="t-trabaja">
+    <div class="envoltura">
+      <div class="tarjeta" data-entra="zoom">
+        <span class="icono"><svg class="ico"><use href="#i-matricula"/></svg></span>
+        <div><h2 id="t-trabaja">Trabaja con nosotros</h2><p>¿Quieres hacer parte de nuestro equipo de formación? Envía tu hoja de vida a <b class="correo">talentohumano@bethlemitaspalmira.edu.co</b></p></div>
+        <a class="btn blanco" href="mailto:talentohumano@bethlemitaspalmira.edu.co"><svg class="ico"><use href="#i-mail"/></svg> Enviar mi hoja de vida</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<svg class="ola-pie" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30c120-30 240-30 360 0s240 30 360 0 240-30 360 0 240 30 360 0v30H0z"/></svg>
+<footer class="pie" id="contacto">
+  <div class="envoltura">
+    <div class="columnas">
+      <div data-entra="sube">
+        <a class="marca" href="#inicio">
+          <span class="placa"><img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/03/cropped-escudo.jpg" alt=""></span>
+          <span><b>Bethlemitas Palmira</b><small>Colegio Sagrado Corazón de Jesús</small></span>
+        </a>
+        <p class="lema">Educamos en el amor para el servicio. Comunidad educativa católica y mixta en Palmira, Valle del Cauca.</p>
+      </div>
+      <div data-entra="sube" style="--i:1">
+        <h4>Contacto</h4>
+        <ul>
+          <li><svg class="ico"><use href="#i-mapa"/></svg>Cra. 30 # 27-19, Palmira, Valle del Cauca</li>
+          <li><a href="tel:+576022870303"><svg class="ico"><use href="#i-tel"/></svg>(602) 287 0303 · 287 2525</a></li>
+          <li><a href="https://wa.me/573206927961"><svg class="ico"><use href="#i-wa"/></svg>+57 320 692 7961</a></li>
+          <li><a href="mailto:secretaria@bethlemitaspalmira.edu.co"><svg class="ico"><use href="#i-mail"/></svg>secretaria@bethlemitaspalmira.edu.co</a></li>
+        </ul>
+      </div>
+      <div data-entra="sube" style="--i:2">
+        <h4>El colegio</h4>
+        <ul>
+          <li><a href="#identidad">Misión y visión</a></li>
+          <li><a href="#niveles">Niveles</a></li>
+          <li><a href="#admisiones">Admisiones</a></li>
+          <li><a href="#actualizate">Actualízate</a></li>
+          <li><a href="#actualizate" data-filtro="pastoral">Pastoral</a></li>
+          <li><a href="https://www.bethlemitaspalmira.edu.co/manual-de-convivencia-2/">Manual de convivencia</a></li>
+          <li><a href="mailto:talentohumano@bethlemitaspalmira.edu.co">Trabaja con nosotros</a></li>
+        </ul>
+      </div>
+      <div data-entra="sube" style="--i:3">
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/bethlemitaspalmira_/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-insta"/></svg>@bethlemitaspalmira_</a></li>
+          <li><a href="https://www.bethlemitaspalmira.edu.co/politica-de-tratamiento-de-datos-personales/">Política de tratamiento de datos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="aliados" data-entra="sube">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/casageneral.png" alt="Casa General Hermanas Bethlemitas" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/conferencia-episcopal.png" alt="Conferencia Episcopal de Colombia" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/conferencia-nacional-catolica.png" alt="CONACED" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/icfes.png" alt="ICFES" loading="lazy">
+      <img src="https://www.bethlemitaspalmira.edu.co/wp-content/uploads/2024/04/mineducacion.png" alt="Ministerio de Educación Nacional" loading="lazy">
+    </div>
+    <p class="derechos">© 2026 Colegio Sagrado Corazón de Jesús · Bethlemitas Palmira</p>
+  </div>
+</footer>
+
+<!-- Catálogo de lúdicas (#9, #36): talleres lúdicos 2026 – 2027, tal como los presenta el colegio en su reel. -->
+<dialog class="catalogo" id="catalogo" aria-labelledby="t-catalogo">
+  <div class="cab"><h2 id="t-catalogo">Talleres lúdicos</h2><button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button></div>
+  <p class="muestra anio">Año lectivo <b>2026 – 2027</b>. La inscripción se hace en línea, con la cuenta del estudiante o del familiar.</p>
+  <div class="lista">
+    <div class="item" style="--c:#ffd6df"><b>Baile latino</b><span>Danza</span></div>
+    <div class="item" style="--c:#d3f1ff"><b>Semillero en robótica</b><span>Ciencia y tecnología</span></div>
+    <div class="item" style="--c:#c9f5df"><b>Fútbol prejuvenil</b><span>Deporte</span></div>
+    <div class="item" style="--c:#fff1b3"><b>Taller de manualidades</b><span>Arte</span></div>
+    <div class="item" style="--c:#ffe1c7"><b>Danza folclórica</b><span>Danza</span></div>
+    <div class="item" style="--c:#e6dcff"><b>Pintura</b><span>Arte</span></div>
+    <div class="item" style="--c:#d3f1ff"><b>Gamer</b><span>Tecnología</span></div>
+    <div class="item" style="--c:#c9f5df"><b>Voleibol</b><span>Deporte</span></div>
+    <div class="item" style="--c:#fff1b3"><b>Lectura y escritura creativa</b><span>Letras</span></div>
+    <div class="item" style="--c:#ffd6df"><b>Baloncesto</b><span>Deporte</span></div>
+    <div class="item" style="--c:#ffe1c7"><b>Fútbol infantil</b><span>Deporte</span></div>
+    <a class="item inscribirme" href="https://docs.google.com/forms/d/e/1FAIpQLSfrWk2VaPWjxSLr0OCZyId4DxOoj5mvk-L9Mhu3gbFI-BQRZA/viewform" target="_blank" rel="noopener"><b>Inscribirme</b><span>Formulario de inscripción <svg class="ico"><use href="#i-flecha"/></svg></span></a>
+  </div>
+</dialog>
+
+<!-- Requisitos de inscripción y matrícula (#29), con las correcciones del colegio -->
+<dialog class="catalogo requisitos" id="requisitos" aria-labelledby="t-requisitos">
+  <div class="cab"><h2 id="t-requisitos">Requisitos</h2><button class="cerrar" type="button" aria-label="Cerrar"><svg class="ico"><use href="#i-cerrar"/></svg></button></div>
+  <div class="cuerpo-req">
+    <h3>Documentos para la inscripción</h3>
+    <ul>
+      <li><b>El valor de la inscripción se cancela por PSE</b> ingresando a la página web del colegio. <a href="https://portalpagos.davivienda.com/#/comercio/11333/HERMANAS%20BETHLEMITAS%20PROVINCIA%20DEL%20SAGRADO%20CORAZON%20PALMIRA%20VALLE%20DEL%20CAUCA" target="_blank" rel="noopener">Pagar con PSE →</a></li>
+      <li>Informe descriptivo o boletín del estudiante.</li>
+      <li>Constancia de comportamiento escolar del colegio de procedencia.</li>
+      <li>Paz y salvo de pensiones del colegio de procedencia (si viene de un jardín infantil o de un colegio privado).</li>
+      <li>Registro civil (notaría). Mayores de 7 años: tarjeta de identidad ampliada al 150 %.</li>
+      <li>El aspirante y sus padres deben contar con 2 horas disponibles para atender el proceso.</li>
+    </ul>
+    <h3>Documentos para la matrícula · año lectivo 2026 – 2027</h3>
+    <ul>
+      <li>Paz y salvo del colegio de procedencia (si viene de un jardín infantil o de un colegio privado).</li>
+      <li>Constancia de comportamiento escolar expedida por el colegio de procedencia.</li>
+      <li>Certificado original reciente del año anterior, en papel membretado, con intensidad horaria, valoración final, firmas y sellos. Para bachillerato, desde el grado 5.º de primaria.</li>
+      <li>Retiro del SIMAT en el colegio de procedencia.</li>
+      <li>Fotocopia del carné de la EPS o carta que certifique la afiliación activa a la fecha de matrícula.</li>
+      <li>Certificado médico.</li>
+      <li>Examen de hemoclasificación (tipo de sangre), si no figura en el registro civil o en otro documento.</li>
+      <li>Una foto a color tamaño 3×4 del estudiante, del papá y de la mamá, debidamente marcadas.</li>
+      <li>Fotocopia de la cédula de los padres de familia, ampliada al 150 %.</li>
+      <li>Pago total de la matrícula del año escolar 2026 – 2027.</li>
+      <li>Contrato de matrícula, pagaré y carta de instrucciones firmados por los padres de familia o el responsable financiero.</li>
+      <li>Estudiantes con 7 años cumplidos: fotocopia ampliada y legible de la tarjeta de identidad (no hace falta que sea tamaño oficio).</li>
+    </ul>
+  </div>
+</dialog>
+
+
+
+<script>
+// Lluvia de figuras de la intro.
+(() => {
+  const ll = document.querySelector("#intro .lluvia");
+  if (ll) {
+    const col = ["#ffcc00", "#e11d48", "#22c3ff", "#16c172", "#ff7a1a", "#8b5cf6", "#ffffff", "#ff5fa2"];
+    const alto = innerHeight;
+    let h = "";
+    for (let i = 0; i < 22; i++) {
+      const s = 26 + Math.round(Math.random() * 46);
+      const y = Math.round(alto * (.55 + Math.random() * .4));
+      h += `<i style="--x:${Math.round(Math.random() * 96)}%;--s:${s}px;--c:${col[i % col.length]};--y:${y}px;--r:${Math.round(Math.random() * 300 - 150)}deg;--dl:${i * 40}ms;--br:${i % 3 ? "50%" : "10px"}"></i>`;
+    }
+    ll.innerHTML = h;
+  }
+
+  // Cielo de la portada: estrellas que titilan y se desplazan despacio.
+  const cielo = document.querySelector(".cielo");
+  if (cielo) {
+    const estrella = '<svg viewBox="0 0 24 24"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z"/></svg>';
+    const tonos = ["#ffffff", "#ffffff", "#ffe066", "#bfe9ff"];
+    const n = innerWidth < 760 ? 26 : 46;
+    let h = "";
+    for (let i = 0; i < n; i++) {
+      const grande = i % 5 === 0;
+      const s = grande ? 14 + Math.random() * 12 : 3 + Math.random() * 4;
+      h += `<i class="${grande ? "" : "punto"}" style="--x:${(Math.random() * 100).toFixed(1)}%;--y:${(Math.random() * 92).toFixed(1)}%;--s:${s.toFixed(1)}px;--c:${tonos[i % tonos.length]};` +
+        `--t:${(2 + Math.random() * 3).toFixed(1)}s;--v:${(30 + Math.random() * 40).toFixed(0)}s;--dl:-${(Math.random() * 4).toFixed(1)}s;--dl2:-${(Math.random() * 40).toFixed(0)}s;` +
+        `--dx:${(Math.random() * 120 - 60).toFixed(0)}px;--dy:${(Math.random() * 60 - 10).toFixed(0)}px;--dr:${grande ? 180 : 0}deg">${grande ? estrella : ""}</i>`;
+    }
+    cielo.innerHTML = h;
+  }
+
+  // Catálogo de lúdicas y panel de cambios.
+  const dialogo = (id, disparadores) => {
+    const d = document.getElementById(id);
+    document.querySelectorAll(disparadores).forEach(b => b.addEventListener("click", e => { e.preventDefault(); d.showModal(); }));
+    d.querySelector(".cab button").addEventListener("click", () => d.close());
+    d.addEventListener("click", e => { if (e.target === d) d.close(); });
+  };
+  dialogo("catalogo", "[data-catalogo]");
+  
+  dialogo("requisitos", "[data-requisitos]");
+
+  // "Pastoral" en el menú abre Actualízate con ese filtro.
+  document.querySelectorAll('[data-filtro="pastoral"]').forEach(a => a.addEventListener("click", () => {
+    document.querySelector('.pestanas [data-pestana="pastoral"]')?.click();
+    setTimeout(() => document.getElementById("pastoral")?.scrollIntoView({ block: "start" }), 50);
+  }));
+})();
+</script>
+<script>
+// Motor compartido de las 6 propuestas: recarga al principio, intro, entradas al llegar,
+// contadores, menú del teléfono, cabecera al bajar y la cinta de "contenido de muestra".
+(() => {
+  const raiz = document.documentElement;
+  raiz.classList.add("js");
+  if (window.self !== window.top) raiz.classList.add("en-marco");
+
+  // Al recargar, siempre desde arriba: sin restaurar scroll ni ancla.
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  window.scrollTo(0, 0);
+
+  const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cuerpo = document.body;
+
+  // ---------- Años desde la fundación (8 de octubre de 1888) ----------
+  const hoy = new Date();
+  const cumplio = hoy.getMonth() > 9 || (hoy.getMonth() === 9 && hoy.getDate() >= 8);
+  const anios = hoy.getFullYear() - 1888 - (cumplio ? 0 : 1);
+  document.querySelectorAll('[data-cuenta="anios"]').forEach(el => { el.dataset.cuenta = anios; });
+  document.querySelectorAll("[data-anios]").forEach(el => { el.textContent = anios; });
+
+  // ---------- Contadores ----------
+  const contar = el => {
+    if (el._contado) return;
+    el._contado = true;
+    const meta = Number(el.dataset.cuenta);
+    const desde = Number(el.dataset.desde || 0);
+    if (reducido) { el.textContent = meta; return; }
+    const dur = Number(el.dataset.dur || 1500);
+    const t0 = performance.now();
+    const vuelta = ++el._vuelta || (el._vuelta = 1);
+    const paso = t => {
+      if (el._vuelta !== vuelta) return;
+      const p = Math.min(1, (t - t0) / dur);
+      const e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+      el.textContent = Math.round(desde + (meta - desde) * e);
+      if (p < 1) requestAnimationFrame(paso);
+    };
+    requestAnimationFrame(paso);
+    // Red de seguridad si el navegador frena rAF (pestaña oculta o marco).
+    el._seguro = setTimeout(() => { if (el._vuelta === vuelta) el.textContent = meta; }, dur + 400);
+  };
+  const reiniciarContador = el => {
+    clearTimeout(el._seguro);
+    el._vuelta = (el._vuelta || 0) + 1;
+    el._contado = false;
+    el.textContent = el.dataset.desde || 0;
+  };
+
+  // ---------- Entradas al llegar (se reinician al salir) ----------
+  const entradas = [...document.querySelectorAll("[data-entra]")];
+  const cuentas = [...document.querySelectorAll("[data-cuenta]")];
+  cuentas.forEach(reiniciarContador);
+
+  const vigilar = () => {
+    if (reducido || !("IntersectionObserver" in window)) {
+      entradas.forEach(el => el.classList.add("animar"));
+      cuentas.forEach(contar);
+      return;
+    }
+    const io = new IntersectionObserver(lista => {
+      lista.forEach(({ target, isIntersecting }) => {
+        if (isIntersecting) {
+          target.classList.add("animar");
+          if (target.dataset.cuenta !== undefined) contar(target);
+          target.querySelectorAll?.("[data-cuenta]").forEach(contar);
+        } else {
+          target.classList.remove("animar");
+          if (target.dataset.cuenta !== undefined) reiniciarContador(target);
+        }
+      });
+    }, { rootMargin: "0px 0px -6% 0px", threshold: 0 });
+    entradas.forEach(el => io.observe(el));
+    cuentas.forEach(el => io.observe(el));
+  };
+
+  // ---------- Intro dentro del mundo (~2 s, se salta con clic o Esc) ----------
+  const intro = document.getElementById("intro");
+  let arranco = false;
+  const arrancar = () => {
+    if (arranco) return;
+    arranco = true;
+    cuerpo.classList.add("listo");
+    window.dispatchEvent(new Event("intro-fin"));
+    vigilar();
+  };
+  if (intro && !reducido) {
+    cuerpo.classList.add("con-intro");
+    const cerrar = () => {
+      if (intro.classList.contains("fuera")) return;
+      intro.classList.add("fuera");
+      cuerpo.classList.remove("con-intro");
+      setTimeout(arrancar, Number(intro.dataset.salida || 350));
+      setTimeout(() => intro.remove(), 1400);
+    };
+    setTimeout(cerrar, Number(intro.dataset.ms || 2000));
+    intro.addEventListener("click", cerrar);
+    addEventListener("keydown", e => { if (e.key === "Escape") cerrar(); });
+  } else {
+    intro?.remove();
+    arrancar();
+  }
+
+  // ---------- Cabecera al bajar ----------
+  const marcarScroll = () => cuerpo.classList.toggle("bajo", window.scrollY > 40);
+  addEventListener("scroll", marcarScroll, { passive: true });
+  marcarScroll();
+
+  // ---------- Menú del teléfono (cambia a X, bloquea el fondo, se cierra al tocar afuera) ----------
+  const botonesMenu = [...document.querySelectorAll("[data-menu]")];
+  const marcarMenu = abierto => {
+    cuerpo.classList.toggle("menu-abierto", abierto);
+    raiz.classList.toggle("menu-bloqueo", abierto);
+    botonesMenu.forEach(b => {
+      b.setAttribute("aria-expanded", abierto);
+      b.setAttribute("aria-label", abierto ? "Cerrar menú" : "Abrir menú");
+      b.querySelector("use")?.setAttribute("href", "#" + (abierto ? "i-cerrar" : "i-menu"));
+    });
+  };
+  botonesMenu.forEach(btn => btn.addEventListener("click", e => {
+    e.stopPropagation();
+    marcarMenu(!cuerpo.classList.contains("menu-abierto"));
+  }));
+  document.querySelectorAll(".menu a, [data-cierra-menu]").forEach(a => a.addEventListener("click", () => marcarMenu(false)));
+  document.addEventListener("click", e => {
+    if (cuerpo.classList.contains("menu-abierto") && !e.target.closest(".menu")) marcarMenu(false);
+  });
+  addEventListener("keydown", e => { if (e.key === "Escape" && cuerpo.classList.contains("menu-abierto")) marcarMenu(false); });
+
+  // ---------- Enlaces a páginas internas que todavía no existen ----------
+  let avisoMuestra, avisoTimer;
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href="#"]');
+    if (!a) return;
+    e.preventDefault();
+    if (!avisoMuestra) {
+      avisoMuestra = document.createElement("div");
+      avisoMuestra.className = "aviso-muestra";
+      avisoMuestra.setAttribute("role", "status");
+      avisoMuestra.textContent = "Página interna de muestra: se diseña en la siguiente etapa.";
+      cuerpo.appendChild(avisoMuestra);
+    }
+    avisoMuestra.classList.add("ver");
+    clearTimeout(avisoTimer);
+    avisoTimer = setTimeout(() => avisoMuestra.classList.remove("ver"), 2600);
+  });
+
+  // ---------- Pestañas simples (data-pestanas > [data-pestana] + [data-panel]) ----------
+  document.querySelectorAll("[data-pestanas]").forEach(grupo => {
+    const botones = grupo.querySelectorAll("[data-pestana]");
+    const paneles = grupo.querySelectorAll("[data-panel]");
+    botones.forEach(b => b.addEventListener("click", () => {
+      botones.forEach(x => x.setAttribute("aria-selected", x === b));
+      paneles.forEach(p => {
+        const ver = p.dataset.panel === b.dataset.pestana || b.dataset.pestana === "todo";
+        p.hidden = !ver;
+        if (ver) { p.classList.remove("animar"); void p.offsetWidth; p.classList.add("animar"); }
+      });
+    }));
+  });
+
+  // ---------- Cinta de muestra ----------
+  const n = cuerpo.dataset.propuesta;
+  if (n) {
+    const a = document.createElement("a");
+    a.className = "cinta";
+    a.href = "index.html";
+    a.innerHTML = `<b>${n} / 6</b><span><span class="largo">${cuerpo.dataset.nombre || ""} · Contenido de muestra · Ver las 6</span><span class="corto">Muestra · Ver las 6</span></span>`;
+    cuerpo.appendChild(a);
+  }
+})();
+
+</script>
