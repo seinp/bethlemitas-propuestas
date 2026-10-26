@@ -299,6 +299,10 @@ dialog.catalogo::backdrop { background: rgba(10,29,120,.6); }
 .acceso-pse { outline: 4px dashed rgba(20,26,58,.35); outline-offset: 4px; }
 .acceso .icono.logo-pse { width: 86px; border-radius: 16px; }
 .acceso .icono.logo-pse img { width: 100%; height: 150%; object-fit: cover; object-position: 50% 26%; }
+.rejilla-accesos .acceso-pse { grid-row: span 2; flex-direction: column; align-items: flex-start; justify-content: center; gap: 18px; padding: 28px; }
+.acceso-pse .icono.logo-pse { width: 132px; height: 92px; border-radius: 20px; }
+.acceso-pse b { font-size: 30px; }
+.acceso-pse span.desc { font-size: 16px; }
 .acceso .pagar { display: inline-block; margin-top: 6px; padding: 5px 10px; border-radius: 10px; background: var(--tinta); color: #fff; font: 700 13px/1 var(--titulo); }
 .nota-pse { display: inline-flex; align-items: center; gap: 12px; margin-top: 16px !important; padding: 10px 16px; border-radius: 16px; background: #fff; color: var(--tinta) !important;
   border: var(--borde); box-shadow: 4px 4px 0 var(--tinta); font-weight: 700; font-size: 16px !important; text-align: left; }
@@ -428,6 +432,13 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
   .acceso .icono.logo-pse { width: 72px; }
   .nota-pse { font-size: 14.5px !important; }
 }
+/* Teléfono: PSE a todo el ancho arriba y los otros 4 en dos columnas */
+@media (max-width: 760px) {
+  .rejilla-accesos .acceso-pse { grid-column: 1 / -1; grid-row: auto; flex-direction: row; align-items: center; gap: 14px; padding: 16px; }
+  .acceso-pse .icono.logo-pse { width: 92px; height: 64px; border-radius: 16px; }
+  .acceso-pse b { font-size: 22px; }
+  .acceso-pse span.desc { font-size: 14px; }
+}
 /* Teléfono: el catálogo de lúdicas en dos columnas (#36) */
 @media (max-width: 600px) {
   .catalogo .lista { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 16px 16px 20px; }
@@ -510,7 +521,6 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/manual-de-convivencia-2/" style="--c:#ffd6df;--i:2" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-manual"/></svg></span><span><b>Manual de convivencia</b><span class="desc">Año lectivo 2026 – 2027</span></span></a>
         <a class="acceso" href="#admisiones" style="--c:#d3f1ff;--i:3" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-matricula"/></svg></span><span><b>Matrículas</b><span class="desc">Fechas, requisitos y documentos</span></span></a>
         <a class="acceso" href="https://q.plataformaintegra.net/bethlemitaspalmira/" target="_blank" rel="noopener" style="--c:#e6dcff;--i:4" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-plataforma"/></svg></span><span><b>Plataforma académica</b><span class="desc">Notas, tareas y observaciones</span></span></a>
-        <a class="acceso" href="https://www.bethlemitaspalmira.edu.co/uniforme/" style="--c:#ffe1c7;--i:5" data-entra="zoom"><span class="icono"><svg class="ico"><use href="iconos.svg#i-uniforme"/></svg></span><span><b>Uniformes</b><span class="desc">Diario y educación física</span></span></a>
       </div>
     </div>
   </section>
@@ -799,7 +809,8 @@ dialog.cambios::backdrop { background: rgba(10,12,18,.6); }
         <li><i>35</i><span>Fotos recientes del colegio en la portada, los niveles y Actualízate.</span></li>
         <li><i>36</i><span>Catálogo de lúdicas con los 11 talleres lúdicos 2026 – 2027.</span></li>
         <li><i>37</i><span>Botón «Inscribirme» al formulario de los talleres.</span></li>
-        <li><i>—</i><span>Cada botón lleva ya a su página real del colegio (niveles, circulares, manual, uniformes, plataforma, pastoral, historia, preinscripción).</span></li>
+        <li><i>—</i><span>Cada botón lleva ya a su página real del colegio (niveles, circulares, manual, plataforma, pastoral, historia, preinscripción).</span></li>
+        <li><i>—</i><span>Se quitó el acceso «Uniformes».</span></li>
       </ul>
     </div>
     <div class="confirmar">
